@@ -18,7 +18,11 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQuery(name = "Practice.findAll", query = "SELECT p FROM Practice p")
 public class Practice implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3423026794368778141L;
 
 	@Id
 	@Column(unique = true, nullable = false)
