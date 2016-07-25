@@ -14,7 +14,7 @@ import org.eclipse.persistence.annotations.Cache;
  * 
  */
 @Entity
-@Cache(size = 12000, expiry = 5000)
+@Cache(size = 12000, expiry = 4000)
 @Table(name = "code_tables", schema = "ct")
 @NamedQuery(name = "CodeTables.findAll", query = "SELECT ct FROM CodeTables ct")
 public class CodeTables implements Serializable {
@@ -25,7 +25,7 @@ public class CodeTables implements Serializable {
 	private static final long serialVersionUID = -8408944941996759070L;
 
 	@Id
-	private int codeTableId; 
+	private int codeTableId;
 
 	private String codeTableName;
 
