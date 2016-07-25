@@ -1,0 +1,101 @@
+<div ng-cloak class="content-wrapper view" ng-controller="AppKitDataTablesDemo">
+	<div class="container-fluid">
+	
+		<div class="row" app-kit-masonry>
+			<app-kit-module title="Patient Enrolled" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<pane-body>
+				<table datatable="ng" class="row-border hover" >
+					<thead>
+						<tr>
+							<th ng-hide="true">ID</th>
+							<th>Name</th>
+							<th>Workflow Name</th>
+							<th>Study Eye</th>
+							<th>Study Name</th>
+							<th>Location</th>
+							<th>Doctor</th>
+							<th ng-hide="true">Location</th>
+							<th ng-hide="true">Doctor</th>
+							<th ng-hide="false">Edit Patient</th>
+							<th ng-hide="false">Edit Task</th>
+						</tr>
+					</thead>
+					<tbody>
+						 <tr ng-repeat="patient in ::patients.patient track by patient.patientId">
+						 	<td ng-hide="true"> [[patient.patientId]]</td>
+              				<td> [[patient.fullName]]</td>
+              				<td> [[patient.workflowName]]</td>
+              				<td> [[patient.studyeye]]</td>
+              				<td> [[patient.studyName]]</td>
+              				<td> [[patient.location]]</td>  
+              				<td> [[patient.doctor]]</td>
+              			 	<td ng-hide="true"> [[patient.patientTaskId]]  </td>
+              				<td ng-hide="true"> [[patient.patientId]]</td> 
+              				
+              				<td><button ng-click="UpdatePatient()"  class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit Patient Data">
+                  <span class="glyphicon glyphicon-user"></span>
+                  </button></td> 
+                  <td><button ng-click="UpdateTask()"  class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Update Task Event">
+                  <span class="glyphicon glyphicon-edit"></span>
+                  </button></td>  
+						
+					</tr>
+					</tbody>
+				</table>
+			</pane-body>
+			</app-kit-module>
+		</div>
+		
+		<!-- 	<h2 class="view-title">Data Tables</h2>  -->
+		<div class="row" app-kit-masonry>
+			<app-kit-module title="Patient Alerts" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+				<table datatable="ng" class="row-border hover" >
+					<thead>
+						<tr>
+							<th ng-hide="true">ID</th>
+							<th>Name</th>
+							<th>Workflow Name</th>
+							<th>Study Eye</th>
+							<th>Study Name</th>
+							<th>Location</th>
+							<th>Doctor</th>
+							<th ng-hide="true">Location</th>
+							<th ng-hide="true">Doctor</th>
+							<th ng-hide="true">buttonone</th>
+							<th ng-hide="true">buttontwo</th>
+						</tr>
+					</thead>
+					<tbody>
+						 <tr ng-repeat="item in ::expiredPatients.patient track by item.patientId">
+						 	<td ng-hide="true"> [[item.patientId]]</td>
+              				<td> [[item.fullName]]</td>
+              				<td> [[item.workflowName]]</td>
+              				<td> [[item.studyeye]]</td>
+              				<td> [[item.studyName]]</td>
+              				<td> [[item.location]]</td>  
+              				<td> [[item.doctor]]</td>
+              			 	<td ng-hide="true"> [[item.patientTaskId]]  </td>
+              				<td ng-hide="true"> [[item.patientId]]</td> 
+              				
+              				<td><button ng-click="UpdatePatient()"  class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit Patient Data">
+                  <span class="glyphicon glyphicon-user"></span>
+                  </button></td> 
+                  <td><button ng-click="UpdateTask()"  class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Update Task Event">
+                  <span class="glyphicon glyphicon-edit"></span>
+                  </button></td>  
+						
+					</tr>
+					</tbody>
+				</table>
+			</pane-body></app-kit-module>
+		</div>
+		
+		
+		
+	</div>
+</div>
+		
+  
+		
+	
+	

@@ -1,0 +1,80 @@
+<div class="main-nav-wrapper" ng-cloak>
+			
+		</div>		
+	
+	
+	<div ng-cloak class="content-wrapper view" ng-controller="AppKitFormValidationDemo">
+	<div class="container-fluid">
+		<h2 class="view-title">Form Validation</h2>
+		<div class="row" app-kit-masonry>
+			<app-kit-module title="Validation Example" wrapper-class="masonry-item col-md-12 col-sm-12 col-xs-12" content-class="no-padding-bottom"><pane-body>
+				<form name="form" novalidate>
+					<div class="form-group" ng-class="{'has-error': form.fullname.$touched && form.fullname.$invalid }">
+						<label for="fullname">Full Name * :</label>
+						<input class="form-control" ng-model="fullname" name="fullname" id="fullname" required type="text">
+						<div class="help-block" ng-show="form.$submitted || form.fullname.$touched">
+							<span class="text-danger" ng-show="form.fullname.$error.required">This value is required.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email">Email * :</label>
+						<input class="form-control" ng-model="email" name="email" required type="email">
+						<div class="help-block" ng-show="form.$submitted || form.email.$touched">
+							<span class="text-danger" ng-show="form.email.$error.required">This value is required.</span>
+							<span class="text-danger" ng-show="form.email.$error.email">Please enter a valid email address.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Hobbies (Optional, but 2 minimum):</label>
+						<p>
+							<input type="checkbox" name="hobbies" id="hobbies-[[hobby]]" value="$index" ng-model="hobbies[$index]" ng-required="noneOrAtLeastSelected(hobbies, 2)" ng-repeat-start="hobby in hobbyOptions"> <label for="hobbies-[[hobby]]">[[ hobby ]]</label>
+							<br ng-repeat-end>
+	                    <p>
+    					<div class="help-block" ng-show="form.$submitted || form.hobbies.$touched">
+							<span class="text-danger" ng-show="form.hobbies.$error.required">Please select none or at least two options</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="heard">Heard us by *:</label>
+						<select class="form-control" required name="heard" ng-model="heard" id="heard">
+							<option value="">Choose..</option>
+							<option value="press">Press</option>
+							<option value="net">Internet</option>
+							<option value="mouth">Word of mouth</option>
+							<option value="other">Other..</option>
+						</select>
+						<div class="help-block" ng-show="form.$submitted || form.heard.$touched">
+							<span class="text-danger" ng-show="form.heard.$error.required">This value is required.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="message">Message (20 chars min, 100 max) :</label>
+						<textarea class="form-control" minlength="20" maxlength="100" name="message" id="message" ng-model="message" rows="6"></textarea>
+						<div class="help-block" ng-show="form.$submitted || form.message.$touched">
+							<span class="text-danger" ng-show="form.message.$error.required">This value is required.</span>
+							<span class="text-danger" ng-show="form.message.$error.minlength">Please enter at least 20 characters.</span>
+							<span class="text-danger" ng-show="form.message.$error.maxlength">Please do not enter more than 100 characters.</span>
+						</div>
+					</div>
+					<input class="btn btn-primary" type="submit">
+				</form>
+			</pane-body></app-kit-module>
+		</div>
+	</div>
+</div>
+	
+				<script src="assets/js/jquery.js"></script>
+				<script src="assets/js/metisMenu.js"></script>
+				<script src="assets/js/masonry.js"></script>
+				<script src="assets/js/pace.js"></script>
+				<script src="assets/js/angular.js"></script>
+				<script src="assets/js/angular-animate.js"></script>
+				<script src="assets/js/ui-bootstrap-tpls.js"></script>
+				<script src="assets/js/tether.js"></script>
+				<script src="assets/js/tether-shepherd.js"></script>
+				<script src="assets/js/angular-debounce.js"></script>
+				<script src="assets/js/ng-common.js"></script>
+				<script src="assets/js/ng-google-maps.js"></script>
+				<script src="assets/js/app-kit-tour.js"></script>
+				<script src="assets/js/ng-app.js"></script>
+				<script src="assets/js/app-kit-form-validation-demo.js"></script>

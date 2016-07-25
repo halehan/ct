@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html ng-app="appKitDemo">
+	<head>
+		<title>AppKit</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">    
+		<link rel="shortcut icon" href="assets/images/favicon.ico">  
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel='stylesheet' type='text/css'>
+				<link rel="stylesheet" href="assets/css/bootstrap.css">
+				<link rel="stylesheet" href="assets/css/metisMenu.css">
+				<link rel="stylesheet" href="assets/css/font-awesome.css">
+				<link rel="stylesheet" href="assets/css/elegant-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons-helper.css">
+				<link rel="stylesheet" href="assets/css/tether-shepherd.css">
+				<link rel="stylesheet" href="assets/css/jstree-default.css">
+				<link rel="stylesheet" href="assets/css/styles.css">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>	<body app-kit-responsive class="preload [[theme]]" ng-class="{'compact': compact, 'mobile': mobile, 'nav-toggled': navOpen}">
+		<div class="alert alert-promo alert-dismissible slide text-center" role="alert" ng-if="showTopAlert">
+		    <span id="top-alert-close" aria-hidden="true" class="icon icon_close close" ng-click="$parent.showTopAlert = false"></span>
+		    <strong>Welcome to AppKit!</strong> Your trial will run out in 30 days  <a class="btn btn-success btn-sm margin-left-sm" href="pricing.html">Upgrade Now</a>
+		</div>		<header class="header">
+			<div class="branding float-left">
+				<h1 class="logo text-center">
+					<a href="index.html">
+						<img class="logo-icon" src="assets/images/logo-icon.svg" alt="icon" />
+						<span class="nav-label">
+							<span class="highlight">App</span>Kit
+						</span>
+					</a>
+				</h1>
+			</div>
+			<div class="topbar">
+				<button class="main-nav-toggle" type="button" ng-click="navOpen = !navOpen">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<i class="icon fa fa-caret-left"></i>
+				</button>
+				<div class="search-container">
+					<form id="main-search" class="main-search">
+		    			<i id="main-search-toggle" class="fa fa-search icon" ng-click="showSearch = !showSearch"></i>
+						<div id="main-search-input-wrapper" class="main-search-input-wrapper" ng-show="showSearch">
+		    				<input type="text" id="main-search-input" class="main-search-input form-control" placeholder="Search..." app-kit-focus-on="showSearch">
+		    				
+		    				<span id="clear-search" aria-hidden="true" class="fs1 icon icon_close_alt2 clear-search"></span>
+						</div>
+					</form>
+				</div>
+				<div class="navbar-tools">
+					<div class="utilities-container">
+						<div class="utilities">
+							<div class="item item-tour hidden-xs tour-trigger" tooltip-placement="bottom" uib-tooltip="Guided Tour" app-kit-tour ng-click="headerPopup = ''; tutorial = !tutorial" ><span class="sr-only">App Tour</span><span class="pe-icon pe-7s-info icon"></span></div>
+							<div class="item item-side-panel">
+		            			<i id="side-panel-toggle" class="side-panel-toggle panel-hide icon fa fa-signal" tooltip-placement="bottom" uib-tooltip="Activities" ng-click="headerPopup = headerPopup == 'side-panel' ? '' : 'side-panel'"><span class="badge badge-circle badge-warning">8</span></i>
+		        			</div>
+		        			
+							<div class="item item-notifications" ng-class="{'open': headerPopup == 'notifications'}">
+								<div class="dropdown-toggle" id="dropdownMenu-notifications" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'notifications' ? '' : 'notifications'">
+									<span class="sr-only">Notifications</span>
+									<span class="pe-icon pe-7s-bell icon" tooltip-placement="bottom" uib-tooltip="Notifiations"></span><span class="badge badge-circle badge-danger">3</span>
+								</div>
+								<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-notifications">
+									<span class="arrow"></span>
+									<div class="notification-items no-overflow">
+										<div class="item media">
+											<div class="media-left profile">
+												<img src="assets/images/profiles/profile-8.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="name">Albert E</span> <span class="action">replied to your comment</span> on "Maecenas tempus adipiscing consectetur adipiscing elit..."
+												</a>
+											</div>
+											<div class="meta">
+												2h ago
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img src="assets/images/profiles/profile-7.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="name">Julia A</span> <span class="action">sent you a message</span> "Hey Becky, thanks for doing this natoque penatibus et magnis dis parturient montes..."
+												</a>
+											</div>
+											<div class="meta">
+												1d ago
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img src="assets/images/profiles/profile-2.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="name">Rachel W</span> <span class="action">shared a file with you</span> "UX mocks for Nike"
+												</a>
+											</div>
+											<div class="meta">
+												3d ago
+											</div>
+										</div>
+									</div>  
+									<div class="dropdown-footer">
+										<a href="#">View all notifications</a>
+									</div>   						
+								</div> 
+							</div>
+							<div class="item item-messages dropdown" ng-class="{'open': headerPopup == 'messages'}">
+								<div class="dropdown-toggle" id="dropdownMenu-messages" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'messages' ? '' : 'messages'">
+									<span class="sr-only">Messages</span>
+									<span class="pe-icon pe-7s-mail icon" tooltip-placement="bottom" uib-tooltip="Messages"></span><span class="badge badge-circle badge-success">5</span>
+								</div>
+								<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-messages">
+									<span class="arrow"></span>
+									<div class="message-items no-overflow">
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-7.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Julia Arnold</span>
+													<span class="message-title display-block">Great News</span>
+													<span class="excerpt display-block">"Hey Becky, thanks for doing this natoque penatibus et magnis dis parturient montes..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Apr 6
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-1.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Ken Davison</span>
+													<span class="message-title display-block">RE: Help Needed</span>
+													<span class="excerpt display-block">"No problem. I can help with the luctus est eu ullamcorper laoreet..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Apr 2
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-4.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Ryan Baker</span>
+													<span class="message-title display-block">RE: UX resources for Nike</span>
+													<span class="excerpt display-block">"Hi Becky, can you send me the wireframes? I need the finalised version..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Mar 28
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-5.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Sarah West</span>
+													<span class="message-title display-block">Hello!</span>
+													<span class="excerpt display-block">"Hello there, lorem ipsum dolor sit amet, consectetur adipiscing elit duis luctus..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Mar 25
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-6.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Carl Wilson</span>
+													<span class="message-title display-block">RE: Design Resource</span>
+													<span class="excerpt display-block">"Hi, Phasellus cursus libero quis ante commodo lobortis duis ac ante..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Mar 25
+											</div>
+										</div>
+									</div>
+									<div class="dropdown-footer">
+										<a href="user-messages.html">View all messages</a>
+									</div>  
+								</div>
+							</div>
+							<div class="item item-more" ng-class="{'open': headerPopup == 'settings'}">
+								<div class="dropdown-toggle" id="dropdownMenu-more" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'settings' ? '' : 'settings'">
+									<span class="sr-only">More</span>
+									<span aria-hidden="true" class="fs1 icon icon_grid-3x3" tooltip-placement="bottom" uib-tooltip="Settings &amp; Tools"></span>
+								</div>
+								<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-more">
+									<span class="arrow"></span>
+									<h4 class="title">Settings &amp; Tools</h4>
+									<ul class="more-list">
+										<li><a role="menuitem" href="user-settings.html"><span class="pe-icon pe-7s-config icon"></span><br>Settings</a></li>
+										<li><a role="menuitem" href="user-billing.html"><span class="pe-icon pe-7s-wallet icon"></span><br>Billing</a></li>
+										<li><a role="menuitem" href="user-drive.html"><span class="pe-icon pe-7s-pendrive icon"></span><br>Drive</a></li>
+										<li><a role="menuitem" href="user-messages.html"><span class="pe-icon pe-7s-chat icon"></span><br>Messages</a></li>
+										<li><a role="menuitem" href="user-reminders.html"><span class="pe-icon pe-7s-clock icon"></span><br>Reminders</a></li>
+										
+										<li><a role="menuitem" href="help.html"><span class="pe-icon pe-7s-help2 icon"></span><br>Help</a></li>
+									</ul>
+								</div>						
+							</div>
+						</div>
+					</div>
+					<div class="user-container dropdown" ng-class="{'open': headerPopup == 'profile'}">
+						<div class="dropdown-toggle" id="dropdownMenu-user" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'profile' ? '' : 'profile'">
+							<img src="assets/images/profiles/profile-3.png" alt="" />
+							<i class="fa fa-caret-down"></i>
+						</div>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-user" >
+							<li><span class="arrow"></span><a role="menuitem" href="user-profile.html"><span class="pe-icon pe-7s-user icon"></span>My Account</a></li>
+							<li><a role="menuitem" href="pricing.html"><span class="pe-icon pe-7s-paper-plane icon"></span>Upgrade Plan</a></li>
+							<li><a role="menuitem" href="login.html"><span class="pe-icon pe-7s-power icon"></span>Sign Out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>		<div class="main-nav-wrapper" ng-cloak>
+			<nav id="main-nav" class="main-nav">
+				<ul id="menu" app-kit-menu>
+					<li  class="nav-dashboards ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_house_alt"></span>
+								<span class="nav-label">Dashboards</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="index.html">
+												<span class="nav-label">Use Case 1</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class="nav-widgets ">
+							<a href="widgets.html">
+								<span aria-hidden="true" class="icon icon_drawer_alt"></span>
+								<span class="nav-label">Widgets</span>
+								<span class="badge badge-primary">12</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="projects.html">
+								<span aria-hidden="true" class="icon icon_toolbox_alt"></span>
+								<span class="nav-label">Projects</span>
+								<span class="badge">56</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="tickets.html">
+								<span aria-hidden="true" class="icon icon_box-checked"></span>
+								<span class="nav-label">Tickets</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="invoices.html">
+								<span aria-hidden="true" class="icon icon_documents_alt"></span>
+								<span class="nav-label">Invoices</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="discussions.html">
+								<span aria-hidden="true" class="icon icon_chat_alt"></span>
+								<span class="nav-label">Discussions</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="activities.html">
+								<span aria-hidden="true" class="icon icon_easel"></span>
+								<span class="nav-label">Activities</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="members.html">
+								<span aria-hidden="true" class="icon icon_group"></span>
+								<span class="nav-label">Members</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="inbox.html">
+								<span aria-hidden="true" class="icon icon_mail_alt"></span>
+								<span class="nav-label">Inbox</span>
+								<span class="badge">18</span>
+								</a>
+					</li>
+					<li  class="nav-app-pages ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_building"></span>
+								<span class="nav-label">App Pages</span>
+								<span class="badge badge-success">17</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="project.html">
+												<span class="nav-label">Project Details</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="member.html">
+												<span class="nav-label">Member Profile</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="discussion.html">
+												<span class="nav-label">Discussion Topic</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-profile.html">
+												<span class="nav-label">User Profile</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-settings.html">
+												<span class="nav-label">User Settings</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-billing.html">
+												<span class="nav-label">User Billing</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-messages.html">
+												<span class="nav-label">User Messages</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-drive.html">
+												<span class="nav-label">User Drive</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-reminders.html">
+												<span class="nav-label">User Reminders</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="pricing.html">
+												<span class="nav-label">Pricing</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="invoice.html">
+												<span class="nav-label">Invoice</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="timeline.html">
+												<span class="nav-label">Timeline</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="faq.html">
+												<span class="nav-label">FAQ</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="login.html">
+												<span class="nav-label">Login Page</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="signup.html">
+												<span class="nav-label">Signup Page</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="404.html">
+												<span class="nav-label">404 Page</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="500.html">
+												<span class="nav-label">500 Page</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" active">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_puzzle"></span>
+								<span class="nav-label">Components</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="typography.html">
+												<span class="nav-label">Typography</span>
+												</a>
+									</li>
+									<li  class=" active">
+											<a href="icons.html">
+												<span class="nav-label">Icons</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="buttons.html">
+												<span class="nav-label">Buttons</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="panels.html">
+												<span class="nav-label">Panels</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="tabs.html">
+												<span class="nav-label">Tabs</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="accordions.html">
+												<span class="nav-label">Accordions</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="maps.html">
+												<span class="nav-label">Maps</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="todo-list.html">
+												<span class="nav-label">Todo</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="carousels.html">
+												<span class="nav-label">Carousels</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="notifications.html">
+												<span class="nav-label">Notifications</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="draggable.html">
+												<span class="nav-label">Draggable</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="sortable.html">
+												<span class="nav-label">Sortable</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="nestable.html">
+												<span class="nav-label">Nestable</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="tree-view.html">
+												<span class="nav-label">Tree</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="loaders.html">
+												<span class="nav-label">Loaders</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="ui-misc.html">
+												<span class="nav-label">Other UI Elements</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_table"></span>
+								<span class="nav-label">Tables</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="tables-basic.html">
+												<span class="nav-label">Basic</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="tables-datatables.html">
+												<span class="nav-label">Datatables</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_pencil-edit"></span>
+								<span class="nav-label">Forms</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="forms-basic.html">
+												<span class="nav-label">Basic</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="forms-validation.html">
+												<span class="nav-label">Validation</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_piechart"></span>
+								<span class="nav-label">Charts</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="charts-chartjs.html">
+												<span class="nav-label">Chart.js</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="charts-flot.html">
+												<span class="nav-label">Flot Charts</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="charts-morris.html">
+												<span class="nav-label">Charts Morris</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="charts-inline.html">
+												<span class="nav-label">Inline Charts</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_calendar"></span>
+								<span class="nav-label">Calendars</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="calendar-1.html">
+												<span class="nav-label">Calendar v1</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_flowchart"></span>
+								<span class="nav-label">Menu Levels</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="#">
+												<span class="nav-label">Subnav Level 1</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="#">
+												<span class="nav-label">Subnav Level 1</span>
+												<span class="fa arrow"></span>
+												</a>
+												<ul class="sub-menu">
+													<li  class=" ">
+															<a href="#">
+																<span class="nav-label">Subnav Level 2</span>
+																</a>
+													</li>
+													<li  class=" ">
+															<a href="#">
+																<span class="nav-label">Subnav Level 2</span>
+																</a>
+													</li>
+													<li  class=" ">
+															<a href="#">
+																<span class="nav-label">Subnav Level 2</span>
+																</a>
+													</li>
+												</ul>
+									</li>
+									<li  class=" ">
+											<a href="#">
+												<span class="nav-label">Subnav Level 1</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li role="presentation" class="divider ">
+					</li>
+					<li  class=" ">
+							<a href="help.html">
+								<span aria-hidden="true" class="icon icon_lifesaver"></span>
+								<span class="nav-label">Help</span>
+								<span class="label label-new">NEW</span>
+								</a>
+					</li>
+				</ul>
+			</nav>
+		</div>		<div ng-cloak class="content-wrapper view">
+    <div class="container-fluid">
+        <h2 class="view-title">Icons</h2>
+        <div class="row" app-kit-masonry>
+            <app-kit-module title="300+ Elegant Icons" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+                <h4>Source: <a href="http://www.elegantthemes.com/blog/resources/elegant-icon-font" target="_blank">Elegant Icon Font</a></h4>
+                <br>
+                <div class="clearfix">
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x21;"></div>
+	                    <input type="text" readonly value="&amp;#x21;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x22;"></div>
+	                    <input type="text" readonly value="&amp;#x22;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x23;"></div>
+	                    <input type="text" readonly value="&amp;#x23;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x24;"></div>
+	                    <input type="text" readonly value="&amp;#x24;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x25;"></div>
+	                    <input type="text" readonly value="&amp;#x25;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x26;"></div>
+	                    <input type="text" readonly value="&amp;#x26;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x27;"></div>
+	                    <input type="text" readonly value="&amp;#x27;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x28;"></div>
+	                    <input type="text" readonly value="&amp;#x28;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x29;"></div>
+	                    <input type="text" readonly value="&amp;#x29;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x2a;"></div>
+	                    <input type="text" readonly value="&amp;#x2a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x2b;"></div>
+	                    <input type="text" readonly value="&amp;#x2b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x2c;"></div>
+	                    <input type="text" readonly value="&amp;#x2c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x2d;"></div>
+	                    <input type="text" readonly value="&amp;#x2d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x2e;"></div>
+	                    <input type="text" readonly value="&amp;#x2e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x2f;"></div>
+	                    <input type="text" readonly value="&amp;#x2f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x30;"></div>
+	                    <input type="text" readonly value="&amp;#x30;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x31;"></div>
+	                    <input type="text" readonly value="&amp;#x31;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x32;"></div>
+	                    <input type="text" readonly value="&amp;#x32;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x33;"></div>
+	                    <input type="text" readonly value="&amp;#x33;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x34;"></div>
+	                    <input type="text" readonly value="&amp;#x34;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x35;"></div>
+	                    <input type="text" readonly value="&amp;#x35;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x36;"></div>
+	                    <input type="text" readonly value="&amp;#x36;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x37;"></div>
+	                    <input type="text" readonly value="&amp;#x37;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x38;"></div>
+	                    <input type="text" readonly value="&amp;#x38;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x39;"></div>
+	                    <input type="text" readonly value="&amp;#x39;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x3a;"></div>
+	                    <input type="text" readonly value="&amp;#x3a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x3b;"></div>
+	                    <input type="text" readonly value="&amp;#x3b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x3c;"></div>
+	                    <input type="text" readonly value="&amp;#x3c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x3d;"></div>
+	                    <input type="text" readonly value="&amp;#x3d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x3e;"></div>
+	                    <input type="text" readonly value="&amp;#x3e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x3f;"></div>
+	                    <input type="text" readonly value="&amp;#x3f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x40;"></div>
+	                    <input type="text" readonly value="&amp;#x40;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x41;"></div>
+	                    <input type="text" readonly value="&amp;#x41;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x42;"></div>
+	                    <input type="text" readonly value="&amp;#x42;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x43;"></div>
+	                    <input type="text" readonly value="&amp;#x43;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x44;"></div>
+	                    <input type="text" readonly value="&amp;#x44;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x45;"></div>
+	                    <input type="text" readonly value="&amp;#x45;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x46;"></div>
+	                    <input type="text" readonly value="&amp;#x46;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x47;"></div>
+	                    <input type="text" readonly value="&amp;#x47;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x48;"></div>
+	                    <input type="text" readonly value="&amp;#x48;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x49;"></div>
+	                    <input type="text" readonly value="&amp;#x49;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x4a;"></div>
+	                    <input type="text" readonly value="&amp;#x4a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x4b;"></div>
+	                    <input type="text" readonly value="&amp;#x4b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x4c;"></div>
+	                    <input type="text" readonly value="&amp;#x4c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x4d;"></div>
+	                    <input type="text" readonly value="&amp;#x4d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x4e;"></div>
+	                    <input type="text" readonly value="&amp;#x4e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x4f;"></div>
+	                    <input type="text" readonly value="&amp;#x4f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x50;"></div>
+	                    <input type="text" readonly value="&amp;#x50;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x51;"></div>
+	                    <input type="text" readonly value="&amp;#x51;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x52;"></div>
+	                    <input type="text" readonly value="&amp;#x52;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x53;"></div>
+	                    <input type="text" readonly value="&amp;#x53;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x54;"></div>
+	                    <input type="text" readonly value="&amp;#x54;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x55;"></div>
+	                    <input type="text" readonly value="&amp;#x55;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x56;"></div>
+	                    <input type="text" readonly value="&amp;#x56;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x57;"></div>
+	                    <input type="text" readonly value="&amp;#x57;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x58;"></div>
+	                    <input type="text" readonly value="&amp;#x58;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x59;"></div>
+	                    <input type="text" readonly value="&amp;#x59;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x5a;"></div>
+	                    <input type="text" readonly value="&amp;#x5a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x5b;"></div>
+	                    <input type="text" readonly value="&amp;#x5b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x5c;"></div>
+	                    <input type="text" readonly value="&amp;#x5c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x5d;"></div>
+	                    <input type="text" readonly value="&amp;#x5d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x5e;"></div>
+	                    <input type="text" readonly value="&amp;#x5e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x5f;"></div>
+	                    <input type="text" readonly value="&amp;#x5f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x60;"></div>
+	                    <input type="text" readonly value="&amp;#x60;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x61;"></div>
+	                    <input type="text" readonly value="&amp;#x61;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x62;"></div>
+	                    <input type="text" readonly value="&amp;#x62;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x63;"></div>
+	                    <input type="text" readonly value="&amp;#x63;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x64;"></div>
+	                    <input type="text" readonly value="&amp;#x64;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x65;"></div>
+	                    <input type="text" readonly value="&amp;#x65;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x66;"></div>
+	                    <input type="text" readonly value="&amp;#x66;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x67;"></div>
+	                    <input type="text" readonly value="&amp;#x67;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x68;"></div>
+	                    <input type="text" readonly value="&amp;#x68;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x69;"></div>
+	                    <input type="text" readonly value="&amp;#x69;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x6a;"></div>
+	                    <input type="text" readonly value="&amp;#x6a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x6b;"></div>
+	                    <input type="text" readonly value="&amp;#x6b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x6c;"></div>
+	                    <input type="text" readonly value="&amp;#x6c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x6d;"></div>
+	                    <input type="text" readonly value="&amp;#x6d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x6e;"></div>
+	                    <input type="text" readonly value="&amp;#x6e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x6f;"></div>
+	                    <input type="text" readonly value="&amp;#x6f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x70;"></div>
+	                    <input type="text" readonly value="&amp;#x70;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x71;"></div>
+	                    <input type="text" readonly value="&amp;#x71;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x72;"></div>
+	                    <input type="text" readonly value="&amp;#x72;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x73;"></div>
+	                    <input type="text" readonly value="&amp;#x73;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x74;"></div>
+	                    <input type="text" readonly value="&amp;#x74;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x75;"></div>
+	                    <input type="text" readonly value="&amp;#x75;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x76;"></div>
+	                    <input type="text" readonly value="&amp;#x76;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x77;"></div>
+	                    <input type="text" readonly value="&amp;#x77;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x78;"></div>
+	                    <input type="text" readonly value="&amp;#x78;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x79;"></div>
+	                    <input type="text" readonly value="&amp;#x79;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x7a;"></div>
+	                    <input type="text" readonly value="&amp;#x7a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x7b;"></div>
+	                    <input type="text" readonly value="&amp;#x7b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x7c;"></div>
+	                    <input type="text" readonly value="&amp;#x7c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x7d;"></div>
+	                    <input type="text" readonly value="&amp;#x7d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#x7e;"></div>
+	                    <input type="text" readonly value="&amp;#x7e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe000;"></div>
+	                    <input type="text" readonly value="&amp;#xe000;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe001;"></div>
+	                    <input type="text" readonly value="&amp;#xe001;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe002;"></div>
+	                    <input type="text" readonly value="&amp;#xe002;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe003;"></div>
+	                    <input type="text" readonly value="&amp;#xe003;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe004;"></div>
+	                    <input type="text" readonly value="&amp;#xe004;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe005;"></div>
+	                    <input type="text" readonly value="&amp;#xe005;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe006;"></div>
+	                    <input type="text" readonly value="&amp;#xe006;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe007;"></div>
+	                    <input type="text" readonly value="&amp;#xe007;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe008;"></div>
+	                    <input type="text" readonly value="&amp;#xe008;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe009;"></div>
+	                    <input type="text" readonly value="&amp;#xe009;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe00a;"></div>
+	                    <input type="text" readonly value="&amp;#xe00a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe00b;"></div>
+	                    <input type="text" readonly value="&amp;#xe00b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe00c;"></div>
+	                    <input type="text" readonly value="&amp;#xe00c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe00d;"></div>
+	                    <input type="text" readonly value="&amp;#xe00d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe00e;"></div>
+	                    <input type="text" readonly value="&amp;#xe00e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe00f;"></div>
+	                    <input type="text" readonly value="&amp;#xe00f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe010;"></div>
+	                    <input type="text" readonly value="&amp;#xe010;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe011;"></div>
+	                    <input type="text" readonly value="&amp;#xe011;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe012;"></div>
+	                    <input type="text" readonly value="&amp;#xe012;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe013;"></div>
+	                    <input type="text" readonly value="&amp;#xe013;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe014;"></div>
+	                    <input type="text" readonly value="&amp;#xe014;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe015;"></div>
+	                    <input type="text" readonly value="&amp;#xe015;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe016;"></div>
+	                    <input type="text" readonly value="&amp;#xe016;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe017;"></div>
+	                    <input type="text" readonly value="&amp;#xe017;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe018;"></div>
+	                    <input type="text" readonly value="&amp;#xe018;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe019;"></div>
+	                    <input type="text" readonly value="&amp;#xe019;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe01a;"></div>
+	                    <input type="text" readonly value="&amp;#xe01a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe01b;"></div>
+	                    <input type="text" readonly value="&amp;#xe01b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe01c;"></div>
+	                    <input type="text" readonly value="&amp;#xe01c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe01d;"></div>
+	                    <input type="text" readonly value="&amp;#xe01d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe01e;"></div>
+	                    <input type="text" readonly value="&amp;#xe01e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe01f;"></div>
+	                    <input type="text" readonly value="&amp;#xe01f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe020;"></div>
+	                    <input type="text" readonly value="&amp;#xe020;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe021;"></div>
+	                    <input type="text" readonly value="&amp;#xe021;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe022;"></div>
+	                    <input type="text" readonly value="&amp;#xe022;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe023;"></div>
+	                    <input type="text" readonly value="&amp;#xe023;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe024;"></div>
+	                    <input type="text" readonly value="&amp;#xe024;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe025;"></div>
+	                    <input type="text" readonly value="&amp;#xe025;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe026;"></div>
+	                    <input type="text" readonly value="&amp;#xe026;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe027;"></div>
+	                    <input type="text" readonly value="&amp;#xe027;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe028;"></div>
+	                    <input type="text" readonly value="&amp;#xe028;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe029;"></div>
+	                    <input type="text" readonly value="&amp;#xe029;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe02a;"></div>
+	                    <input type="text" readonly value="&amp;#xe02a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe02b;"></div>
+	                    <input type="text" readonly value="&amp;#xe02b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe02c;"></div>
+	                    <input type="text" readonly value="&amp;#xe02c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe02d;"></div>
+	                    <input type="text" readonly value="&amp;#xe02d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe02e;"></div>
+	                    <input type="text" readonly value="&amp;#xe02e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe02f;"></div>
+	                    <input type="text" readonly value="&amp;#xe02f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe030;"></div>
+	                    <input type="text" readonly value="&amp;#xe030;" />
+	                </div>
+	                <div class="new">
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe103;"></div>
+	                        <input type="text" readonly value="&amp;#xe103;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0ee;"></div>
+	                        <input type="text" readonly value="&amp;#xe0ee;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0ef;"></div>
+	                        <input type="text" readonly value="&amp;#xe0ef;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e8;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e8;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0ea;"></div>
+	                        <input type="text" readonly value="&amp;#xe0ea;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe101;"></div>
+	                        <input type="text" readonly value="&amp;#xe101;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe107;"></div>
+	                        <input type="text" readonly value="&amp;#xe107;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe108;"></div>
+	                        <input type="text" readonly value="&amp;#xe108;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe102;"></div>
+	                        <input type="text" readonly value="&amp;#xe102;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe106;"></div>
+	                        <input type="text" readonly value="&amp;#xe106;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0eb;"></div>
+	                        <input type="text" readonly value="&amp;#xe0eb;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe105;"></div>
+	                        <input type="text" readonly value="&amp;#xe105;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0ed;"></div>
+	                        <input type="text" readonly value="&amp;#xe0ed;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe100;"></div>
+	                        <input type="text" readonly value="&amp;#xe100;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe104;"></div>
+	                        <input type="text" readonly value="&amp;#xe104;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e9;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e9;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe109;"></div>
+	                        <input type="text" readonly value="&amp;#xe109;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0ec;"></div>
+	                        <input type="text" readonly value="&amp;#xe0ec;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0fe;"></div>
+	                        <input type="text" readonly value="&amp;#xe0fe;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f6;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f6;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0fb;"></div>
+	                        <input type="text" readonly value="&amp;#xe0fb;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e2;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e2;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e3;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e3;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f5;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f5;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e1;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e1;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0ff;"></div>
+	                        <input type="text" readonly value="&amp;#xe0ff;" />
+	                    </div>
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe031;"></div>
+	                    <input type="text" readonly value="&amp;#xe031;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe032;"></div>
+	                    <input type="text" readonly value="&amp;#xe032;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe033;"></div>
+	                    <input type="text" readonly value="&amp;#xe033;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe034;"></div>
+	                    <input type="text" readonly value="&amp;#xe034;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe035;"></div>
+	                    <input type="text" readonly value="&amp;#xe035;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe036;"></div>
+	                    <input type="text" readonly value="&amp;#xe036;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe037;"></div>
+	                    <input type="text" readonly value="&amp;#xe037;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe038;"></div>
+	                    <input type="text" readonly value="&amp;#xe038;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe039;"></div>
+	                    <input type="text" readonly value="&amp;#xe039;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe03a;"></div>
+	                    <input type="text" readonly value="&amp;#xe03a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe03b;"></div>
+	                    <input type="text" readonly value="&amp;#xe03b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe03c;"></div>
+	                    <input type="text" readonly value="&amp;#xe03c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe03d;"></div>
+	                    <input type="text" readonly value="&amp;#xe03d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe03e;"></div>
+	                    <input type="text" readonly value="&amp;#xe03e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe03f;"></div>
+	                    <input type="text" readonly value="&amp;#xe03f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe040;"></div>
+	                    <input type="text" readonly value="&amp;#xe040;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe041;"></div>
+	                    <input type="text" readonly value="&amp;#xe041;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe042;"></div>
+	                    <input type="text" readonly value="&amp;#xe042;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe043;"></div>
+	                    <input type="text" readonly value="&amp;#xe043;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe044;"></div>
+	                    <input type="text" readonly value="&amp;#xe044;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe045;"></div>
+	                    <input type="text" readonly value="&amp;#xe045;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe046;"></div>
+	                    <input type="text" readonly value="&amp;#xe046;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe047;"></div>
+	                    <input type="text" readonly value="&amp;#xe047;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe048;"></div>
+	                    <input type="text" readonly value="&amp;#xe048;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe049;"></div>
+	                    <input type="text" readonly value="&amp;#xe049;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe04a;"></div>
+	                    <input type="text" readonly value="&amp;#xe04a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe04b;"></div>
+	                    <input type="text" readonly value="&amp;#xe04b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe04c;"></div>
+	                    <input type="text" readonly value="&amp;#xe04c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe04d;"></div>
+	                    <input type="text" readonly value="&amp;#xe04d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe04e;"></div>
+	                    <input type="text" readonly value="&amp;#xe04e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe04f;"></div>
+	                    <input type="text" readonly value="&amp;#xe04f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe050;"></div>
+	                    <input type="text" readonly value="&amp;#xe050;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe051;"></div>
+	                    <input type="text" readonly value="&amp;#xe051;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe052;"></div>
+	                    <input type="text" readonly value="&amp;#xe052;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe053;"></div>
+	                    <input type="text" readonly value="&amp;#xe053;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe054;"></div>
+	                    <input type="text" readonly value="&amp;#xe054;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe055;"></div>
+	                    <input type="text" readonly value="&amp;#xe055;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe056;"></div>
+	                    <input type="text" readonly value="&amp;#xe056;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe057;"></div>
+	                    <input type="text" readonly value="&amp;#xe057;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe058;"></div>
+	                    <input type="text" readonly value="&amp;#xe058;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe059;"></div>
+	                    <input type="text" readonly value="&amp;#xe059;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe05a;"></div>
+	                    <input type="text" readonly value="&amp;#xe05a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe05b;"></div>
+	                    <input type="text" readonly value="&amp;#xe05b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe05c;"></div>
+	                    <input type="text" readonly value="&amp;#xe05c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe05d;"></div>
+	                    <input type="text" readonly value="&amp;#xe05d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe05e;"></div>
+	                    <input type="text" readonly value="&amp;#xe05e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe05f;"></div>
+	                    <input type="text" readonly value="&amp;#xe05f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe060;"></div>
+	                    <input type="text" readonly value="&amp;#xe060;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe061;"></div>
+	                    <input type="text" readonly value="&amp;#xe061;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe062;"></div>
+	                    <input type="text" readonly value="&amp;#xe062;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe063;"></div>
+	                    <input type="text" readonly value="&amp;#xe063;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe064;"></div>
+	                    <input type="text" readonly value="&amp;#xe064;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe065;"></div>
+	                    <input type="text" readonly value="&amp;#xe065;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe066;"></div>
+	                    <input type="text" readonly value="&amp;#xe066;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe067;"></div>
+	                    <input type="text" readonly value="&amp;#xe067;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe068;"></div>
+	                    <input type="text" readonly value="&amp;#xe068;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe069;"></div>
+	                    <input type="text" readonly value="&amp;#xe069;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe06a;"></div>
+	                    <input type="text" readonly value="&amp;#xe06a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe06b;"></div>
+	                    <input type="text" readonly value="&amp;#xe06b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe06c;"></div>
+	                    <input type="text" readonly value="&amp;#xe06c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe06d;"></div>
+	                    <input type="text" readonly value="&amp;#xe06d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe06e;"></div>
+	                    <input type="text" readonly value="&amp;#xe06e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe06f;"></div>
+	                    <input type="text" readonly value="&amp;#xe06f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe070;"></div>
+	                    <input type="text" readonly value="&amp;#xe070;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe071;"></div>
+	                    <input type="text" readonly value="&amp;#xe071;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe072;"></div>
+	                    <input type="text" readonly value="&amp;#xe072;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe073;"></div>
+	                    <input type="text" readonly value="&amp;#xe073;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe074;"></div>
+	                    <input type="text" readonly value="&amp;#xe074;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe075;"></div>
+	                    <input type="text" readonly value="&amp;#xe075;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe076;"></div>
+	                    <input type="text" readonly value="&amp;#xe076;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe077;"></div>
+	                    <input type="text" readonly value="&amp;#xe077;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe078;"></div>
+	                    <input type="text" readonly value="&amp;#xe078;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe079;"></div>
+	                    <input type="text" readonly value="&amp;#xe079;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe07a;"></div>
+	                    <input type="text" readonly value="&amp;#xe07a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe07b;"></div>
+	                    <input type="text" readonly value="&amp;#xe07b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe07c;"></div>
+	                    <input type="text" readonly value="&amp;#xe07c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe07d;"></div>
+	                    <input type="text" readonly value="&amp;#xe07d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe07e;"></div>
+	                    <input type="text" readonly value="&amp;#xe07e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe07f;"></div>
+	                    <input type="text" readonly value="&amp;#xe07f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe080;"></div>
+	                    <input type="text" readonly value="&amp;#xe080;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe081;"></div>
+	                    <input type="text" readonly value="&amp;#xe081;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe082;"></div>
+	                    <input type="text" readonly value="&amp;#xe082;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe083;"></div>
+	                    <input type="text" readonly value="&amp;#xe083;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe084;"></div>
+	                    <input type="text" readonly value="&amp;#xe084;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe085;"></div>
+	                    <input type="text" readonly value="&amp;#xe085;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe086;"></div>
+	                    <input type="text" readonly value="&amp;#xe086;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe087;"></div>
+	                    <input type="text" readonly value="&amp;#xe087;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe088;"></div>
+	                    <input type="text" readonly value="&amp;#xe088;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe089;"></div>
+	                    <input type="text" readonly value="&amp;#xe089;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe08a;"></div>
+	                    <input type="text" readonly value="&amp;#xe08a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe08b;"></div>
+	                    <input type="text" readonly value="&amp;#xe08b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe08c;"></div>
+	                    <input type="text" readonly value="&amp;#xe08c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe08d;"></div>
+	                    <input type="text" readonly value="&amp;#xe08d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe08e;"></div>
+	                    <input type="text" readonly value="&amp;#xe08e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe08f;"></div>
+	                    <input type="text" readonly value="&amp;#xe08f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe090;"></div>
+	                    <input type="text" readonly value="&amp;#xe090;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe091;"></div>
+	                    <input type="text" readonly value="&amp;#xe091;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe092;"></div>
+	                    <input type="text" readonly value="&amp;#xe092;" />
+	                </div>
+	                <div class="new">
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f8;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f8;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0fa;"></div>
+	                        <input type="text" readonly value="&amp;#xe0fa;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e7;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e7;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0fd;"></div>
+	                        <input type="text" readonly value="&amp;#xe0fd;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e4;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e4;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e5;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e5;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f7;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f7;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e0;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e0;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0fc;"></div>
+	                        <input type="text" readonly value="&amp;#xe0fc;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f9;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f9;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0dd;"></div>
+	                        <input type="text" readonly value="&amp;#xe0dd;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f1;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f1;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0dc;"></div>
+	                        <input type="text" readonly value="&amp;#xe0dc;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f3;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f3;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0d8;"></div>
+	                        <input type="text" readonly value="&amp;#xe0d8;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0db;"></div>
+	                        <input type="text" readonly value="&amp;#xe0db;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f0;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f0;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0df;"></div>
+	                        <input type="text" readonly value="&amp;#xe0df;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f2;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f2;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0f4;"></div>
+	                        <input type="text" readonly value="&amp;#xe0f4;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0d9;"></div>
+	                        <input type="text" readonly value="&amp;#xe0d9;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0da;"></div>
+	                        <input type="text" readonly value="&amp;#xe0da;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0de;"></div>
+	                        <input type="text" readonly value="&amp;#xe0de;" />
+	                    </div>
+	                    <div class="glyph">
+	                        <div class="fs1" aria-hidden="true" data-icon="&#xe0e6;"></div>
+	                        <input type="text" readonly value="&amp;#xe0e6;" />
+	                    </div>
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe093;"></div>
+	                    <input type="text" readonly value="&amp;#xe093;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe094;"></div>
+	                    <input type="text" readonly value="&amp;#xe094;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe095;"></div>
+	                    <input type="text" readonly value="&amp;#xe095;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe096;"></div>
+	                    <input type="text" readonly value="&amp;#xe096;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe097;"></div>
+	                    <input type="text" readonly value="&amp;#xe097;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe098;"></div>
+	                    <input type="text" readonly value="&amp;#xe098;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe099;"></div>
+	                    <input type="text" readonly value="&amp;#xe099;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe09a;"></div>
+	                    <input type="text" readonly value="&amp;#xe09a;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe09b;"></div>
+	                    <input type="text" readonly value="&amp;#xe09b;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe09c;"></div>
+	                    <input type="text" readonly value="&amp;#xe09c;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe09d;"></div>
+	                    <input type="text" readonly value="&amp;#xe09d;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe09e;"></div>
+	                    <input type="text" readonly value="&amp;#xe09e;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe09f;"></div>
+	                    <input type="text" readonly value="&amp;#xe09f;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a0;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a0;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a1;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a1;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a2;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a2;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a3;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a3;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a4;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a4;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a5;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a5;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a6;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a6;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a7;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a7;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a8;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a8;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0a9;"></div>
+	                    <input type="text" readonly value="&amp;#xe0a9;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0aa;"></div>
+	                    <input type="text" readonly value="&amp;#xe0aa;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0ab;"></div>
+	                    <input type="text" readonly value="&amp;#xe0ab;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0ac;"></div>
+	                    <input type="text" readonly value="&amp;#xe0ac;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0ad;"></div>
+	                    <input type="text" readonly value="&amp;#xe0ad;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0ae;"></div>
+	                    <input type="text" readonly value="&amp;#xe0ae;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0af;"></div>
+	                    <input type="text" readonly value="&amp;#xe0af;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b0;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b0;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b1;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b1;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b2;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b2;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b3;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b3;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b4;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b4;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b5;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b5;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b6;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b6;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b7;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b7;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b8;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0b9;"></div>
+	                    <input type="text" readonly value="&amp;#xe0b9;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0ba;"></div>
+	                    <input type="text" readonly value="&amp;#xe0ba;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0bb;"></div>
+	                    <input type="text" readonly value="&amp;#xe0bb;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0bc;"></div>
+	                    <input type="text" readonly value="&amp;#xe0bc;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0bd;"></div>
+	                    <input type="text" readonly value="&amp;#xe0bd;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0be;"></div>
+	                    <input type="text" readonly value="&amp;#xe0be;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0bf;"></div>
+	                    <input type="text" readonly value="&amp;#xe0bf;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c0;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c0;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c1;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c1;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c2;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c2;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c3;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c3;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c4;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c4;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c5;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c5;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c6;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c6;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c7;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c7;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c8;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c8;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0c9;"></div>
+	                    <input type="text" readonly value="&amp;#xe0c9;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0ca;"></div>
+	                    <input type="text" readonly value="&amp;#xe0ca;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0cb;"></div>
+	                    <input type="text" readonly value="&amp;#xe0cb;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0cc;"></div>
+	                    <input type="text" readonly value="&amp;#xe0cc;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0cd;"></div>
+	                    <input type="text" readonly value="&amp;#xe0cd;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0ce;"></div>
+	                    <input type="text" readonly value="&amp;#xe0ce;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0cf;"></div>
+	                    <input type="text" readonly value="&amp;#xe0cf;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0d0;"></div>
+	                    <input type="text" readonly value="&amp;#xe0d0;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0d1;"></div>
+	                    <input type="text" readonly value="&amp;#xe0d1;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0d2;"></div>
+	                    <input type="text" readonly value="&amp;#xe0d2;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0d3;"></div>
+	                    <input type="text" readonly value="&amp;#xe0d3;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0d4;"></div>
+	                    <input type="text" readonly value="&amp;#xe0d4;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0d5;"></div>
+	                    <input type="text" readonly value="&amp;#xe0d5;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0d6;"></div>
+	                    <input type="text" readonly value="&amp;#xe0d6;" />
+	                </div>
+	                <div class="glyph">
+	                    <div class="fs1" aria-hidden="true" data-icon="&#xe0d7;"></div>
+	                    <input type="text" readonly value="&amp;#xe0d7;" />
+	                </div>
+	            </div>
+            </pane-body></app-kit-module>
+            <app-kit-module title="200+ Pixeden Icons (v1.2)" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+                <h4>Source: <a href="http://www.pixeden.com/icon-fonts/stroke-7-icon-font-set" target="_blank">Pixeden Icon Font Pack</a></h4>
+                <a href="http://themes-pixeden.com/font-demos/7-stroke/" target="_blank"><img class="img-responsive" src="assets/images/demo/pixeden-icons.png" alt="Pixeden Icons" /></a>
+            </pane-body></app-kit-module>
+            <app-kit-module title="500+ FontAwesome Icons (v4.3.0)" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+                <h4>Source: <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a></h4>
+                <br>
+                <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank"><img class="img-responsive" src="assets/images/demo/fontawesome-icons.png" alt="FontAwesome" /></a>
+            </pane-body></app-kit-module>
+            <app-kit-module title="200+ Weather Icons" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+                <h4>Source: <a href="https://erikflowers.github.io/weather-icons/" target="_blank">Weather Icons</a></h4>
+                <br>
+                <a href="https://erikflowers.github.io/weather-icons/" target="_blank"><img class="img-responsive" src="assets/images/demo/weather-icons.png" alt="Weather Icons" /></a>
+            </pane-body></app-kit-module>
+        </div>
+    </div>
+</div>
+		<footer class="site-footer" ng-show="showFooter">
+		    <div class="copyright">Copyright &copy; 2016 - <a href="#">Bootstrap Admin Theme</a></div>
+		</footer>		<div id="side-panel" class="side-panel" ng-class="{'side-panel-open':headerPopup == 'side-panel'}">
+		    <div class="side-panel-inner">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="headerPopup = ''"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="title text-center"><i class="fa fa-signal"></i>Activities</h4>
+		        <div class="items-wrapper">
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-warning btn-circle">
+		                        <i class="icon fa fa-flag"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <strong>We have increased your storage to 10GB for Free!</strong>
+		                    </div>
+		                    <div class="excerpt">
+		                        System notification
+		                    </div>
+		                    <div class="time-stamp">5 days ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <img class="user-profile" src="assets/images/profiles/profile-20.png" alt="" />
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="member.html">David Thomson</a> followed you.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="role">Full-Stack Developer</div>
+		                        <div class="folowers"><span>12 Projects</span> | <span class="folowers">43 Followers</span></div>
+		                    </div>
+		                    <div class="time-stamp">3 mins ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-danger btn-circle">
+		                        <i class="icon fa fa-heart"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Julie Wu</a> favourited your post.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Love your new design! Keep up the great work..."</em></div>
+		                    </div>
+		                    <div class="time-stamp">1 week ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <img class="user-profile" src="assets/images/profiles/profile-15.png" alt="" />
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Julie Wu</a> followed you.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="role">Product Designer</div>
+		                        <div class="folowers"><span>3 Projects</span> | <span class="folowers">8 Followers</span></div>
+		                    </div>
+		                    <div class="time-stamp">2 weeks ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-info btn-circle">
+		                        <i class="icon fa fa-at"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">James Lee</a> mentioned you on <a href="#">Project Lorem</a>.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Looks cool @Rebecca White"</em></div>
+		                    </div>
+		                    <div class="time-stamp">2 weeks ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-success btn-circle">
+		                        <i class="icon fa fa-commenting"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Chris Adams</a> commented on <a href="#">Discussion Lorem</a>.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Can we improve the review process? At the moment consectetuer adipiscing elit..."</em></div>
+		                    </div>
+		                    <div class="time-stamp">Jan 10, 2016</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-pink btn-circle">
+		                        <i class="icon fa fa-thumbs-up"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Kat Schultz</a> liked your discussion <a href="#">Discussion Lorem</a>.
+		                    </div>
+		                    <div class="time-stamp">Jan 8, 2016</div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>		<div class="config-panel hidden-xs" ng-class="{'config-panel-open': showConfigurator}">
+			<div class="panel-inner">
+				<a class="config-trigger config-panel-hide" href="#" ng-click="showConfigurator = !showConfigurator"><i class="fa fa-cog"></i></a>
+				<div class="panel-section margin-bottom-md">
+					<h5 class="panel-title">Choose Colour</h5>
+					<ul id="color-options" class="list-unstyled list-unstyled">
+						<li class="theme-1 active" ><a ng-click="theme = 'theme-1'"></a></li>
+						<li class="theme-2"><a ng-click="theme = 'theme-2'"></a></li>
+						<li class="theme-3"><a ng-click="theme = 'theme-3'"></a></li>
+						<li class="theme-4"><a ng-click="theme = 'theme-4'"></a></li>
+					</ul>
+				</div>
+				<div class="panel-section">
+					<h5 class="panel-title">Toggles</h5>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showTopAlert" type="checkbox"> Top Alert
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showFooter" type="checkbox"> Footer
+						</label>
+					</div>
+				</div>
+				<a ng-click="showConfigurator = false" class="close" href="#"><span aria-hidden="true" class="icon icon_close"></span></a>
+			</div>
+		</div>		
+				<script src="assets/js/jquery.js"></script>
+				<script src="assets/js/metisMenu.js"></script>
+				<script src="assets/js/masonry.js"></script>
+				<script src="assets/js/pace.js"></script>
+				<script src="assets/js/angular.js"></script>
+				<script src="assets/js/angular-animate.js"></script>
+				<script src="assets/js/ui-bootstrap-tpls.js"></script>
+				<script src="assets/js/tether.js"></script>
+				<script src="assets/js/tether-shepherd.js"></script>
+				<script src="assets/js/angular-debounce.js"></script>
+				<script src="assets/js/ng-common.js"></script>
+				<script src="assets/js/ng-google-maps.js"></script>
+				<script src="assets/js/app-kit-tour.js"></script>
+				<script src="assets/js/ng-app.js"></script>
+				<script src="assets/js/app-kit-demo.js"></script>
+	</body>
+</html>

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html ng-app="appKitWidgetsDemo">
+	<head>
+		<title>AppKit</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">    
+		<link rel="shortcut icon" href="assets/images/favicon.ico">  
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel='stylesheet' type='text/css'>
+				<link rel="stylesheet" href="assets/css/bootstrap.css">
+				<link rel="stylesheet" href="assets/css/metisMenu.css">
+				<link rel="stylesheet" href="assets/css/font-awesome.css">
+				<link rel="stylesheet" href="assets/css/elegant-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons-helper.css">
+				<link rel="stylesheet" href="assets/css/weather-icons.css">
+				<link rel="stylesheet" href="assets/css/tether-shepherd.css">
+				<link rel="stylesheet" href="assets/css/jstree-default.css">
+				<link rel="stylesheet" href="assets/css/styles.css">
+				<link rel="stylesheet" href="assets/css/widgets.css">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>	<body app-kit-responsive class="preload [[theme]]" ng-class="{'compact': compact, 'mobile': mobile, 'nav-toggled': navOpen}">
+			<header class="header">
+			<div class="branding float-left">
+				<h1 class="logo text-center">
+					<a href="index.html">
+						<img class="logo-icon" src="assets/images/logo-icon.svg" alt="icon" />
+						<span class="nav-label">
+							<span class="highlight">App</span>Kit
+						</span>
+					</a>
+				</h1>
+			</div>
+			<div class="topbar">
+				<button class="main-nav-toggle" type="button" ng-click="navOpen = !navOpen">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<i class="icon fa fa-caret-left"></i>
+				</button>
+				
+				<div class="navbar-tools">
+					<div class="utilities-container">
+						<div class="utilities">
+							
+		        			
+							
+							
+							
+							<div class="item item-more" ng-class="{'open': headerPopup == 'settings'}">
+								<div class="dropdown-toggle" id="dropdownMenu-more" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'settings' ? '' : 'settings'">
+									<span class="sr-only">More</span>
+									<span aria-hidden="true" class="fs1 icon icon_grid-3x3" tooltip-placement="bottom" uib-tooltip="Settings &amp; Tools"></span>
+								</div>
+								<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-more">
+									<span class="arrow"></span>
+									<h4 class="title">Settings &amp; Tools</h4>
+									<ul class="more-list">
+										<li><a role="menuitem" href="user-settings.html"><span class="pe-icon pe-7s-config icon"></span><br>Settings</a></li>
+										<li><a role="menuitem" href="user-billing.html"><span class="pe-icon pe-7s-wallet icon"></span><br>Billing</a></li>
+										<li><a role="menuitem" href="user-drive.html"><span class="pe-icon pe-7s-pendrive icon"></span><br>Drive</a></li>
+										<li><a role="menuitem" href="user-messages.html"><span class="pe-icon pe-7s-chat icon"></span><br>Messages</a></li>
+										<li><a role="menuitem" href="user-reminders.html"><span class="pe-icon pe-7s-clock icon"></span><br>Reminders</a></li>
+										
+										<li><a role="menuitem" href="help.html"><span class="pe-icon pe-7s-help2 icon"></span><br>Help</a></li>
+									</ul>
+								</div>						
+							</div>
+						</div>
+					</div>
+					<div class="user-container dropdown" ng-class="{'open': headerPopup == 'profile'}">
+						<div class="dropdown-toggle" id="dropdownMenu-user" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'profile' ? '' : 'profile'">
+							<img src="assets/images/profiles/profile-3.png" alt="" />
+							<i class="fa fa-caret-down"></i>
+						</div>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-user" >
+							<li><span class="arrow"></span><a role="menuitem" href="user-profile.html"><span class="pe-icon pe-7s-user icon"></span>My Account</a></li>
+							<li><a role="menuitem" href="pricing.html"><span class="pe-icon pe-7s-paper-plane icon"></span>Upgrade Plan</a></li>
+							<li><a role="menuitem" href="login.html"><span class="pe-icon pe-7s-power icon"></span>Sign Out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>		<div class="main-nav-wrapper" ng-cloak>
+			<nav id="main-nav" class="main-nav">
+				<ul id="menu" app-kit-menu>
+					<li  class="nav-dashboards ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_house_alt"></span>
+								<span class="nav-label">Dashboards</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="index.html">
+												<span class="nav-label">Use Case 1</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class="nav-widgets active">
+							<a href="widgets.html">
+								<span aria-hidden="true" class="icon icon_drawer_alt"></span>
+								<span class="nav-label">Widgets</span>
+								<span class="badge badge-primary">12</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="projects.html">
+								<span aria-hidden="true" class="icon icon_toolbox_alt"></span>
+								<span class="nav-label">Projects</span>
+								<span class="badge">56</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="tickets.html">
+								<span aria-hidden="true" class="icon icon_box-checked"></span>
+								<span class="nav-label">Tickets</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="invoices.html">
+								<span aria-hidden="true" class="icon icon_documents_alt"></span>
+								<span class="nav-label">Invoices</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="discussions.html">
+								<span aria-hidden="true" class="icon icon_chat_alt"></span>
+								<span class="nav-label">Discussions</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="activities.html">
+								<span aria-hidden="true" class="icon icon_easel"></span>
+								<span class="nav-label">Activities</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="members.html">
+								<span aria-hidden="true" class="icon icon_group"></span>
+								<span class="nav-label">Members</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="inbox.html">
+								<span aria-hidden="true" class="icon icon_mail_alt"></span>
+								<span class="nav-label">Inbox</span>
+								<span class="badge">18</span>
+								</a>
+					</li>
+					<li  class="nav-app-pages ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_building"></span>
+								<span class="nav-label">App Pages</span>
+								<span class="badge badge-success">17</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="project.html">
+												<span class="nav-label">Project Details</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="member.html">
+												<span class="nav-label">Member Profile</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="discussion.html">
+												<span class="nav-label">Discussion Topic</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-profile.html">
+												<span class="nav-label">User Profile</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-settings.html">
+												<span class="nav-label">User Settings</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-billing.html">
+												<span class="nav-label">User Billing</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-messages.html">
+												<span class="nav-label">User Messages</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-drive.html">
+												<span class="nav-label">User Drive</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-reminders.html">
+												<span class="nav-label">User Reminders</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="pricing.html">
+												<span class="nav-label">Pricing</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="invoice.html">
+												<span class="nav-label">Invoice</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="timeline.html">
+												<span class="nav-label">Timeline</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="faq.html">
+												<span class="nav-label">FAQ</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="login.html">
+												<span class="nav-label">Login Page</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="signup.html">
+												<span class="nav-label">Signup Page</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="404.html">
+												<span class="nav-label">404 Page</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="500.html">
+												<span class="nav-label">500 Page</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_puzzle"></span>
+								<span class="nav-label">Components</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="typography.html">
+												<span class="nav-label">Typography</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="icons.html">
+												<span class="nav-label">Icons</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="buttons.html">
+												<span class="nav-label">Buttons</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="panels.html">
+												<span class="nav-label">Panels</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="tabs.html">
+												<span class="nav-label">Tabs</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="accordions.html">
+												<span class="nav-label">Accordions</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="maps.html">
+												<span class="nav-label">Maps</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="todo-list.html">
+												<span class="nav-label">Todo</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="carousels.html">
+												<span class="nav-label">Carousels</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="notifications.html">
+												<span class="nav-label">Notifications</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="draggable.html">
+												<span class="nav-label">Draggable</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="sortable.html">
+												<span class="nav-label">Sortable</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="nestable.html">
+												<span class="nav-label">Nestable</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="tree-view.html">
+												<span class="nav-label">Tree</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="loaders.html">
+												<span class="nav-label">Loaders</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="ui-misc.html">
+												<span class="nav-label">Other UI Elements</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_table"></span>
+								<span class="nav-label">Tables</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="tables-basic.html">
+												<span class="nav-label">Basic</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="tables-datatables.html">
+												<span class="nav-label">Datatables</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_pencil-edit"></span>
+								<span class="nav-label">Forms</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="forms-basic.html">
+												<span class="nav-label">Basic</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="forms-validation.html">
+												<span class="nav-label">Validation</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_piechart"></span>
+								<span class="nav-label">Charts</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="charts-chartjs.html">
+												<span class="nav-label">Chart.js</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="charts-flot.html">
+												<span class="nav-label">Flot Charts</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="charts-morris.html">
+												<span class="nav-label">Charts Morris</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="charts-inline.html">
+												<span class="nav-label">Inline Charts</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_calendar"></span>
+								<span class="nav-label">Calendars</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="calendar-1.html">
+												<span class="nav-label">Calendar v1</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_flowchart"></span>
+								<span class="nav-label">Menu Levels</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="#">
+												<span class="nav-label">Subnav Level 1</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="#">
+												<span class="nav-label">Subnav Level 1</span>
+												<span class="fa arrow"></span>
+												</a>
+												<ul class="sub-menu">
+													<li  class=" ">
+															<a href="#">
+																<span class="nav-label">Subnav Level 2</span>
+																</a>
+													</li>
+													<li  class=" ">
+															<a href="#">
+																<span class="nav-label">Subnav Level 2</span>
+																</a>
+													</li>
+													<li  class=" ">
+															<a href="#">
+																<span class="nav-label">Subnav Level 2</span>
+																</a>
+													</li>
+												</ul>
+									</li>
+									<li  class=" ">
+											<a href="#">
+												<span class="nav-label">Subnav Level 1</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li role="presentation" class="divider ">
+					</li>
+					<li  class=" ">
+							<a href="help.html">
+								<span aria-hidden="true" class="icon icon_lifesaver"></span>
+								<span class="nav-label">Help</span>
+								<span class="label label-new">NEW</span>
+								</a>
+					</li>
+				</ul>
+			</nav>
+		</div>		<div ng-cloak class="content-wrapper view" ng-controller="AppKitWidgetsDemo">
+	<div class="container-fluid">
+		<h2 class="view-title">Widgets</h2>
+		<div class="row">
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-a">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<peity-line-chart class="peity-full-width" options='{ "fill": "#84d991", "stroke": "#75c181", "strokeWidth": 0, "width": "100%", "height": 60}' data='[5,4,9,6,5,9,7,3,5,2]'></peity-line-chart>
+						</div>
+						<div class="info-container">
+							<p class="intro">Last 2 weeks average site visitors</p>
+							<h3 class="title"><span class="figure">23,187</span><span class="note">Views</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-b">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<peity-bar-chart class="peity-full-width" options='{ "fill": ["#58bbee","#4192C1"], "width": "100%", "height":60}' data='[5,3,9,6,5,9,7,3,5,2,4,8,2,3]'></peity-bar-chart>
+						</div>
+						<div class="info-container">
+							<p class="intro">Lorem ipsum dolor sit amet</p>
+							<h3 class="title"><span class="figure">62,459</span><span class="note">Clicks</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-c">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<peity-donut-chart class="peity-full-width" options='{ "fill": ["#F8A13F", "#FFDCB4"], "radius": 32, "innerRadius": 26}' data='["32/49"]'></peity-donut-cchart>
+						</div>
+						<div class="info-container">
+							<p class="intro">Lorem ipsum dolor sit amet</p>
+							<h3 class="title"><span class="figure">65%</span><span class="note">Engagement</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-d">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<peity-pie-chart class="peity-full-width" options='{ "fill": ["#80D7D9", "#208A8D"], "radius": 32}' data='[2.2,4]'></peity-pie-chart>
+						</div>
+						<div class="info-container">
+							<p class="intro">Lorem ipsum dolor sit amet</p>
+							<h3 class="title"><span class="figure">76%</span><span class="note">Bounce rate</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		<div class="row">
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-xs widget-xs-a">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<sparkline-line-chart class="sparkline-line-mini" data='[1,4,4,7,5,9,10,5,6,8,6]' options="sparkline1options"></sparkline-line-chart>
+						</div>
+						<div class="info-container">
+							<h3 class="title"><span class="figure">$26,765</span><span class="note">Current Month Sales</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-xs widget-xs-b">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<sparkline-bar-chart class="sparkline-bar-mini" data='[6,6,5,7,8,9,8,7]' options="sparkline2options"></sparkline-bar-chart>
+						</div>
+						<div class="info-container">
+							<h3 class="title"><span class="figure">160,250</span><span class="note">Site Visitors</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-xs widget-xs-c">
+					<div class="widget-inner">
+						<div class="icon-container">
+							<span class="pe-icon pe-7s-piggy icon"></span>
+						</div>
+						<div class="info-container">
+							<h3 class="title"><span class="figure">20%</span><span class="note">Overall Savings</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-xs widget-xs-d">
+					<div class="widget-inner">
+						<div class="icon-container">
+							<span class="pe-icon pe-7s-cloud-upload icon"></span>
+						</div>
+						<div class="info-container">
+							<h3 class="title"><span class="figure">500GB</span><span class="note">Cloud Storage</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		<div class="row">
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-event">
+					<div class="widget-inner">
+						<div class="figure-container">
+							<img class="img-responsive" src="assets/images/stock/moutain.jpg" alt="" />
+							<div class="mask">
+								<h4 class="title">Three Peaks Challenge</h4>
+								<p class="date">July 23, 2015</p>
+								<div class="likes"><i class="fa fa-heart-o"></i> 1,526 likes</div>
+								<div class="members">
+									<h5 class="note">Followers:</h5>
+									<ul class="list-unstyled list-inline">
+										<li>
+											<a href="#"><img class="img-circle" src="assets/images/profiles/profile-6.png" alt="" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="assets/images/profiles/profile-17.png" alt="" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="assets/images/profiles/profile-13.png" alt="" /></a>
+										</li>
+										<li><a href="#">23+</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-profile">
+					<div class="widget-inner">
+						<div class="banner-container">
+							<img class="img-responsive" src="assets/images/stock/city.jpg" alt="" />
+							<div class="mask">
+								<h4 class="name"><a href="#">Julie Wu</a></h4>
+								<a class="btn-info btn btn-sm">+ Follow</a>
+								<div class="profile-image">
+									<a href="#"><img class="img-rounded" src="assets/images/profiles/profile-15.png" alt=""></a>
+								</div>
+							</div>
+						</div>
+						<div class="info-container text-center">
+							<ul class="info-list list-unstyled center-block text-left">
+								<li><strong>Department:</strong> UX</li>
+								<li><strong>Role:</strong> Product Designer</li>
+								<li><strong>Joined:</strong> May 23, 2015</li>
+							</ul>
+							<p class="intro text-left">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes...</p>
+						</div>
+						<div class="footer">
+							<ul class="list-unstyled">
+								<li class="item-1"><a href="#"><span class="pe-icon pe-7s-chat icon"></span><br>Hangout</a></li>
+								<li class="item-2"><a href="#"><span class="pe-icon pe-7s-call icon"></span><br>Phone</a></li>
+								<li class="item-3"><a href="#"><span class="pe-icon pe-7s-mail icon"></span><br>Message</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-weather">
+					<div class="widget-inner">
+						<div class="banner-container">
+							<img class="img-responsive" src="assets/images/stock/SF.jpg" alt="" />
+							<div class="mask">
+								<h4 class="name"><a href="#">San Francisco</a></h4>
+								<h4 class="date text-center">Thursday</h4>
+								<h4 class="figure text-center">25<span class="unit">&deg;</span>C</h4>
+								<div class="info-panel">
+									<i class="wi wi-day-cloudy-windy"></i>
+									<p>Partly Cloudy</p>
+								</div>
+							</div>
+						</div>
+						<div class="info-container">
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</div>
+		<footer class="site-footer" ng-show="showFooter">
+		    <div class="copyright">Copyright &copy; 2016 - <a href="#">Bootstrap Admin Theme</a></div>
+		</footer>		<div id="side-panel" class="side-panel" ng-class="{'side-panel-open':headerPopup == 'side-panel'}">
+		    <div class="side-panel-inner">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="headerPopup = ''"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="title text-center"><i class="fa fa-signal"></i>Activities</h4>
+		        <div class="items-wrapper">
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-warning btn-circle">
+		                        <i class="icon fa fa-flag"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <strong>We have increased your storage to 10GB for Free!</strong>
+		                    </div>
+		                    <div class="excerpt">
+		                        System notification
+		                    </div>
+		                    <div class="time-stamp">5 days ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <img class="user-profile" src="assets/images/profiles/profile-20.png" alt="" />
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="member.html">David Thomson</a> followed you.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="role">Full-Stack Developer</div>
+		                        <div class="folowers"><span>12 Projects</span> | <span class="folowers">43 Followers</span></div>
+		                    </div>
+		                    <div class="time-stamp">3 mins ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-danger btn-circle">
+		                        <i class="icon fa fa-heart"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Julie Wu</a> favourited your post.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Love your new design! Keep up the great work..."</em></div>
+		                    </div>
+		                    <div class="time-stamp">1 week ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <img class="user-profile" src="assets/images/profiles/profile-15.png" alt="" />
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Julie Wu</a> followed you.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="role">Product Designer</div>
+		                        <div class="folowers"><span>3 Projects</span> | <span class="folowers">8 Followers</span></div>
+		                    </div>
+		                    <div class="time-stamp">2 weeks ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-info btn-circle">
+		                        <i class="icon fa fa-at"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">James Lee</a> mentioned you on <a href="#">Project Lorem</a>.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Looks cool @Rebecca White"</em></div>
+		                    </div>
+		                    <div class="time-stamp">2 weeks ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-success btn-circle">
+		                        <i class="icon fa fa-commenting"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Chris Adams</a> commented on <a href="#">Discussion Lorem</a>.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Can we improve the review process? At the moment consectetuer adipiscing elit..."</em></div>
+		                    </div>
+		                    <div class="time-stamp">Jan 10, 2016</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-pink btn-circle">
+		                        <i class="icon fa fa-thumbs-up"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Kat Schultz</a> liked your discussion <a href="#">Discussion Lorem</a>.
+		                    </div>
+		                    <div class="time-stamp">Jan 8, 2016</div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>		<div class="config-panel hidden-xs" ng-class="{'config-panel-open': showConfigurator}">
+			<div class="panel-inner">
+				<a class="config-trigger config-panel-hide" href="#" ng-click="showConfigurator = !showConfigurator"><i class="fa fa-cog"></i></a>
+				<div class="panel-section margin-bottom-md">
+					<h5 class="panel-title">Choose Colour</h5>
+					<ul id="color-options" class="list-unstyled list-unstyled">
+						<li class="theme-1 active" ><a ng-click="theme = 'theme-1'"></a></li>
+						<li class="theme-2"><a ng-click="theme = 'theme-2'"></a></li>
+						<li class="theme-3"><a ng-click="theme = 'theme-3'"></a></li>
+						<li class="theme-4"><a ng-click="theme = 'theme-4'"></a></li>
+					</ul>
+				</div>
+				<div class="panel-section">
+					<h5 class="panel-title">Toggles</h5>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showTopAlert" type="checkbox"> Top Alert
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showFooter" type="checkbox"> Footer
+						</label>
+					</div>
+				</div>
+				<a ng-click="showConfigurator = false" class="close" href="#"><span aria-hidden="true" class="icon icon_close"></span></a>
+			</div>
+		</div>		
+				<script src="assets/js/jquery.js"></script>
+				<script src="assets/js/metisMenu.js"></script>
+				<script src="assets/js/masonry.js"></script>
+				<script src="assets/js/pace.js"></script>
+				<script src="assets/js/jquery-peity.js"></script>
+				<script src="assets/js/jquery-sparkline.js"></script>
+				<script src="assets/js/angular.js"></script>
+				<script src="assets/js/angular-animate.js"></script>
+				<script src="assets/js/ui-bootstrap-tpls.js"></script>
+				<script src="assets/js/tether.js"></script>
+				<script src="assets/js/tether-shepherd.js"></script>
+				<script src="assets/js/angular-debounce.js"></script>
+				<script src="assets/js/ng-common.js"></script>
+				<script src="assets/js/ng-google-maps.js"></script>
+				<script src="assets/js/ng-peity.js"></script>
+				<script src="assets/js/ng-sparkline.js"></script>
+				<script src="assets/js/app-kit-tour.js"></script>
+				<script src="assets/js/ng-app.js"></script>
+				<script src="assets/js/app-kit-widgets-demo.js"></script>
+	</body>
+</html>

@@ -1,0 +1,278 @@
+
+	<link rel="stylesheet" href="../assets/css/invoices.css">
+	
+	<div ng-controller="dashboard" class="main-nav-wrapper" ng-cloak>
+			<nav  id="main-nav" class="main-nav">
+				<ul id="menu" app-kit-menu>
+					<li  class="nav-dashboards">
+							<a href="#">
+								<span aria-hidden="true" class="fa fa-tachometer"></span>
+								<span class="nav-label">Site - Dashboard</span>
+								<span class="fa arrow"></span>
+								</a>
+								
+						<ul class="sub-menu">
+							<li ng-repeat="item in sites"><span class="arrow"></span><a role="menuitem" href="#sitedash?siteId=[[item.siteId]]&practiceId=[[practiceId]]"><span class="fa fa-user-md fa-lg" aria-hidden="true"></span> [[item.name]]-[[item.city]]</a></li>
+						</ul>
+						
+					</li>
+					
+					<li  class="nav-dashboards">
+							<a href="#charts">
+								<span aria-hidden="true" class="fa fa-bar-chart"></span>
+								<span class="nav-label">Site Metrics </span>
+								<span class="fa arrow"></span>
+								</a>
+						<ul class="sub-menu">
+							<li ng-repeat="item in sitemetrics"><span class="arrow"></span><a role="menuitem" href=[[item.href]]><span class="fa fa-user-md fa-lg" aria-hidden="true"></span> [[item.menuName]]</a></li>
+						</ul>
+						
+					</li>
+					
+					<li  class=" ">
+							<a href="#equipment?siteId=[[globalSite]]&practiceId=[[practiceId]]">
+								<span aria-hidden="true" class="fa fa-stethoscope" ></span>
+								<span class="nav-label">Site Equipment</span>
+							</a>
+					</li>
+					
+				</ul>
+			</nav>
+		</div>	
+		
+	<div ng-cloak class="content-wrapper view invoices-view" ng-controller="staffUpdate">
+		<div class="container-fluid">
+			<h2 class="view-title">Staff Maintenance - [[site.name]]  [[site.city]]</h2>
+			
+			<div class="row">
+			
+			<app-kit-module title="Staff List" module-class="module-no-heading invoices-module" wrapper-class="col-md-12 col-sm-12 col-xs-12">
+				<pane-body>
+					
+					<div class="table-responsive">
+						<table class="table table-simple table-striped">
+							<thead>
+								<tr>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Login</th>
+									<th>Role</th>
+									<th>Phone</th>
+									<th>email</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="item in staffList">
+									<td>[[item.fname]]</td>
+									<td>[[item.lname]]</td>
+									<td>[[item.login]]</td>
+									<td>[[item.roleName]]</td>
+									<td>[[item.phone]]</td>
+									<td>[[item.email]]</td>
+									
+									<td><button ng-click="editpatient([[item.userId]],false)"  class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit Patient Data">
+                  						<span class="glyphicon glyphicon-user"></span>
+                  						</button>
+                  					</td>
+                  					
+                  					<td><button ng-click="remove([[item.userId]])"  class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Update Task Event">
+                  						<span class="glyphicon glyphicon-trash"></span>
+                  						</button>
+                  					</td>  
+                  					
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+					
+				</pane-body>
+			</app-kit-module>
+			
+			</div>
+			
+			<div ng-hide="formUpdate" class="row">
+				
+			<app-kit-module title="Staff Update" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12" content-class="no-padding-bottom"><pane-body>
+				<form class="form-horizontal ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength">
+				<div >
+					<div  class="form-group">
+						<label class="col-sm-2 control-label" for="textinput">First Name</label>
+						<div class="col-sm-4">
+							<input ng-disabled="disableAll"  type="text"class="form-control" id="textinput" placeholder="First Name" ng-model="currentUser.fname">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="textinput">Last Name</label>
+						<div class="col-sm-4">
+							<input ng-disabled="disableAll" type="text" class="form-control" id="textinput" placeholder="Last Name" ng-model="currentUser.lname">
+						</div>
+					</div>
+					<div class="form-group">
+    				 <label class="col-sm-2 control-label" for="textinput">DOB</label>
+    			 		<div class='col-sm-4 input-group date' id='datepicker2' style='padding-left: 15px;'>
+      						<input ng-disabled="disableAll" id="birthdate"  type="text" class="form-control"  placeholder="Birthdate" required ng-model="currentUser.dob" >
+      						<span class="input-group-addon">
+                        		<span class="glyphicon glyphicon-calendar"></span>
+                    		</span>
+    					</div>
+  					</div> 
+  					
+  					<div class="form-group">
+    					<label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+    					<div class="col-sm-4">
+      						<input ng-disabled="disableAll" type="text" class="form-control bfh-phone" data-country="US" placeholder="Phone" required ng-model="currentUser.phone">
+    					</div>
+  					</div>
+  					
+  					<div class="form-group">
+    					<label for="inputEmail" class="col-sm-2 control-label">Email</label>
+    					<div class="col-sm-4">
+      						<input ng-disabled="disableAll" type="text" class="form-control bfh-phone" data-country="US" placeholder="Email" required ng-model="currentUser.email">
+    					</div>
+  					</div>
+  					  
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="textinput">Site</label>
+						<div class="col-sm-4">
+							<input ng-disabled="disableAll" type="text" class="form-control" id="textinput" placeholder="Study" ng-model="currentUser.site">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="textinput">Role</label>
+						<div class="col-sm-4">
+							<input ng-disabled="disableAll" type="text" class="form-control" id="textinput" placeholder="Study" ng-model="currentUser.role">
+						</div>
+					</div>
+					
+					<div class="form-group">
+    			    	<div class="col-sm-offset-2 col-sm-4">
+     				  		<button ng-disabled="disableAll" ng-click="save(currentUser)" type="button" class="btn btn-primary">Save
+						  		<span class="glyphicon glyphicon-save"></span>
+					  		</button>
+    			   		</div>
+  					</div>
+					
+					<!-- 
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Checkboxes</label>
+						<div class="col-sm-10">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" value="">
+									Option one is this and that&mdash;be sure to include why it's great
+								</label>
+							</div>
+							<div class="checkbox disabled">
+								<label>
+									 <input type="checkbox" value="" disabled>
+									 Option two is disabled
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">   
+						<label class="col-sm-2 control-label">Radios</label>
+						<div class="col-sm-10">
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									Option one is this and that&mdash;be sure to include why it's great
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+									Option two can be something else and selecting it will deselect option one
+								</label>
+							</div>
+							<div class="radio disabled">
+								<label>
+									<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+									Option three is disabled
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Inline Checkboxes</label>
+						<div class="col-sm-10">
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+							</label>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+							</label>
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Inline Radios</label>
+						<div class="col-sm-10">
+							<label class="radio-inline">
+								<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Select (single)</label>
+						<div class="col-sm-10">
+							<select class="form-control">
+							  <option>Option 1</option>
+							  <option>Option 2</option>
+							  <option>Option 3</option>
+							  <option>Option 4</option>
+							  <option>Option 5</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Select (multiple)</label>
+						<div class="col-sm-10">
+							<select multiple class="form-control">
+							  <option>Option 1</option>
+							  <option>Option 2</option>
+							  <option>Option 3</option>
+							  <option>Option 4</option>
+							  <option>Option 5</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Static Control</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">email@example.com</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Focused Input</label>
+						<div class="col-sm-10">
+							<input class="form-control" id="focusedInput" type="text" value="Demonstrative focus state">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Disabled Input</label>
+						<div class="col-sm-10">
+							<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+						</div>
+					</div> -->
+					</div>
+				</form>
+			</pane-body></app-kit-module>
+		</div>
+	</div>
+</div>
+		
+				
+	
+	</body>
+</html>

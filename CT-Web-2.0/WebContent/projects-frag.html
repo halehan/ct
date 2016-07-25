@@ -1,0 +1,403 @@
+   
+				<link rel="shortcut icon" href="assets/images/favicon.ico">  
+				<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel='stylesheet' type='text/css'>
+				<link rel="stylesheet" href="assets/css/bootstrap.css">
+				<link rel="stylesheet" href="assets/css/metisMenu.css">
+				<link rel="stylesheet" href="assets/css/font-awesome.css">
+				<link rel="stylesheet" href="assets/css/elegant-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons-helper.css">
+				<link rel="stylesheet" href="assets/css/chosen.css">
+				<link rel="stylesheet" href="assets/css/tether-shepherd.css">
+				<link rel="stylesheet" href="assets/css/jstree-default.css">
+				<link rel="stylesheet" href="assets/css/styles.css">
+				<link rel="stylesheet" href="assets/css/projects.css">
+				
+				<script src="assets/js/jquery.js"></script>
+				<script src="assets/js/metisMenu.js"></script>
+				<script src="assets/js/masonry.js"></script>
+				<script src="assets/js/pace.js"></script>
+				<script src="assets/js/chosen-jquery.js"></script>
+				
+				<script src="assets/js/ui-bootstrap-tpls.js"></script>
+				<script src="assets/js/tether.js"></script>
+				<script src="assets/js/tether-shepherd.js"></script>
+				<script src="assets/js/angular-debounce.js"></script>
+				<script src="assets/js/ng-common.js"></script>
+				<script src="assets/js/ng-google-maps.js"></script>
+				<script src="assets/js/ng-chosen.js"></script>
+				<script src="assets/js/app-kit-tour.js"></script>
+				<script src="assets/js/ng-app.js"></script>
+				
+				
+		
+		<div>
+			
+		</div>
+		
+	<div ng-cloak class="content-wrapper view projects-view" ng-controller="AppKitProjectsDemo">
+	<div class="container-fluid">
+		<div class="projects-heading">
+			<h2 class="view-title">Projects</h2>
+			<div class="actions">
+				<div class="btn-group utility" uib-dropdown>
+					<button class="btn btn-default dropdown-toggle" type="button" uib-dropdown-toggle>All Projects <span class="caret"></span></button>
+					<ul class="dropdown-menu" uib-dropdown-menu>
+						<li><a href="#">My Projects</a></li>
+						<li><a href="#">Open Projects</a></li>
+						<li><a href="#">Closed Projects</a></li>
+						<li><a href="#">Archived Projects</a></li>
+					</ul>
+				</div>
+				<button class="btn btn-success" ng-click="newProjectModal()"><i class="fa fa-plus"></i> New Project</button>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="row" app-kit-masonry>
+			<app-kit-module title="Project lorem ipsum" meta="Last updated yesterday at 14:02pm" wrapper-class="masonry-item col-lg-3 col-md-4 col-sm-6 col-xs-12" module-class="project-module" controls="false">
+				<pane-body>
+					<div class="project-intro">
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor aenean massa.</p>
+					</div>
+					<div class="project-progress">
+						<h4 class="subtitle">Progress</h4>
+						<div class="progress-container">
+							<span class="progress progress-sm">
+								<span class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%">
+								</span>
+							</span>
+						</div>
+					</div>
+					<div class="project-team">
+						<h4 class="subtitle">Team</h4>
+						<ul class="list-inline">
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-1.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-3.png" alt="" /></a></li>
+							<li class="member"><a href="#" class="add-new-member" ng-click="addMemberModal()"><i class="fa fa-plus"></i></a></li>
+						</ul>
+					</div>
+				</pane-body>
+				<pane-footer>
+					<ul class="utilities list-inline">
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Copy"><i class="fa fa-files-o"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Edit"><i class="fa fa-pencil"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Favourite"><i class="fa fa-star"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-archive"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
+					</ul>
+				</pane-footer>
+			</app-kit-module>
+			<app-kit-module title="Mobile app for egestas vehicula" meta="Last updated 3 days ago" wrapper-class="masonry-item col-lg-3 col-md-4 col-sm-6 col-xs-12" module-class="project-module" controls="false">
+				<pane-body>
+					<div class="project-intro">
+						<p>Duis hendrerit erat a gravida dignissim. Proin a malesuada quam, et congue sapien. Fusce sed pretium quam, et tristique nisl.</p>
+					</div>
+					<div class="project-progress">
+						<h4 class="subtitle">Progress</h4>
+						<div class="progress-container">
+							<span class="progress progress-sm">
+								<span class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
+								</span>
+							</span>
+						</div>
+					</div>
+					<div class="project-team">
+						<h4 class="subtitle">Team</h4>
+						<ul class="list-inline">
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-2.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-4.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-6.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-8.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-10.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-12.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-14.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-16.png" alt="" /></a></li>
+							<li class="member"><a href="#" class="more-member">3+</a></li>
+							<li class="member"><a href="#" class="add-new-member" ng-click="addMemberModal()"><i class="fa fa-plus"></i></a></li>
+						</ul>
+					</div>
+				</pane-body>
+				<pane-footer>
+					<ul class="utilities list-inline">
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Copy"><i class="fa fa-files-o"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Edit"><i class="fa fa-pencil"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Favourite"><i class="fa fa-star"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-archive"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
+					</ul>
+				</pane-footer>
+			</app-kit-module>
+			<app-kit-module title="Campaign for vivamus elementum fringilla mauris amet adipiscing" meta="Last updated June 23, 2015" wrapper-class="masonry-item col-lg-3 col-md-4 col-sm-6 col-xs-12" module-class="project-module" controls="false">
+				<pane-body>
+					<div class="project-intro">
+						<p>Proin a auctor libero, eget iaculis nisl. Nullam efficitur ipsum sit amet lectus dictum, ac luctus nibh semper.</p>
+					</div>
+					<div class="project-progress">
+						<h4 class="subtitle">Progress</h4>
+						<div class="progress-container">
+							<span class="progress progress-sm">
+								<span class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+								</span>
+							</span>
+						</div>
+					</div>
+					<div class="project-team">
+						<h4 class="subtitle">Team</h4>
+						<ul class="list-inline">
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-5.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-7.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-9.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-11.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-13.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-15.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-17.png" alt="" /></a></li>
+							<li class="member"><a href="#" class="add-new-member" ng-click="addMemberModal()"><i class="fa fa-plus"></i></a></li>
+						</ul>
+					</div>
+				</pane-body>
+				<pane-footer>
+					<ul class="utilities list-inline">
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Copy"><i class="fa fa-files-o"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Edit"><i class="fa fa-pencil"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Favourite"><i class="fa fa-star"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-archive"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
+					</ul>
+				</pane-footer>
+			</app-kit-module>
+			<app-kit-module title="Marketing Campaign for Etiam Sit Amet" meta="Last updated 2 days ago" wrapper-class="masonry-item col-lg-3 col-md-4 col-sm-6 col-xs-12" module-class="project-module" controls="false">
+			<pane-body>
+				<div class="project-intro">
+					<p>Proin a auctor libero, eget iaculis nisl. Nullam efficitur ipsum sit amet lectus dictum, ac luctus nibh semper.</p>
+				</div>
+				<div class="project-progress">
+					<h4 class="subtitle">Progress</h4>
+					<div class="progress-container">
+						<span class="progress progress-sm">
+							<span class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+							</span>
+						</span>
+					</div>
+				</div>
+				<div class="project-team">
+					<h4 class="subtitle">Team</h4>
+					<ul class="list-inline">
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-2.png" alt="" /></a></li>
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-3.png" alt="" /></a></li>
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-5.png" alt="" /></a></li>
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-6.png" alt="" /></a></li>
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-8.png" alt="" /></a></li>
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-9.png" alt="" /></a></li>
+						<li class="member"><a href="#" class="add-new-member" ng-click="addMemberModal()"><i class="fa fa-plus"></i></a></li>
+					</ul>
+				</div>
+			</pane-body>
+			<pane-footer>
+				<ul class="utilities list-inline">
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Copy"><i class="fa fa-files-o"></i></a></li>
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Edit"><i class="fa fa-pencil"></i></a></li>
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Favourite"><i class="fa fa-star"></i></a></li>
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-archive"></i></a></li>
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
+				</ul>
+			</pane-footer>
+			</app-kit-module>
+			<app-kit-module title="Marketing Campaign for Etiam Sit Amet" meta="Last updated 2 days ago" wrapper-class="masonry-item col-lg-3 col-md-4 col-sm-6 col-xs-12" module-class="project-module" controls="false">
+			<pane-body>
+				<div class="project-intro">
+					<p>Proin a auctor libero, eget iaculis nisl. Nullam efficitur ipsum sit amet lectus dictum, ac luctus nibh semper.</p>
+				</div>
+				<div class="project-progress">
+					<h4 class="subtitle">Progress</h4>
+					<div class="progress-container">
+						<span class="progress progress-sm">
+							<span class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%">
+							</span>
+						</span>
+					</div>
+				</div>
+				<div class="project-team">
+					<h4 class="subtitle">Team</h4>
+					<ul class="list-inline">
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-20.png" alt="" /></a></li>
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-18.png" alt="" /></a></li>
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-16.png" alt="" /></a></li>
+						<li class="member"><a href="#"><img src="assets/images/profiles/profile-14.png" alt="" /></a></li>
+						<li class="member"><a href="#" class="add-new-member" ng-click="addMemberModal()"><i class="fa fa-plus"></i></a></li>
+					</ul>
+				</div>
+			</pane-body>
+			<pane-footer>
+				<ul class="utilities list-inline">
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Copy"><i class="fa fa-files-o"></i></a></li>
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Edit"><i class="fa fa-pencil"></i></a></li>
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Favourite"><i class="fa fa-star"></i></a></li>
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-archive"></i></a></li>
+					<li><a href="#" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
+				</ul>
+			</pane-footer>
+			</app-kit-module>
+			<app-kit-module title="IOS App for Nullam Efficitur" meta="Last updated today at 8:45am" wrapper-class="masonry-item col-lg-3 col-md-4 col-sm-6 col-xs-12" module-class="project-module" controls="false">
+				<pane-body>
+					<div class="project-intro">
+						<p>Proin a auctor libero, eget iaculis nisl. Nullam efficitur ipsum sit amet lectus dictum, ac luctus nibh semper.</p>
+					</div>
+					<div class="project-progress">
+						<h4 class="subtitle">Progress</h4>
+						<div class="progress-container">
+							<span class="progress progress-sm">
+								<span class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%">
+								</span>
+							</span>
+						</div>
+					</div>
+					<div class="project-team">
+						<h4 class="subtitle">Team</h4>
+						<ul class="list-inline">
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-4.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-19.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-13.png" alt="" /></a></li>
+							<li class="member"><a href="#" class="add-new-member" ng-click="addMemberModal()"><i class="fa fa-plus"></i></a></li>
+						</ul>
+					</div>
+				</pane-body>
+				<pane-footer>
+					<ul class="utilities list-inline">
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Copy"><i class="fa fa-files-o"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Edit"><i class="fa fa-pencil"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Favourite"><i class="fa fa-star"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-archive"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
+					</ul>
+				</pane-footer>
+			</app-kit-module>
+			<app-kit-module title="Android App for Nullam Efficitur" meta="Last updated May 26, 2015" wrapper-class="masonry-item col-lg-3 col-md-4 col-sm-6 col-xs-12" module-class="project-module" controls="false">
+				<pane-body>
+					<div class="project-intro">
+						<p>Proin a auctor libero, eget iaculis nisl. Nullam efficitur ipsum sit amet lectus dictum, ac luctus nibh semper.</p>
+					</div>
+					<div class="project-progress">
+						<h4 class="subtitle">Progress</h4>
+						<div class="progress-container">
+							<span class="progress progress-sm">
+								<span class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+								</span>
+							</span>
+						</div>
+					</div>
+					<div class="project-team">
+						<h4 class="subtitle">Team</h4>
+						<ul class="list-inline">
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-5.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-15.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-14.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-11.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-18.png" alt="" /></a></li>
+							<li class="member"><a href="#" class="add-new-member" ng-click="addMemberModal()"><i class="fa fa-plus"></i></a></li>
+						</ul>
+					</div>
+				</pane-body>
+				<pane-footer>
+					<ul class="utilities list-inline">
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Copy"><i class="fa fa-files-o"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Edit"><i class="fa fa-pencil"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Favourite"><i class="fa fa-star"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-archive"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
+					</ul>
+				</pane-footer>
+			</app-kit-module>
+			<app-kit-module title="Android App for Nullam Efficitur" meta="Last updated May 26, 2015" wrapper-class="masonry-item col-lg-3 col-md-4 col-sm-6 col-xs-12" module-class="project-module" controls="false">
+				<pane-body>
+					<div class="project-intro">
+						<p>Proin a auctor libero, eget iaculis nisl. Nullam efficitur ipsum sit amet lectus dictum, ac luctus nibh semper.</p>
+					</div>
+					<div class="project-progress">
+						<h4 class="subtitle">Progress</h4>
+						<div class="progress-container">
+							<span class="progress progress-sm">
+								<span class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+								</span>
+							</span>
+						</div>
+					</div>
+					<div class="project-team">
+						<h4 class="subtitle">Team</h4>
+						<ul class="list-inline">
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-17.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-13.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-6.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-5.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-2.png" alt="" /></a></li>
+							<li class="member"><a href="#"><img src="assets/images/profiles/profile-1.png" alt="" /></a></li>
+							<li class="member"><a href="#" class="add-new-member" ng-click="addMemberModal()"><i class="fa fa-plus"></i></a></li>
+						</ul>
+					</div>
+				</pane-body>
+				<pane-footer>
+					<ul class="utilities list-inline">
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Copy"><i class="fa fa-files-o"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Edit"><i class="fa fa-pencil"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Favourite"><i class="fa fa-star"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-archive"></i></a></li>
+						<li><a href="#" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
+					</ul>
+				</pane-footer>
+			</app-kit-module>
+		</div>
+	</div>
+</div>
+<script type="text/ng-template" id="modalNewProject.html">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$dismiss()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Modal title</h4>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="form-group">
+				<label class="sr-only">Project Name</label>
+				<input type="text" class="form-control" placeholder="Project Name">
+			</div>
+			<div class="form-group">
+				<label class="sr-only">Project Type</label>
+				<select class="form-control">
+					<option selected="selected">Select project type</option>
+	                <option>Type 1</option>
+	                <option>Type 2</option>
+	                <option>Type 3</option>
+	                <option>Type 4</option>
+	                <option>Type 5</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="sr-only">Description</label>
+				<textarea class="form-control" rows="6" placeholder="Enter your project description..."></textarea>    
+			</div>
+			<button type="button" class="btn btn-success margin-top-md center-block" ng-click="$dismiss()">Create Project</button>
+		</form>
+	</div>
+</script>
+<script type="text/ng-template" id="modalAddMember.html">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$dismiss()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Modal title</h4>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="form-group">
+				<label>Choose members</label>
+				<select chosen ng-model="member" class="chosen form-control" data-placeholder="Choose members..." style="width: 100%;" multiple >
+					<option value="Please Select"></option>
+					<option value="Vincent Alexander">Vincent Alexander</option>
+					<option value="Lisa Price">Lisa Price</option>
+					<option value="Anthony Delgado">Anthony Delgado</option>
+					<option value="Ralph Franklin">Ralph Franklin</option>
+					<option value="Amanda Guerrero">Amanda Guerrero</option>
+					<option value="Stephen Thompson">Stephen Thompson</option>
+				</select>
+			</div>
+			<button type="button" class="btn btn-success margin-top-md center-block" ng-click="$dismiss()">Add to project</button>
+		</form>
+	</div>
+</script>
+		

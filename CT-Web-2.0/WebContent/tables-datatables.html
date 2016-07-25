@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html ng-app="ct">
+	<head>
+		<title>[[practice]]</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">    
+		<link rel="shortcut icon" href="assets/images/favicon.ico">  
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel='stylesheet' type='text/css'>
+				<link rel="stylesheet" href="assets/css/bootstrap.css">
+				<link rel="stylesheet" href="assets/css/metisMenu.css">
+				<link rel="stylesheet" href="assets/css/font-awesome.css">
+				<link rel="stylesheet" href="assets/css/elegant-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons-helper.css">
+				<link rel="stylesheet" href="assets/css/jquery-data-tables.css">
+				<link rel="stylesheet" href="assets/css/jquery-data-tables-bs3.css">
+				<link rel="stylesheet" href="assets/css/tether-shepherd.css">
+				<link rel="stylesheet" href="assets/css/jstree-default.css">
+				<link rel="stylesheet" href="assets/css/styles.css">
+				<link href="font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>	
+	<body app-kit-responsive class="preload [[theme]]" ng-class="{'compact': compact, 'mobile': mobile, 'nav-toggled': navOpen}">
+			<header class="header">
+			<div class="branding float-left" ng-controller="branding">
+			 	<h2 class="logo">  
+					<a href="index.html">
+					<!-- 	<img class="logo-icon" src="assets/images/logo-icon.svg" alt="icon" />  -->
+						<span class="nav-label">
+							<span >[[practice]]</span>
+						</span>
+					</a>
+			 </h2>  
+			</div>
+			<div class="topbar">
+				<button class="main-nav-toggle" type="button" ng-click="navOpen = !navOpen">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<i class="icon fa fa-caret-left"></i>
+				</button>
+				
+				<button class="main-nav-toggle" type="button" >
+					<span class="fa fa-user fa-2x"></span>  Sheri Tallman CTA 	
+				</button>
+				
+				
+				<div ng-controller="practices" class="navbar-tools">
+					<div class="utilities-container">
+					
+						<div class="utilities">
+						
+						
+							<div class="item item-more" ng-class="{'open': headerPopup == 'settings'}">
+								<div class="dropdown-toggle" id="dropdownMenu-more" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'settings' ? '' : 'settings'">
+									<span class="sr-only">More</span>
+									<span aria-hidden="true" class="fs1 icon icon_grid-3x3" tooltip-placement="bottom" uib-tooltip="Settings &amp; Tools"></span>
+								</div>
+								
+								<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-more">
+									
+									<h4 class="title">Settings &amp; Tools</h4>
+									<ul class="more-list">
+										<li><a role="menuitem" href="user-settings.html"><span class="pe-icon pe-7s-config icon"></span><br>Settings</a></li>
+										<li><a role="menuitem" href="user-reminders.html"><span class="pe-icon pe-7s-clock icon"></span><br>Reminders</a></li>
+										<li><a role="menuitem" href="help.html"><span class="pe-icon pe-7s-help2 icon"></span><br>Help</a></li>
+									</ul>
+								</div>						
+							</div>
+							
+						<div  class="user-container dropdown" ng-class="{'open': headerPopup == 'profile'}">
+						<div class="dropdown-toggle" id="dropdownMenu-user" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'profile' ? '' : 'profile'">
+						<!-- <img src="assets/images/profiles/profile-3.png" alt="" />  --> 
+						
+						<i class="fa fa-user-md fa-2x" aria-hidden="true"></i> Practice
+							<i class="fa fa-caret-down"></i> 
+						</div>
+						<ul  class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-user" >
+							<li ng-repeat="item in practices"><span class="arrow"></span><a role="menuitem" href="tables-datatables.html"><span class="fa fa-user-md fa-lg" aria-hidden="true"></span> [[item.practicename]]</a></li>
+						</ul>
+					<!--  	<ul ng-repeat="item in practices" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-user" >
+							<li><span class="arrow"></span><a role="menuitem" href="user-profile.html"><span class="pe-icon pe-7s-user icon"></span>My Account</a></li>
+							<li><a role="menuitem" href="pricing.html"><span class="pe-icon pe-7s-paper-plane icon"></span>Upgrade Plan</a></li>
+							<li><a role="menuitem" href="login.html"><span class="pe-icon pe-7s-power icon"></span>Sign Out</a></li>
+						</ul> -->
+					</div>
+						</div>
+						
+					</div>
+					
+						
+					
+				</div>
+			</div>
+		</header>		
+		<div ng-controller="dashboard" class="main-nav-wrapper" ng-cloak>
+			<nav  id="main-nav" class="main-nav">
+				<ul id="menu" app-kit-menu>
+					<li  class="nav-dashboards">
+							<a href="#">
+								<span aria-hidden="true" class="fa fa-tachometer"></span>
+								<span class="nav-label"> Site</span>
+								<span class="fa arrow"></span>
+								</a>
+								
+						<ul class="sub-menu">
+							<li ng-repeat="item in sites"><span class="arrow"></span><a role="menuitem" href="tables-datatables.html"><span class="fa fa-user-md fa-lg" aria-hidden="true"></span> [[item.sitename]]</a></li>
+						</ul>
+						
+					</li>
+					
+					<li  class=" ">
+							<a href="inbox.html">
+								<span aria-hidden="true" class="fa fa-bar-chart" ></span>
+								<span class="nav-label">Site Metrics</span>
+							</a>
+					</li>
+					<li  class=" ">
+							<a href="inbox.html">
+								<span aria-hidden="true" class="fa fa-stethoscope" ></span>
+								<span class="nav-label">Site Equipment</span>
+							</a>
+					</li>
+					
+					
+					
+					
+				</ul>
+			</nav>
+		</div>		
+		
+		
+	<div ng-cloak class="content-wrapper view" ng-controller="AppKitDataTablesDemo">
+	<div class="container-fluid">
+	
+		<div class="row" app-kit-masonry>
+			<app-kit-module title="Patient Enrolled" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+				<table datatable="ng" class="row-border hover" >
+					<thead>
+						<tr>
+							<th ng-hide="true">ID</th>
+							<th>Name</th>
+							<th>Workflow Name</th>
+							<th>Study Eye</th>
+							<th>Study Name</th>
+							<th>Location</th>
+							<th>Doctor</th>
+							<th ng-hide="true">Location</th>
+							<th ng-hide="true">Doctor</th>
+							<th ng-hide="false">Edit Patient</th>
+							<th ng-hide="false">Edit Task</th>
+						</tr>
+					</thead>
+					<tbody>
+						 <tr ng-repeat="patient in ::patients.patient track by patient.patientId">
+						 	<td ng-hide="true"> [[patient.patientId]]</td>
+              				<td> [[patient.fullName]]</td>
+              				<td> [[patient.workflowName]]</td>
+              				<td> [[patient.studyeye]]</td>
+              				<td> [[patient.studyName]]</td>
+              				<td> [[patient.location]]</td>  
+              				<td> [[patient.doctor]]</td>
+              			 	<td ng-hide="true"> [[patient.patientTaskId]]  </td>
+              				<td ng-hide="true"> [[patient.patientId]]</td> 
+              				
+              				<td><button ng-click="UpdatePatient()"  class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit Patient Data">
+                  <span class="glyphicon glyphicon-user"></span>
+                  </button></td> 
+                  <td><button ng-click="UpdateTask()"  class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Update Task Event">
+                  <span class="glyphicon glyphicon-edit"></span>
+                  </button></td>  
+						
+					</tr>
+					</tbody>
+				</table>
+			</pane-body></app-kit-module>
+		</div>
+		
+		<!-- 	<h2 class="view-title">Data Tables</h2>  -->
+		<div class="row" app-kit-masonry>
+			<app-kit-module title="Patient Alerts" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+				<table datatable="ng" class="row-border hover" >
+					<thead>
+						<tr>
+							<th ng-hide="true">ID</th>
+							<th>Name</th>
+							<th>Workflow Name</th>
+							<th>Study Eye</th>
+							<th>Study Name</th>
+							<th>Location</th>
+							<th>Doctor</th>
+							<th ng-hide="true">Location</th>
+							<th ng-hide="true">Doctor</th>
+							<th ng-hide="true">buttonone</th>
+							<th ng-hide="true">buttontwo</th>
+						</tr>
+					</thead>
+					<tbody>
+						 <tr ng-repeat="item in ::expiredPatients.patient track by item.patientId">
+						 	<td ng-hide="true"> [[item.patientId]]</td>
+              				<td> [[item.fullName]]</td>
+              				<td> [[item.workflowName]]</td>
+              				<td> [[item.studyeye]]</td>
+              				<td> [[item.studyName]]</td>
+              				<td> [[item.location]]</td>  
+              				<td> [[item.doctor]]</td>
+              			 	<td ng-hide="true"> [[item.patientTaskId]]  </td>
+              				<td ng-hide="true"> [[item.patientId]]</td> 
+              				
+              				<td><button ng-click="UpdatePatient()"  class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit Patient Data">
+                  <span class="glyphicon glyphicon-user"></span>
+                  </button></td> 
+                  <td><button ng-click="UpdateTask()"  class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Update Task Event">
+                  <span class="glyphicon glyphicon-edit"></span>
+                  </button></td>  
+						
+					</tr>
+					</tbody>
+				</table>
+			</pane-body></app-kit-module>
+		</div>
+		
+		
+		
+	</div>
+</div>
+	
+		<footer class="site-footer" ng-show="showFooter">
+		    <div class="copyright">Copyright &copy; 2016 - <a href="#">Bootstrap Admin Theme</a></div>
+		</footer>		
+	
+		<div class="config-panel hidden-xs" ng-class="{'config-panel-open': showConfigurator}">
+			<div class="panel-inner">
+				<a class="config-trigger config-panel-hide" href="#" ng-click="showConfigurator = !showConfigurator"><i class="fa fa-cog"></i></a>
+				<div class="panel-section margin-bottom-md">
+					<h5 class="panel-title">Choose Colour</h5>
+					<ul id="color-options" class="list-unstyled list-unstyled">
+						<li class="theme-1 active" ><a ng-click="theme = 'theme-1'"></a></li>
+						<li class="theme-2"><a ng-click="theme = 'theme-2'"></a></li>
+						<li class="theme-3"><a ng-click="theme = 'theme-3'"></a></li>
+						<li class="theme-4"><a ng-click="theme = 'theme-4'"></a></li>
+					</ul>
+				</div>
+				<div class="panel-section">
+					<h5 class="panel-title">Toggles</h5>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showTopAlert" type="checkbox"> Top Alert
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showFooter" type="checkbox"> Footer
+						</label>
+					</div>
+				</div>
+				<a ng-click="showConfigurator = false" class="close" href="#"><span aria-hidden="true" class="icon icon_close"></span></a>
+			</div>
+		</div>		
+				<script src="assets/js/jquery.js"></script>
+				<script src="assets/js/metisMenu.js"></script>
+				<script src="assets/js/masonry.js"></script>
+				<script src="assets/js/pace.js"></script>
+				<script src="assets/js/jquery-data-tables.js"></script>
+				<script src="assets/js/jquery-data-tables-bs3.js"></script>
+				
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-resource.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-route.js"></script>
+				
+				
+				<script src="assets/js/angular-animate.js"></script>
+				<script src="assets/js/ui-bootstrap-tpls.js"></script>
+				<script src="assets/js/tether.js"></script>
+				<script src="assets/js/tether-shepherd.js"></script>
+				<script src="assets/js/jquery-peity.js"></script>
+				<script src="assets/js/jquery-sparkline.js"></script>
+				<script src="assets/js/angular-debounce.js"></script>
+				<script src="assets/js/ng-common.js"></script>
+				<script src="assets/js/ng-google-maps.js"></script>
+				<script src="assets/js/ng-datatables.js"></script>
+				<script src="assets/js/app-kit-tour.js"></script>
+				<script src="assets/js/ng-google-maps.js"></script>
+				<script src="assets/js/ng-peity.js"></script>
+				<script src="assets/js/ng-sparkline.js"></script>
+				<script src="assets/js/ng-app.js"></script>
+				
+				<script src="assets/js/app-kit-datatables-demo-module.js"></script>
+				<script src="assets/js/app-kit-datatables-demo-factory.js"></script>
+				<script src="assets/js/app-kit-datatables-demo-controller.js"></script>
+			 
+	
+	</body>
+</html>

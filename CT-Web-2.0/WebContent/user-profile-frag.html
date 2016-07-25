@@ -1,0 +1,335 @@
+
+		<link rel="shortcut icon" href="assets/images/favicon.ico">  
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel='stylesheet' type='text/css'>
+				<link rel="stylesheet" href="assets/css/bootstrap.css">
+				<link rel="stylesheet" href="assets/css/metisMenu.css">
+				<link rel="stylesheet" href="assets/css/font-awesome.css">
+				<link rel="stylesheet" href="assets/css/elegant-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons-helper.css">
+				<link rel="stylesheet" href="assets/css/chosen.css">
+				<link rel="stylesheet" href="assets/css/bootstrap3-wysihtml5.css">
+				<link rel="stylesheet" href="assets/css/tether-shepherd.css">
+				<link rel="stylesheet" href="assets/css/jstree-default.css">
+				<link rel="stylesheet" href="assets/css/styles.css">
+				<link rel="stylesheet" href="assets/css/account.css">
+				
+				
+			
+		
+		<div ng-cloak class="content-wrapper view view-account" ng-controller="AppKitUserProfileDemo">
+	<div class="container-fluid">
+		<h2 class="view-title">My Account</h2>
+		<div class="row">
+			<app-kit-module module-class="module-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+				<div class="side-bar">
+					<div class="user-info">
+						<img class="img-profile img-circle img-responsive center-block" src="assets/images/profiles/profile-square-1-lg.png" alt="" />
+						<ul class="meta list list-unstyled">
+							<li class="name">Rebecca Sanders
+								<label class="label label-info">UX Designer</label>
+							</li>
+							<li class="email"><a href="#">Rebecca.S@website.com</a></li>
+							<li class="activity">Last logged in: Today at 2:18pm</li>
+						</ul>
+					</div>
+					<nav class="side-menu">
+						<ul class="nav">
+							<li class="active">
+								<a href="user-profile.html"><span class="pe-icon pe-7s-user icon"></span> Profile</a>
+							</li>
+							<li >
+								<a href="user-settings.html"><span class="pe-icon pe-7s-config icon"></span> Settings</a>
+							</li>
+							<li >
+								<a href="user-billing.html"><span class="pe-icon pe-7s-credit icon"></span> Billing</a>
+							</li>
+							<li >
+								<a href="user-messages.html"><span class="pe-icon pe-7s-chat icon"></span> Messages</a>
+							</li>
+							<li >
+								<a href="user-drive.html"><span class="pe-icon pe-7s-pendrive icon"></span> Drive</a>
+							</li>
+							<li >
+								<a href="user-reminders.html"><span class="pe-icon pe-7s-clock icon"></span> Reminders</a>
+							</li>
+						</ul>
+					</nav>
+				</div>				<div class="content-panel">
+					<h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2>
+					<form class="form-horizontal">
+						<fieldset class="fieldset">
+							<h3 class="fieldset-title">Personal Info</h3>
+							<div class="form-group avatar">
+								<figure class="figure col-md-2 col-sm-3 col-xs-12">
+									<img class="img-rounded img-responsive" src="assets/images/profiles/profile-square-1.png" alt="" />
+								</figure>
+								<div class="form-inline col-md-10 col-sm-9 col-xs-12">
+									<input type="file" class="file-uploader pull-left">
+									<button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
+								<div class="col-md-10 col-sm-9 col-xs-12">
+									<input type="text" class="form-control" value="Rebecca">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+								<div class="col-md-10 col-sm-9 col-xs-12">
+									<input type="text" class="form-control" value="Rebecca">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+								<div class="col-md-10 col-sm-9 col-xs-12">
+									<input type="text" class="form-control" value="Sanders">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2  col-sm-3 col-xs-12 control-label">Job Role(s)</label>
+								<div class="col-md-10 col-sm-9 col-xs-12">
+									<select chosen ng-model="jobrole" class="form-control" multiple>
+										<option value="ux-designer">UX Designer</option>
+										<option value="ui-designer">UI Designer</option>
+										<option value="dev-frontend">Frontend Developer</option>
+										<option value="dev-backend">Backend Developer</option>
+										<option value="de">Project Manager</option>
+										<option value="de">Sales</option>
+										<option value="de">marketing Executive</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2  col-sm-3 col-xs-12 control-label">Country</label>
+								<div class="col-md-10 col-sm-9 col-xs-12">
+									<select chosen ng-model="country "class="form-control" data-placeholder="Choose a Country...">
+										<option value="us">US</option>
+										<option value="uk">UK</option>
+										<option value="pl">Poland</option>
+										<option value="cn">China</option>
+										<option value="ca">Canada</option>
+										<option value="de">Germany</option>
+									</select>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="fieldset">
+							<h3 class="fieldset-title">Contact Info</h3>
+							<div class="form-group">
+								<label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+								<div class="col-md-10 col-sm-9 col-xs-12">
+									<input type="email" class="form-control" value="Rebecca@website.com">
+									<p class="help-block">This is the email </p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2  col-sm-3 col-xs-12 control-label">Twitter</label>
+								<div class="col-md-10 col-sm-9 col-xs-12">
+									<input type="text" class="form-control" value="SpeedyBecky">
+									<p class="help-block">Your twitter username</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2  col-sm-3 col-xs-12 control-label">Linkedin</label>
+								<div class="col-md-10 col-sm-9 col-xs-12">
+									<input type="url" class="form-control" value="https://www.linkedin.com/in/lorem">
+									<p class="help-block">eg. https://www.linkedin.com/in/yourname</p>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="fieldset">
+							<h3 class="fieldset-title">About Yourself</h3>
+							<div class="form-group">
+								<label class="col-md-2  col-sm-3 col-xs-12 control-label">Bio</label>
+								<div class="col-md-10 col-sm-9 col-xs-12">
+									<bootstrap-wysiwyg style="height: 200px" rows="10" class="form-control"></bootstrap-wysiwyg>
+									<p class="help-block">Share a little biographical information to fill out your profile. This may be shown publicly.</p>
+								</div>
+							</div>
+						</fieldset>
+						<hr>
+						<div class="form-group">
+							<div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+								<input class="btn btn-primary" type="submit" value="Update Profile">
+							</div>
+						</div>
+					</form>
+				</div>
+			</pane-body></app-kit-module>
+		</div>
+	</div>
+</div>
+		<footer class="site-footer" ng-show="showFooter">
+		    <div class="copyright">Copyright &copy; 2016 - <a href="#">Bootstrap Admin Theme</a></div>
+		</footer>		<div id="side-panel" class="side-panel" ng-class="{'side-panel-open':headerPopup == 'side-panel'}">
+		    <div class="side-panel-inner">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="headerPopup = ''"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="title text-center"><i class="fa fa-signal"></i>Activities</h4>
+		        <div class="items-wrapper">
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-warning btn-circle">
+		                        <i class="icon fa fa-flag"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <strong>We have increased your storage to 10GB for Free!</strong>
+		                    </div>
+		                    <div class="excerpt">
+		                        System notification
+		                    </div>
+		                    <div class="time-stamp">5 days ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <img class="user-profile" src="assets/images/profiles/profile-20.png" alt="" />
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="member.html">David Thomson</a> followed you.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="role">Full-Stack Developer</div>
+		                        <div class="folowers"><span>12 Projects</span> | <span class="folowers">43 Followers</span></div>
+		                    </div>
+		                    <div class="time-stamp">3 mins ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-danger btn-circle">
+		                        <i class="icon fa fa-heart"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Julie Wu</a> favourited your post.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Love your new design! Keep up the great work..."</em></div>
+		                    </div>
+		                    <div class="time-stamp">1 week ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <img class="user-profile" src="assets/images/profiles/profile-15.png" alt="" />
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Julie Wu</a> followed you.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="role">Product Designer</div>
+		                        <div class="folowers"><span>3 Projects</span> | <span class="folowers">8 Followers</span></div>
+		                    </div>
+		                    <div class="time-stamp">2 weeks ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-info btn-circle">
+		                        <i class="icon fa fa-at"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">James Lee</a> mentioned you on <a href="#">Project Lorem</a>.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Looks cool @Rebecca White"</em></div>
+		                    </div>
+		                    <div class="time-stamp">2 weeks ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-success btn-circle">
+		                        <i class="icon fa fa-commenting"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Chris Adams</a> commented on <a href="#">Discussion Lorem</a>.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Can we improve the review process? At the moment consectetuer adipiscing elit..."</em></div>
+		                    </div>
+		                    <div class="time-stamp">Jan 10, 2016</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-pink btn-circle">
+		                        <i class="icon fa fa-thumbs-up"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Kat Schultz</a> liked your discussion <a href="#">Discussion Lorem</a>.
+		                    </div>
+		                    <div class="time-stamp">Jan 8, 2016</div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>		<div class="config-panel hidden-xs" ng-class="{'config-panel-open': showConfigurator}">
+			<div class="panel-inner">
+				<a class="config-trigger config-panel-hide" href="#" ng-click="showConfigurator = !showConfigurator"><i class="fa fa-cog"></i></a>
+				<div class="panel-section margin-bottom-md">
+					<h5 class="panel-title">Choose Colour</h5>
+					<ul id="color-options" class="list-unstyled list-unstyled">
+						<li class="theme-1 active" ><a ng-click="theme = 'theme-1'"></a></li>
+						<li class="theme-2"><a ng-click="theme = 'theme-2'"></a></li>
+						<li class="theme-3"><a ng-click="theme = 'theme-3'"></a></li>
+						<li class="theme-4"><a ng-click="theme = 'theme-4'"></a></li>
+					</ul>
+				</div>
+				<div class="panel-section">
+					<h5 class="panel-title">Toggles</h5>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showTopAlert" type="checkbox"> Top Alert
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showFooter" type="checkbox"> Footer
+						</label>
+					</div>
+				</div>
+				<a ng-click="showConfigurator = false" class="close" href="#"><span aria-hidden="true" class="icon icon_close"></span></a>
+			</div>
+		</div>		
+				<script src="assets/js/jquery.js"></script>
+				<script src="assets/js/metisMenu.js"></script>
+				<script src="assets/js/masonry.js"></script>
+				<script src="assets/js/pace.js"></script>
+				<script src="assets/js/chosen-jquery.js"></script>
+				<script src="assets/js/bootstrap-switch.js"></script>
+				<script src="assets/js/bootstrap3-wysihtml5.js"></script>
+				<script src="assets/js/jquery-todo-list.js"></script>
+				<script src="assets/js/icheck.js"></script>
+				<script src="assets/js/angular.js"></script>
+				<script src="assets/js/angular-animate.js"></script>
+				<script src="assets/js/ui-bootstrap-tpls.js"></script>
+				<script src="assets/js/tether.js"></script>
+				<script src="assets/js/tether-shepherd.js"></script>
+				<script src="assets/js/angular-debounce.js"></script>
+				<script src="assets/js/ng-common.js"></script>
+				<script src="assets/js/ng-google-maps.js"></script>
+				<script src="assets/js/ng-chosen.js"></script>
+				<script src="assets/js/ng-jquery-todo.js"></script>
+				<script src="assets/js/ng-bootstrap-wysiwyg.js"></script>
+				<script src="assets/js/ng-bootstrap-switch.js"></script>
+				<script src="assets/js/ng-icheck.js"></script>
+				<script src="assets/js/app-kit-tour.js"></script>
+				<script src="assets/js/forms-chosen.js"></script>
+				<script src="assets/js/forms-wysihtml5.js"></script>
+				<script src="assets/js/ng-app.js"></script>
+				
+	

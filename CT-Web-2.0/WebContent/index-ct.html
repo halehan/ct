@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html ng-app="ct">
+	<head>
+		<title>CT-Recruiter</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">    
+		<link rel="shortcut icon" href="assets/images/favicon.ico">  
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel='stylesheet' type='text/css'>
+		<!-- 		<link rel="stylesheet" href="assets/css/bootstrap.css"> -->
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/css/bootstrap-datepicker.css">
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/css/bootstrap-formhelpers.css">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+				
+				<link rel="stylesheet" href="assets/css/metisMenu.css">
+				<link rel="stylesheet" href="assets/css/font-awesome.css">
+				<link rel="stylesheet" href="assets/css/elegant-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons-helper.css">
+				<link rel="stylesheet" href="assets/css/jquery-data-tables.css">
+				<link rel="stylesheet" href="assets/css/jquery-data-tables-bs3.css">
+				<link rel="stylesheet" href="assets/css/jquery-jvectormap.css">
+				<link rel="stylesheet" href="assets/css/tether-shepherd.css">
+				<link rel="stylesheet" href="assets/css/jstree-default.css">
+				
+				<link rel="stylesheet" href="assets/css/dashboard-projects.css">	
+				<link rel="stylesheet" href="assets/css/jquery-data-tables.css">
+				<link rel="stylesheet" href="assets/css/jquery-data-tables-bs3.css">
+				<link rel="stylesheet" href="assets/css/tether-shepherd.css">
+				<link rel="stylesheet" href="assets/css/jstree-default.css">
+				<link rel="stylesheet" href="assets/css/styles.css">
+				<link rel="stylesheet" href="assets/css/widgets.css">
+				
+				<!--  PROJECTS -->
+				<link rel="stylesheet" href="assets/css/chosen.css">
+				<link rel="stylesheet" href="assets/css/projects.css">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>	
+	
+	
+	<body>
+			<header class="header">
+			<div class="branding float-left" ng-controller="branding">
+			 	<h2 class="logo">  
+					<a href="index.html">
+					 	<img class="logo-icon" src="assets/images/logo-icon.svg" alt="icon" />  
+						<span class="nav-label">
+							<span> CT-Lite</span>
+						</span>
+					</a>
+			 </h2>  
+			</div>
+			<div  ng-controller="practices" class="topbar">
+				<button class="main-nav-toggle" type="button" ng-click="navOpen = !navOpen">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<i class="icon fa fa-caret-left"></i>
+				</button>
+				
+				<button class="main-nav-toggle" type="button" >
+					<span class="fa fa-user fa-2x"></span>  [[loggeduser]] [[loggedrole]]  &nbsp; &nbsp; 
+				</button>
+				
+				<div class="main-nav-toggle"> <h4>[[practice]]</h4> </div>
+				
+				
+				<div class="navbar-tools">
+					<div class="utilities-container">
+					
+						<div class="utilities">
+						
+							<div class="item item-more" ng-class="{'open': headerPopup == 'settings'}">
+								<div class="dropdown-toggle" id="dropdownMenu-more" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'settings' ? '' : 'settings'">
+									<span class="sr-only">More</span>
+									<span aria-hidden="true" class="fs1 icon icon_grid-3x3" tooltip-placement="bottom" uib-tooltip="Settings &amp; Tools"></span>
+								</div>
+								
+								<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-more">
+									
+									<h4 class="title">Settings &amp; Tools</h4>
+									<ul class="more-list">
+										<li><a role="menuitem" href="user-settings.html"><span class="pe-icon pe-7s-config icon"></span><br>Settings</a></li>
+										<li><a role="menuitem" href="user-reminders.html"><span class="pe-icon pe-7s-clock icon"></span><br>Reminders</a></li>
+										<li><a role="menuitem" href="#help"><span class="pe-icon pe-7s-help2 icon"></span><br>Help</a></li>
+									</ul>
+								</div>						
+							</div>
+							
+						<div  class="user-container dropdown" ng-class="{'open': headerPopup == 'profile'}">
+						<div class="dropdown-toggle" id="dropdownMenu-user" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'profile' ? '' : 'profile'">
+						<!-- <img src="assets/images/profiles/profile-3.png" alt="" />  --> 
+						
+						<i class="fa fa-user-md fa-2x" aria-hidden="true"></i> Practice
+							<i class="fa fa-caret-down"></i> 
+						</div>
+						<ul  class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-user" >
+							<li ng-repeat="item in practices.practice"><span class="arrow"></span><a role="menuitem" href="#?practiceId=[[item.practiceId]]"><span class="fa fa-user-md fa-lg" aria-hidden="true"></span> [[item.name]]</a></li>
+						</ul>
+					<!--  	<ul ng-repeat="item in practices" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-user" >
+							<li><span class="arrow"></span><a role="menuitem" href="user-profile.html"><span class="pe-icon pe-7s-user icon"></span>My Account</a></li>
+							<li><a role="menuitem" href="pricing.html"><span class="pe-icon pe-7s-paper-plane icon"></span>Upgrade Plan</a></li>
+							<li><a role="menuitem" href="login.html"><span class="pe-icon pe-7s-power icon"></span>Sign Out</a></li>
+						</ul> -->
+					</div>
+						</div>
+						
+					</div>				
+				</div>
+			</div>
+		</header>		
+		
+	 	<div ng-view></div>  
+
+		<footer class="site-footer" ng-show="showFooter">
+		    <div class="copyright">Copyright &copy; 2016 - <a href="#">Bootstrap Admin Theme</a></div>
+		</footer>		<div id="side-panel" class="side-panel" ng-class="{'side-panel-open':headerPopup == 'side-panel'}">
+		    	<div class="config-panel hidden-xs" ng-class="{'config-panel-open': showConfigurator}">
+	  <!-- 	<div class="panel-inner">
+				<a class="config-trigger config-panel-hide" href="#" ng-click="showConfigurator = !showConfigurator"><i class="fa fa-cog"></i></a>
+				<div class="panel-section margin-bottom-md">
+					<h5 class="panel-title">Choose Colour</h5>
+					<ul id="color-options" class="list-unstyled list-unstyled">
+						<li class="theme-1 active" ><a ng-click="theme = 'theme-1'"></a></li>
+						<li class="theme-2"><a ng-click="theme = 'theme-2'"></a></li>
+						<li class="theme-3"><a ng-click="theme = 'theme-3'"></a></li>
+						<li class="theme-4"><a ng-click="theme = 'theme-4'"></a></li>
+					</ul>
+				</div>
+				<div class="panel-section">
+					<h5 class="panel-title">Toggles</h5>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showTopAlert" type="checkbox"> Top Alert
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showFooter" type="checkbox"> Footer
+						</label>
+					</div>
+				</div>
+				<a ng-click="showConfigurator = false" class="close" href="#"><span aria-hidden="true" class="icon icon_close"></span></a>
+			</div>  -->
+		</div>		
+			
+			    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-resource.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-route.js"></script>
+				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+				<script src="assets/js/angular-animate.js"></script>
+				
+				<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+				
+				<script src="assets/js/app-kit-tour.js"></script>
+				<script src="assets/js/jquery.js"></script>
+				<script src="assets/js/metisMenu.js"></script>
+				<script src="assets/js/masonry.js"></script>
+				<script src="assets/js/pace.js"></script>
+				<script src="assets/js/numeral.js"></script>
+				<script src="assets/js/jquery-data-tables.js"></script>
+				<script src="assets/js/jquery-data-tables-bs3.js"></script>
+				<script src="assets/js/jquery-jvectormap.js"></script>
+				<script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+				<script src="assets/js/jquery-charts-flot.js"></script>
+				<script src="assets/js/jquery-flot-tooltip.js"></script>
+				<script src="assets/js/jquery-flot-time.js"></script>
+				<script src="assets/js/jquery-charts-flot-pie.js"></script>
+				<script src="assets/js/jquery-flot-axislabels.js"></script>
+				<script src="assets/js/jquery-flot-symbol.js"></script>
+				<script src="assets/js/jquery-peity.js"></script>
+				<script src="assets/js/jquery-sparkline.js"></script>
+			
+				<script src="assets/js/ui-bootstrap-tpls.js"></script>
+				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.js"></script>
+				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.js"></script>
+				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+				
+			<!-- 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>  -->
+				
+				
+				
+				<script src="assets/js/alert.js"></script>
+				<script src="assets/js/tether.js"></script>
+				<script src="assets/js/tether-shepherd.js"></script>
+				
+				<script src="assets/js/angular-debounce.js"></script>
+				<script src="assets/js/ng-common.js"></script>
+				<script src="assets/js/ng-google-maps.js"></script>
+				<script src="assets/js/ng-flot.js"></script>
+				<script src="assets/js/ng-vector-map.js"></script>
+				
+				<script src="assets/js/ng-app.js"></script>
+				<script src="assets/js/ng-datatables.js"></script>
+				<script src="assets/js/ng-peity.js"></script>
+				<script src="assets/js/ng-sparkline.js"></script>
+				
+				<script src="assets/js/chosen-jquery.js"></script>
+				
+				<script src="assets/js/bootstrap3-wysihtml5.js"></script>
+				<script src="assets/js/jquery-todo-list.js"></script>
+				<script src="assets/js/icheck.js"></script>
+				
+				
+				<script src="assets/js/ng-chosen.js"></script>
+				<script src="assets/js/ng-jquery-todo.js"></script>
+				<script src="assets/js/bootstrap3-wysihtml5.js"></script>
+				
+				<script src="assets/js/ng-bootstrap-switch.js"></script>
+				<script src="assets/js/ng-icheck.js"></script>
+				<script src="assets/js/forms-chosen.js"></script>
+				<script src="assets/js/forms-wysihtml5.js"></script>
+				
+								
+			    <script src="assets/js/app-kit-datatables-demo-module.js"></script>
+			    <script src="assets/js/app-kit-datatables-demo-factory.js"></script>
+				<script src="assets/js/app-kit-datatables-demo-controller.js"></script>
+				<script src="assets/js/app-kit-datatables-demo-route.js"></script>
+				
+				
+				
+				</body>
+</html>

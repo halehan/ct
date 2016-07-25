@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html ng-app="appKitButtonsDemo">
+	<head>
+		<title>AppKit</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">    
+		<link rel="shortcut icon" href="assets/images/favicon.ico">  
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel='stylesheet' type='text/css'>
+				<link rel="stylesheet" href="assets/css/bootstrap.css">
+				<link rel="stylesheet" href="assets/css/metisMenu.css">
+				<link rel="stylesheet" href="assets/css/font-awesome.css">
+				<link rel="stylesheet" href="assets/css/elegant-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons.css">
+				<link rel="stylesheet" href="assets/css/pe-7-icons-helper.css">
+				<link rel="stylesheet" href="assets/css/tether-shepherd.css">
+				<link rel="stylesheet" href="assets/css/jstree-default.css">
+				<link rel="stylesheet" href="assets/css/styles.css">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>	<body app-kit-responsive class="preload [[theme]]" ng-class="{'compact': compact, 'mobile': mobile, 'nav-toggled': navOpen}">
+		<div class="alert alert-promo alert-dismissible slide text-center" role="alert" ng-if="showTopAlert">
+		    <span id="top-alert-close" aria-hidden="true" class="icon icon_close close" ng-click="$parent.showTopAlert = false"></span>
+		    <strong>Welcome to AppKit!</strong> Your trial will run out in 30 days  <a class="btn btn-success btn-sm margin-left-sm" href="pricing.html">Upgrade Now</a>
+		</div>		<header class="header">
+			<div class="branding float-left">
+				<h1 class="logo text-center">
+					<a href="index.html">
+						<img class="logo-icon" src="assets/images/logo-icon.svg" alt="icon" />
+						<span class="nav-label">
+							<span class="highlight">App</span>Kit
+						</span>
+					</a>
+				</h1>
+			</div>
+			<div class="topbar">
+				<button class="main-nav-toggle" type="button" ng-click="navOpen = !navOpen">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<i class="icon fa fa-caret-left"></i>
+				</button>
+				<div class="search-container">
+					<form id="main-search" class="main-search">
+		    			<i id="main-search-toggle" class="fa fa-search icon" ng-click="showSearch = !showSearch"></i>
+						<div id="main-search-input-wrapper" class="main-search-input-wrapper" ng-show="showSearch">
+		    				<input type="text" id="main-search-input" class="main-search-input form-control" placeholder="Search..." app-kit-focus-on="showSearch">
+		    				
+		    				<span id="clear-search" aria-hidden="true" class="fs1 icon icon_close_alt2 clear-search"></span>
+						</div>
+					</form>
+				</div>
+				<div class="navbar-tools">
+					<div class="utilities-container">
+						<div class="utilities">
+							<div class="item item-tour hidden-xs tour-trigger" tooltip-placement="bottom" uib-tooltip="Guided Tour" app-kit-tour ng-click="headerPopup = ''; tutorial = !tutorial" ><span class="sr-only">App Tour</span><span class="pe-icon pe-7s-info icon"></span></div>
+							<div class="item item-side-panel">
+		            			<i id="side-panel-toggle" class="side-panel-toggle panel-hide icon fa fa-signal" tooltip-placement="bottom" uib-tooltip="Activities" ng-click="headerPopup = headerPopup == 'side-panel' ? '' : 'side-panel'"><span class="badge badge-circle badge-warning">8</span></i>
+		        			</div>
+		        			
+							<div class="item item-notifications" ng-class="{'open': headerPopup == 'notifications'}">
+								<div class="dropdown-toggle" id="dropdownMenu-notifications" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'notifications' ? '' : 'notifications'">
+									<span class="sr-only">Notifications</span>
+									<span class="pe-icon pe-7s-bell icon" tooltip-placement="bottom" uib-tooltip="Notifiations"></span><span class="badge badge-circle badge-danger">3</span>
+								</div>
+								<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-notifications">
+									<span class="arrow"></span>
+									<div class="notification-items no-overflow">
+										<div class="item media">
+											<div class="media-left profile">
+												<img src="assets/images/profiles/profile-8.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="name">Albert E</span> <span class="action">replied to your comment</span> on "Maecenas tempus adipiscing consectetur adipiscing elit..."
+												</a>
+											</div>
+											<div class="meta">
+												2h ago
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img src="assets/images/profiles/profile-7.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="name">Julia A</span> <span class="action">sent you a message</span> "Hey Becky, thanks for doing this natoque penatibus et magnis dis parturient montes..."
+												</a>
+											</div>
+											<div class="meta">
+												1d ago
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img src="assets/images/profiles/profile-2.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="name">Rachel W</span> <span class="action">shared a file with you</span> "UX mocks for Nike"
+												</a>
+											</div>
+											<div class="meta">
+												3d ago
+											</div>
+										</div>
+									</div>  
+									<div class="dropdown-footer">
+										<a href="#">View all notifications</a>
+									</div>   						
+								</div> 
+							</div>
+							<div class="item item-messages dropdown" ng-class="{'open': headerPopup == 'messages'}">
+								<div class="dropdown-toggle" id="dropdownMenu-messages" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'messages' ? '' : 'messages'">
+									<span class="sr-only">Messages</span>
+									<span class="pe-icon pe-7s-mail icon" tooltip-placement="bottom" uib-tooltip="Messages"></span><span class="badge badge-circle badge-success">5</span>
+								</div>
+								<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-messages">
+									<span class="arrow"></span>
+									<div class="message-items no-overflow">
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-7.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Julia Arnold</span>
+													<span class="message-title display-block">Great News</span>
+													<span class="excerpt display-block">"Hey Becky, thanks for doing this natoque penatibus et magnis dis parturient montes..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Apr 6
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-1.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Ken Davison</span>
+													<span class="message-title display-block">RE: Help Needed</span>
+													<span class="excerpt display-block">"No problem. I can help with the luctus est eu ullamcorper laoreet..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Apr 2
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-4.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Ryan Baker</span>
+													<span class="message-title display-block">RE: UX resources for Nike</span>
+													<span class="excerpt display-block">"Hi Becky, can you send me the wireframes? I need the finalised version..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Mar 28
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-5.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Sarah West</span>
+													<span class="message-title display-block">Hello!</span>
+													<span class="excerpt display-block">"Hello there, lorem ipsum dolor sit amet, consectetur adipiscing elit duis luctus..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Mar 25
+											</div>
+										</div>
+										<div class="item media">
+											<div class="media-left profile">
+												<img class="profile" src="assets/images/profiles/profile-6.png" alt="" />
+											</div>
+											<div class="media-body">
+												<a href="#">
+													<span class="sender display-block">Carl Wilson</span>
+													<span class="message-title display-block">RE: Design Resource</span>
+													<span class="excerpt display-block">"Hi, Phasellus cursus libero quis ante commodo lobortis duis ac ante..."</span>
+												</a>
+											</div>
+											<div class="meta">
+												Mar 25
+											</div>
+										</div>
+									</div>
+									<div class="dropdown-footer">
+										<a href="user-messages.html">View all messages</a>
+									</div>  
+								</div>
+							</div>
+							<div class="item item-more" ng-class="{'open': headerPopup == 'settings'}">
+								<div class="dropdown-toggle" id="dropdownMenu-more" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'settings' ? '' : 'settings'">
+									<span class="sr-only">More</span>
+									<span aria-hidden="true" class="fs1 icon icon_grid-3x3" tooltip-placement="bottom" uib-tooltip="Settings &amp; Tools"></span>
+								</div>
+								<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-more">
+									<span class="arrow"></span>
+									<h4 class="title">Settings &amp; Tools</h4>
+									<ul class="more-list">
+										<li><a role="menuitem" href="user-settings.html"><span class="pe-icon pe-7s-config icon"></span><br>Settings</a></li>
+										<li><a role="menuitem" href="user-billing.html"><span class="pe-icon pe-7s-wallet icon"></span><br>Billing</a></li>
+										<li><a role="menuitem" href="user-drive.html"><span class="pe-icon pe-7s-pendrive icon"></span><br>Drive</a></li>
+										<li><a role="menuitem" href="user-messages.html"><span class="pe-icon pe-7s-chat icon"></span><br>Messages</a></li>
+										<li><a role="menuitem" href="user-reminders.html"><span class="pe-icon pe-7s-clock icon"></span><br>Reminders</a></li>
+										
+										<li><a role="menuitem" href="help.html"><span class="pe-icon pe-7s-help2 icon"></span><br>Help</a></li>
+									</ul>
+								</div>						
+							</div>
+						</div>
+					</div>
+					<div class="user-container dropdown" ng-class="{'open': headerPopup == 'profile'}">
+						<div class="dropdown-toggle" id="dropdownMenu-user" aria-expanded="true" role="button" ng-click="headerPopup = headerPopup == 'profile' ? '' : 'profile'">
+							<img src="assets/images/profiles/profile-3.png" alt="" />
+							<i class="fa fa-caret-down"></i>
+						</div>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-user" >
+							<li><span class="arrow"></span><a role="menuitem" href="user-profile.html"><span class="pe-icon pe-7s-user icon"></span>My Account</a></li>
+							<li><a role="menuitem" href="pricing.html"><span class="pe-icon pe-7s-paper-plane icon"></span>Upgrade Plan</a></li>
+							<li><a role="menuitem" href="login.html"><span class="pe-icon pe-7s-power icon"></span>Sign Out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>		<div class="main-nav-wrapper" ng-cloak>
+			<nav id="main-nav" class="main-nav">
+				<ul id="menu" app-kit-menu>
+					<li  class="nav-dashboards ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_house_alt"></span>
+								<span class="nav-label">Dashboards</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="index.html">
+												<span class="nav-label">Use Case 1</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class="nav-widgets ">
+							<a href="widgets.html">
+								<span aria-hidden="true" class="icon icon_drawer_alt"></span>
+								<span class="nav-label">Widgets</span>
+								<span class="badge badge-primary">12</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="projects.html">
+								<span aria-hidden="true" class="icon icon_toolbox_alt"></span>
+								<span class="nav-label">Projects</span>
+								<span class="badge">56</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="tickets.html">
+								<span aria-hidden="true" class="icon icon_box-checked"></span>
+								<span class="nav-label">Tickets</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="invoices.html">
+								<span aria-hidden="true" class="icon icon_documents_alt"></span>
+								<span class="nav-label">Invoices</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="discussions.html">
+								<span aria-hidden="true" class="icon icon_chat_alt"></span>
+								<span class="nav-label">Discussions</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="activities.html">
+								<span aria-hidden="true" class="icon icon_easel"></span>
+								<span class="nav-label">Activities</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="members.html">
+								<span aria-hidden="true" class="icon icon_group"></span>
+								<span class="nav-label">Members</span>
+								</a>
+					</li>
+					<li  class=" ">
+							<a href="inbox.html">
+								<span aria-hidden="true" class="icon icon_mail_alt"></span>
+								<span class="nav-label">Inbox</span>
+								<span class="badge">18</span>
+								</a>
+					</li>
+					<li  class="nav-app-pages ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_building"></span>
+								<span class="nav-label">App Pages</span>
+								<span class="badge badge-success">17</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="project.html">
+												<span class="nav-label">Project Details</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="member.html">
+												<span class="nav-label">Member Profile</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="discussion.html">
+												<span class="nav-label">Discussion Topic</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-profile.html">
+												<span class="nav-label">User Profile</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-settings.html">
+												<span class="nav-label">User Settings</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-billing.html">
+												<span class="nav-label">User Billing</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-messages.html">
+												<span class="nav-label">User Messages</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-drive.html">
+												<span class="nav-label">User Drive</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="user-reminders.html">
+												<span class="nav-label">User Reminders</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="pricing.html">
+												<span class="nav-label">Pricing</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="invoice.html">
+												<span class="nav-label">Invoice</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="timeline.html">
+												<span class="nav-label">Timeline</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="faq.html">
+												<span class="nav-label">FAQ</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="login.html">
+												<span class="nav-label">Login Page</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="signup.html">
+												<span class="nav-label">Signup Page</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="404.html">
+												<span class="nav-label">404 Page</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="500.html">
+												<span class="nav-label">500 Page</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" active">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_puzzle"></span>
+								<span class="nav-label">Components</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="typography.html">
+												<span class="nav-label">Typography</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="icons.html">
+												<span class="nav-label">Icons</span>
+												</a>
+									</li>
+									<li  class=" active">
+											<a href="buttons.html">
+												<span class="nav-label">Buttons</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="panels.html">
+												<span class="nav-label">Panels</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="tabs.html">
+												<span class="nav-label">Tabs</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="accordions.html">
+												<span class="nav-label">Accordions</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="maps.html">
+												<span class="nav-label">Maps</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="todo-list.html">
+												<span class="nav-label">Todo</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="carousels.html">
+												<span class="nav-label">Carousels</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="notifications.html">
+												<span class="nav-label">Notifications</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="draggable.html">
+												<span class="nav-label">Draggable</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="sortable.html">
+												<span class="nav-label">Sortable</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="nestable.html">
+												<span class="nav-label">Nestable</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="tree-view.html">
+												<span class="nav-label">Tree</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="loaders.html">
+												<span class="nav-label">Loaders</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="ui-misc.html">
+												<span class="nav-label">Other UI Elements</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_table"></span>
+								<span class="nav-label">Tables</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="tables-basic.html">
+												<span class="nav-label">Basic</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="tables-datatables.html">
+												<span class="nav-label">Datatables</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_pencil-edit"></span>
+								<span class="nav-label">Forms</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="forms-basic.html">
+												<span class="nav-label">Basic</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="forms-validation.html">
+												<span class="nav-label">Validation</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_piechart"></span>
+								<span class="nav-label">Charts</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="charts-chartjs.html">
+												<span class="nav-label">Chart.js</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="charts-flot.html">
+												<span class="nav-label">Flot Charts</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="charts-morris.html">
+												<span class="nav-label">Charts Morris</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="charts-inline.html">
+												<span class="nav-label">Inline Charts</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_calendar"></span>
+								<span class="nav-label">Calendars</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="calendar-1.html">
+												<span class="nav-label">Calendar v1</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li  class=" ">
+							<a href="#">
+								<span aria-hidden="true" class="icon icon_flowchart"></span>
+								<span class="nav-label">Menu Levels</span>
+								<span class="fa arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li  class=" ">
+											<a href="#">
+												<span class="nav-label">Subnav Level 1</span>
+												</a>
+									</li>
+									<li  class=" ">
+											<a href="#">
+												<span class="nav-label">Subnav Level 1</span>
+												<span class="fa arrow"></span>
+												</a>
+												<ul class="sub-menu">
+													<li  class=" ">
+															<a href="#">
+																<span class="nav-label">Subnav Level 2</span>
+																</a>
+													</li>
+													<li  class=" ">
+															<a href="#">
+																<span class="nav-label">Subnav Level 2</span>
+																</a>
+													</li>
+													<li  class=" ">
+															<a href="#">
+																<span class="nav-label">Subnav Level 2</span>
+																</a>
+													</li>
+												</ul>
+									</li>
+									<li  class=" ">
+											<a href="#">
+												<span class="nav-label">Subnav Level 1</span>
+												</a>
+									</li>
+								</ul>
+					</li>
+					<li role="presentation" class="divider ">
+					</li>
+					<li  class=" ">
+							<a href="help.html">
+								<span aria-hidden="true" class="icon icon_lifesaver"></span>
+								<span class="nav-label">Help</span>
+								<span class="label label-new">NEW</span>
+								</a>
+					</li>
+				</ul>
+			</nav>
+		</div>		<div ng-cloak class="content-wrapper view">
+	<div class="container-fluid">
+		<h2 class="view-title">Tabs</h2>
+		<div class="row" app-kit-masonry>
+			<app-kit-module title="Basic Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-default">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary">Primary Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger">Danger Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-link">Link Button</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Large Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-default btn-lg">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary btn-lg">Primary Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success btn-lg">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info btn-lg">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning btn-lg">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger btn-lg">Danger Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-link btn-lg">Link Button</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Small Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-default btn-sm">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary btn-sm">Primary Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success btn-sm">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info btn-sm">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning btn-sm">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger btn-sm">Danger Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-link btn-sm">Link Button</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Extra Small Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-default btn-xs">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary btn-xs">Primary Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success btn-xs">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info btn-xs">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning btn-xs">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger btn-xs">Danger Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-link btn-xs">Link Button</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="CTA Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-default"><i class="fa fa-play-circle"></i>Apply Now</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary"><i class="fa fa-play-circle"></i>Purchase Now</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info"><i class="fa fa-play-circle"></i>Join Now</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning"><i class="fa fa-play-circle"></i>Update Now</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger"><i class="fa fa-play-circle"></i>Upgrade Now</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Block Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-primary btn-block btn-lg">Block Button (Large)</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success btn-block">Block Button (Basic)</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning btn-block btn-sm">Block Button (Small)</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger btn-block btn-xs">Block Button (Extra small)</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="CTA Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button class="social-btn twitter-btn btn" type="button"><i class="fa fa-twitter"></i>Log in with Twitter</button>
+					</li>
+					<li>
+						<button class="social-btn facebook-btn btn" type="button"><i class="fa fa-facebook"></i>Log in with Facebook</button>
+					</li>
+					<li>
+						<button class="social-btn github-btn btn" type="button"><i class="fa fa-github-alt"></i>Log in with Github</button>
+					</li>
+					<li>
+						<button class="social-btn google-btn btn" type="button"><i class="fa fa-google-plus"></i>Log in with Google</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Alt Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-default-alt">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary-alt">Primary Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success-alt">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info-alt">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning-alt">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger-alt">Danger Button</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Oval Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-default btn-oval">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-default-alt btn-oval">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary btn-oval">Primary Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary-alt btn-oval">Primary Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success btn-oval">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success-alt btn-oval">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info btn-oval">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info-alt btn-oval">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning btn-oval">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning-alt btn-oval">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger btn-oval">Danger Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger-alt btn-oval">Danger Button</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Square Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-default btn-square">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-default-alt btn-square">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary btn-square">Primary Button</button>
+					</li>
+					<Li>
+						<button type="button" class="btn btn-primary-alt btn-square">Primary Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success btn-square">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success-alt btn-square">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info btn-square">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info-alt btn-square">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning btn-square">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning-alt btn-square">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger btn-square">Danger Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger-alt btn-square">Danger Button</button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="3D Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-unstyled">
+					<li>
+						<button type="button" class="btn btn-default-3d">Default Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary-3d">Primary Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success-3d">Success Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info-3d">Info Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning-3d">Warning Button</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger-3d">Danger Button</button>
+					</li>
+				</ul>
+				<ul class="list list-inline">
+					<li>
+						<button type="button" class="btn btn-default-3d btn-single-icon"><i class="fa fa-bullhorn icon-single"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary-3d btn-single-icon"><i class="fa fa-home icon-single"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success-3d btn-single-icon"><i class="fa fa-leaf icon-single"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info-3d btn-single-icon"><i class="fa fa-plane icon-single"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning-3d btn-single-icon"><i class="fa fa-pie-chart icon-single"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger-3d btn-single-icon"><i class="fa fa-heart icon-single"></i></button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Circle Buttons" wrapper-class="masonry-item col-lg-6 col-md-6 col-sm-12 col-xs-12"><pane-body>
+				<ul class="list list-inline">
+					<li>
+						<button type="button" class="btn btn-default btn-circle"><i class="fa fa-quote-right"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary btn-circle"><i class="fa fa-users"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success btn-circle"><i class="fa fa-thumbs-o-up"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info btn-circle"><i class="fa fa-star"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning btn-circle"><i class="fa fa-bell"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger btn-circle"><i class="fa fa-heart"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-default-alt btn-circle"><i class="fa fa-quote-right"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary-alt btn-circle"><i class="fa fa-users"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success-alt btn-circle"><i class="fa fa-thumbs-o-up"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info-alt btn-circle"><i class="fa fa-star"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning-alt btn-circle"><i class="fa fa-bell"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger-alt btn-circle"><i class="fa fa-heart"></i></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-default btn-circle"><span class="pe-icon pe-7s-trash icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary btn-circle"><span class="pe-icon pe-7s-share icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success btn-circle"><span class="pe-icon pe-7s-science icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info btn-circle"><span class="pe-icon pe-7s-smile icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning btn-circle"><span class="pe-icon pe-7s-diamond icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger btn-circle"><span class="pe-icon pe-7s-sun icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-default-alt btn-circle"><span class="pe-icon pe-7s-trash icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary-alt btn-circle"><span class="pe-icon pe-7s-share icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success-alt btn-circle"><span class="pe-icon pe-7s-science icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info-alt btn-circle"><span class="pe-icon pe-7s-smile icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning-alt btn-circle"><span class="pe-icon pe-7s-diamond icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger-alt btn-circle"><span class="pe-icon pe-7s-sun icon"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-default btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#xe0fa;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#xe081;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#xe008;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#xe007;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#x7e;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#x73;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-default-alt btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#xe0fa;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary-alt btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#xe081;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-success-alt btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#xe008;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-info-alt btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#xe007;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-warning-alt btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#x7e;"></span></button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger-alt btn-circle"><span class="fs1 icon clear-search" aria-hidden="true" data-icon="&#x73;"></span></button>
+					</li>
+				</ul>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Dropdowns" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Single</h4>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-default dropdown-toggle" uib-dropdown-toggle type="button">Default <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-primary dropdown-toggle" uib-dropdown-toggle type="button">Primary <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-success dropdown-toggle" uib-dropdown-toggle type="button">Success <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-info dropdown-toggle" uib-dropdown-toggle type="button">Info <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-warning dropdown-toggle" uib-dropdown-toggle type="button">Warning <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-danger dropdown-toggle" uib-dropdown-toggle type="button">Danger <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Split</h4>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-default" type="button">Default</button>
+							<button class="btn btn-default" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-primary" type="button">Primary</button>
+							<button class="btn btn-primary" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-success" type="button">Success</button>
+							<button class="btn btn-success" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-info" type="button">Info</button>
+							<button class="btn btn-info" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-warning" type="button">Warning</button>
+							<button class="btn btn-warning" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-danger" type="button">Danger</button>
+							<button class="btn btn-danger" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Single</h4>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-default-alt" uib-dropdown-toggle type="button">Default <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-primary-alt" uib-dropdown-toggle type="button">Primary <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-success-alt" uib-dropdown-toggle type="button">Success <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-info-alt" uib-dropdown-toggle type="button">Info <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-warning-alt" uib-dropdown-toggle type="button">Warning <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-danger-alt" uib-dropdown-toggle type="button">Danger <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Split</h4>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-default-alt" type="button">Default</button>
+							<button class="btn btn-default-alt" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-primary-alt" type="button">Primary</button>
+							<button class="btn btn-primary-alt" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-success-alt" type="button">Success</button>
+							<button class="btn btn-success-alt" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-info-alt" type="button">Info</button>
+							<button class="btn btn-info-alt" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-warning-alt" type="button">Warning</button>
+							<button class="btn btn-warning-alt" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="btn-group margin-bottom-sm" uib-dropdown>
+							<button class="btn btn-danger-alt" type="button">Danger</button>
+							<button class="btn btn-danger-alt" uib-dropdown-toggle type="button"><span class="caret"></span> <span class="sr-only">Toggle Dropdown</span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Button Groups" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Basic</h4>
+						<div class="btn-group margin-bottom-sm" role="group">
+							<button type="button" class="btn btn-default">Left</button>
+							<button type="button" class="btn btn-default">Middle</button>
+							<button type="button" class="btn btn-default">Right</button>
+						</div>
+						<div class="btn-group margin-bottom-sm" role="group">
+							<button type="button" class="btn btn-default btn-square">Left</button>
+							<button type="button" class="btn btn-default btn-square">Middle</button>
+							<button type="button" class="btn btn-default btn-square">Right</button>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Button Toolbar</h4>
+						<div class="btn-group margin-bottom-sm" role="group" aria-label="First group">
+							<button type="button" class="btn btn-default">1</button>
+							<button type="button" class="btn btn-default">2</button>
+							<button type="button" class="btn btn-default">3</button>
+							<button type="button" class="btn btn-default">4</button>
+						</div>
+						<div class="btn-group margin-bottom-sm" role="group" aria-label="Second group">
+							<button type="button" class="btn btn-default">5</button>
+							<button type="button" class="btn btn-default">6</button>
+							<button type="button" class="btn btn-default">7</button>
+						</div>
+						<div class="btn-group margin-bottom-sm" role="group" aria-label="Third group">
+							<button type="button" class="btn btn-default">8</button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Sizing</h4>
+						<div class="btn-group btn-group-lg margin-bottom-sm" role="group" aria-label="Large button group">
+							<button type="button" class="btn btn-default">Left</button>
+							<button type="button" class="btn btn-default">Middle</button>
+							<button type="button" class="btn btn-default">Right</button>
+						</div>
+						<br>
+						<div class="btn-group margin-bottom-sm" role="group" aria-label="Default button group">
+							<button type="button" class="btn btn-default">Left</button>
+							<button type="button" class="btn btn-default">Middle</button>
+							<button type="button" class="btn btn-default">Right</button>
+						</div>
+						<br>
+						<div class="btn-group btn-group-sm margin-bottom-sm" role="group" aria-label="Small button group">
+							<button type="button" class="btn btn-default">Left</button>
+							<button type="button" class="btn btn-default">Middle</button>
+							<button type="button" class="btn btn-default">Right</button>
+						</div>
+						<br>
+						<div class="btn-group btn-group-xs margin-bottom-sm" role="group" aria-label="Extra-small button group">
+							<button type="button" class="btn btn-default">Left</button>
+							<button type="button" class="btn btn-default">Middle</button>
+							<button type="button" class="btn btn-default">Right</button>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Nesting</h4>
+						<div class="btn-group margin-bottom-sm" role="group" aria-label="...">
+							<button type="button" class="btn btn-default">1</button>
+							<button type="button" class="btn btn-default">2</button>
+							<div class="btn-group margin-bottom-sm" role="group" uib-dropdown>
+								<button type="button" class="btn btn-default" uib-dropdown-toggle aria-expanded="false">
+									Dropdown
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Dropdown link</a></li>
+									<li><a href="#">Dropdown link</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Justified 1</h4>
+						<h6>With <code>&lt;a&gt;</code> elements</h6>
+						<div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+							<a href="#" class="btn btn-default" role="button">Left</a>
+							<a href="#" class="btn btn-default" role="button">Middle</a>
+							<a href="#" class="btn btn-default" role="button">Right</a>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 margin-bottom-sm">
+						<h4 class="has-divider">Justified 2</h4>
+						<h6>With <code>&lt;button&gt;</code> elements</h6>
+						<div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+							<div class="btn-group margin-bottom-sm" role="group">
+								<button type="button" class="btn btn-default">Left</button>
+							</div>
+							<div class="btn-group margin-bottom-sm" role="group">
+								<button type="button" class="btn btn-default">Middle</button>
+							</div>
+							<div class="btn-group margin-bottom-sm" role="group">
+								<button type="button" class="btn btn-default">Right</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</pane-body></app-kit-module>
+			<app-kit-module title="Angular Integration" wrapper-class="masonry-item col-lg-12 col-md-12 col-sm-12 col-xs-12"><pane-body>
+				<div ng-controller="AppKitButtonsDemo">
+					<h4 class="has-divider">Single toggle</h4>
+					<pre>[[singleModel]]</pre>
+					<button type="button" class="btn btn-primary" ng-model="singleModel" uib-btn-checkbox btn-checkbox-true="'On'" btn-checkbox-false="'Off'">
+						Toggle
+					</button>
+
+					<h4 class="has-divider">Checkbox</h4>
+					<pre>Model: [[checkModel]]</pre>
+					<div class="btn-group">
+						<label class="btn btn-primary" ng-model="checkModel.left" uib-btn-checkbox>Left</label>
+						<label class="btn btn-primary" ng-model="checkModel.middle" uib-btn-checkbox>Middle</label>
+						<label class="btn btn-primary" ng-model="checkModel.right" uib-btn-checkbox>Right</label>
+					</div>
+
+					<h4 class="has-divider">Radio</h4>
+					<pre>[[radioModel]]</pre>
+					<div class="btn-group">
+						<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Left'">Left</label>
+						<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Middle'">Middle</label>
+						<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'">Right</label>
+					</div>
+				</div>
+			</pane-body></app-kit-module>
+		</div>
+	</div>
+</div>
+		<footer class="site-footer" ng-show="showFooter">
+		    <div class="copyright">Copyright &copy; 2016 - <a href="#">Bootstrap Admin Theme</a></div>
+		</footer>		<div id="side-panel" class="side-panel" ng-class="{'side-panel-open':headerPopup == 'side-panel'}">
+		    <div class="side-panel-inner">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="headerPopup = ''"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="title text-center"><i class="fa fa-signal"></i>Activities</h4>
+		        <div class="items-wrapper">
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-warning btn-circle">
+		                        <i class="icon fa fa-flag"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <strong>We have increased your storage to 10GB for Free!</strong>
+		                    </div>
+		                    <div class="excerpt">
+		                        System notification
+		                    </div>
+		                    <div class="time-stamp">5 days ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <img class="user-profile" src="assets/images/profiles/profile-20.png" alt="" />
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="member.html">David Thomson</a> followed you.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="role">Full-Stack Developer</div>
+		                        <div class="folowers"><span>12 Projects</span> | <span class="folowers">43 Followers</span></div>
+		                    </div>
+		                    <div class="time-stamp">3 mins ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-danger btn-circle">
+		                        <i class="icon fa fa-heart"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Julie Wu</a> favourited your post.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Love your new design! Keep up the great work..."</em></div>
+		                    </div>
+		                    <div class="time-stamp">1 week ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <img class="user-profile" src="assets/images/profiles/profile-15.png" alt="" />
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Julie Wu</a> followed you.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="role">Product Designer</div>
+		                        <div class="folowers"><span>3 Projects</span> | <span class="folowers">8 Followers</span></div>
+		                    </div>
+		                    <div class="time-stamp">2 weeks ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-info btn-circle">
+		                        <i class="icon fa fa-at"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">James Lee</a> mentioned you on <a href="#">Project Lorem</a>.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Looks cool @Rebecca White"</em></div>
+		                    </div>
+		                    <div class="time-stamp">2 weeks ago</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-success btn-circle">
+		                        <i class="icon fa fa-commenting"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Chris Adams</a> commented on <a href="#">Discussion Lorem</a>.
+		                    </div>
+		                    <div class="excerpt">
+		                        <div class="quote-text"><em>"Can we improve the review process? At the moment consectetuer adipiscing elit..."</em></div>
+		                    </div>
+		                    <div class="time-stamp">Jan 10, 2016</div>
+		                </div>
+		            </div>
+		            <div class="item">
+		                <div class="symbol-holder">
+		                    <button class="icon-container btn btn-pink btn-circle">
+		                        <i class="icon fa fa-thumbs-up"></i>
+		                    </button>
+		                </div>
+		                <div class="content-holder">
+		                    <div class="subject-line">
+		                        <a class="name" href="#">Kat Schultz</a> liked your discussion <a href="#">Discussion Lorem</a>.
+		                    </div>
+		                    <div class="time-stamp">Jan 8, 2016</div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>		<div class="config-panel hidden-xs" ng-class="{'config-panel-open': showConfigurator}">
+			<div class="panel-inner">
+				<a class="config-trigger config-panel-hide" href="#" ng-click="showConfigurator = !showConfigurator"><i class="fa fa-cog"></i></a>
+				<div class="panel-section margin-bottom-md">
+					<h5 class="panel-title">Choose Colour</h5>
+					<ul id="color-options" class="list-unstyled list-unstyled">
+						<li class="theme-1 active" ><a ng-click="theme = 'theme-1'"></a></li>
+						<li class="theme-2"><a ng-click="theme = 'theme-2'"></a></li>
+						<li class="theme-3"><a ng-click="theme = 'theme-3'"></a></li>
+						<li class="theme-4"><a ng-click="theme = 'theme-4'"></a></li>
+					</ul>
+				</div>
+				<div class="panel-section">
+					<h5 class="panel-title">Toggles</h5>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showTopAlert" type="checkbox"> Top Alert
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input ng-model="showFooter" type="checkbox"> Footer
+						</label>
+					</div>
+				</div>
+				<a ng-click="showConfigurator = false" class="close" href="#"><span aria-hidden="true" class="icon icon_close"></span></a>
+			</div>
+		</div>		
+				<script src="assets/js/jquery.js"></script>
+				<script src="assets/js/metisMenu.js"></script>
+				<script src="assets/js/masonry.js"></script>
+				<script src="assets/js/pace.js"></script>
+				<script src="assets/js/angular.js"></script>
+				<script src="assets/js/angular-animate.js"></script>
+				<script src="assets/js/ui-bootstrap-tpls.js"></script>
+				<script src="assets/js/tether.js"></script>
+				<script src="assets/js/tether-shepherd.js"></script>
+				<script src="assets/js/angular-debounce.js"></script>
+				<script src="assets/js/ng-common.js"></script>
+				<script src="assets/js/ng-google-maps.js"></script>
+				<script src="assets/js/app-kit-tour.js"></script>
+				<script src="assets/js/ng-app.js"></script>
+				<script src="assets/js/app-kit-buttons-demo.js"></script>
+	</body>
+</html>

@@ -1,0 +1,298 @@
+<div ng-controller="dashboard" class="main-nav-wrapper" ng-cloak>
+			<nav  id="main-nav" class="main-nav">
+				<ul id="menu" app-kit-menu>
+					<li  class="nav-dashboards">
+							<a href="#">
+								<span aria-hidden="true" class="fa fa-tachometer"></span>
+								<span class="nav-label">Site - Dashboard</span>
+								<span class="fa arrow"></span>
+								</a>
+								
+						<ul class="sub-menu">
+							<li ng-repeat="item in sites"><span class="arrow"></span><a role="menuitem" href="#sitedash?siteId=[[item.siteId]]&practiceId=[[practiceId]]"><span class="fa fa-user-md fa-lg" aria-hidden="true"></span> [[item.name]]-[[item.city]]</a></li>
+						</ul>
+						
+					</li>
+					
+					<li  class="nav-dashboards">
+							<a href="#charts">
+								<span aria-hidden="true" class="fa fa-bar-chart"></span>
+								<span class="nav-label">Site Metrics </span>
+								<span class="fa arrow"></span>
+								</a>
+								
+						<ul class="sub-menu">
+							<li ng-repeat="item in sitemetrics"><span class="arrow"></span><a role="menuitem" href=[[item.href]]><span class="fa fa-user-md fa-lg" aria-hidden="true"></span> [[item.menuName]]</a></li>
+						</ul>
+						
+					</li>
+					
+					<li  class=" ">
+							<a href="#equipment?siteId=[[globalSite]]&practiceId=[[practiceId]]">
+								<span aria-hidden="true" class="fa fa-stethoscope" ></span>
+								<span class="nav-label">Site Equipment</span>
+							</a>
+					</li>
+					
+				<!-- 	<li  class=" ">
+							<a href="#staff?siteId=[[globalSite]]&practiceId=[[practiceId]]">
+								<span aria-hidden="true" class="fa fa-stethoscope" ></span>
+								<span class="nav-label">Site Staff</span>
+							</a>
+					</li>  -->
+					
+					<li  class=" ">
+							<a href="#siteStaffUpdate?siteId=[[globalSite]]&practiceId=[[practiceId]]">
+								<span aria-hidden="true" class="fa fa-stethoscope" ></span>
+								<span class="nav-label">Staff Maintenance</span>
+							</a>
+					</li>
+				</ul>
+			</nav>
+		</div>	
+
+<div ng-cloak class="content-wrapper view">
+	<div ng-controller="siteDashboard" class="container-fluid">
+		<h2 class="view-title">Site - [[site.abbreviatedName]]</h2>
+		
+		<div class="row">
+		<div  style="padding-left: 0px;">
+		<h4 style="padding-left: 15px;">Patient Centric Charts</h4>
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-a">
+					 <div id="siteCandidate" style="width: 475px; height: 175px; padding: 0px;"  class="chart-container" ></div>
+					 <div class="info-container" style="width: 475px; height: 300px;">
+					 <p class="intro">Patient Candidate Progress.  Recruitment of potential patients</p>
+					 <table>
+					 	<tr ng-repeat="chart in candidates">
+					 		<td><h3 class="title"><span class="figure">[[chart.count]]</span><span class="note">Candidates - [[chart.name]]</span></h3></td>
+					    </tr>
+					 </table>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-a">
+					 <div id="siteFailed" style="width: 475px; height: 175px; padding: 0px;"  class="chart-container" ></div>
+					 <div class="info-container" style="width: 475px; height: 300px;">
+					 <p class="intro">Patient Fail Rate.  Screen failure of potential patients</p>
+					 <table>
+					 	<tr ng-repeat="chart in failed">
+					 		<td><h3 class="title"><span class="figure">[[chart.count]]</span><span class="note">Candidates - [[chart.name]]</span></h3></td>
+					    </tr>
+					 </table>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-c">
+					
+					 <div id="siteEnrolled" style="width: 475px; height: 175px; padding: 0px;"  class="chart-container" ></div>
+					 <div class="info-container" style="width: 475px; height: 300px;">
+							<p class="intro">Patient Enrollment Progress. Enrolled Patients</p>
+							<table>
+					 			<tr ng-repeat="chart in enrolled">
+					 				<td><h3 class="title"><span class="figure">[[chart.count]] </span><span class="note">Patients - [[chart.name]]</span></h3></td>
+					    		</tr>
+					 		</table>
+						
+					</div>
+				</section>
+			</div>
+			</div>
+		    </div>
+		   <div class="row">
+		   <div  style="padding-left: 0px;">
+		   <h4 style="padding-left: 15px;">Miscellaneous Charts</h4>
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-b">
+				 		<div id="docCounts"  style="width: 475px; height: 175px; padding: 0px;" class="chart-container">  </div>
+						<div class="info-container" style="width: 475px;">
+							<p class="intro">Physician Enrollment. Enrolled Patients per Physician</p>
+							<table>
+					 			<tr ng-repeat="chart in docs">
+					 				<td><h3 class="title"><span class="figure">[[chart.count]] </span><span class="note">Patients - [[chart.name]]</span></h3></td>
+					    		</tr>
+					 		</table>
+						</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-a">
+					 <div id="deviationCount" style="width: 475px; height: 175px; padding: 0px;"  class="chart-container" ></div>
+					 <div class="info-container" style="width: 475px;">
+					 <p class="intro">Deviation Counts.  Deviations across Site and Study</p>
+					 <table>
+					 	<tr ng-repeat="chart in deviationCounts">
+					 		<td><h3 class="title"><span class="figure">[[chart.count]]</span><span class="note">Deviations - [[chart.name]]</span></h3></td>
+					    </tr>
+					 </table>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-a">
+					 <div id="deviationStudyCount" style="width: 475px; height: 175px; padding: 0px;"  class="chart-container" ></div>
+					 <div class="info-container" style="width: 475px;">
+					 <p class="intro">Staff Deviation Counts.  staff Deviations across Site and Study</p>
+					 <table>
+					 	<tr ng-repeat="chart in deviationStaffCounts">
+					 		<td><h3 class="title"><span class="figure">[[chart.count]]</span><span class="note">Deviations - [[chart.name]]</span></h3></td>
+					    </tr>
+					 </table>
+				</section>
+			</div>
+		<!-- 	<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-d">
+					<div class="widget-inner">
+						<div id="piechart_ct"  class="chart-container">
+					
+						</div>
+						<div class="info-container">
+							<p class="intro">Patient Candidate Progress</p>
+							<h3 class="title"><span class="figure">[[expiredcount]]</span><span class="note">Expired Candidate</span></h3>
+							<h3 class="title"><span class="figure">[[onschedule]]</span><span class="note">On Schedule</span></h3>
+							
+						</div>
+					</div>
+				</section>
+			</div>  -->
+		</div>
+		</div>
+		<div class="row">
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-a">
+					<div class="widget-inner">
+						
+            			</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-b">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<peity-bar-chart class="peity-full-width" options='{ "fill": ["#58bbee","#4192C1"], "width": "100%", "height":60}' data='[5,3,9,6,5,9,7,3,5,2,4,8,2,3]'></peity-bar-chart>
+						</div>
+						<div class="info-container">
+							<p class="intro">Total Patient Candidates</p>
+							<h3 class="title"><span class="figure">[[candidateCount]]</span><span class="note">Patient Candidates</span></h3>
+							<h3 class="title"><span class="figure">[[candidateStudies]]</span><span class="note">Clinical Studies</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-c">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<peity-donut-chart class="peity-full-width" options='{ "fill": ["#F8A13F", "#FFDCB4"], "radius": 32, "innerRadius": 26}' data='["32/49"]'></peity-donut-cchart>
+						</div>
+						<div class="info-container">
+							<p class="intro">Candidate Recruitment Achievement</p>
+							<h3 class="title"><span class="figure">22%</span><span class="note">Engagement</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-d">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<peity-pie-chart class="peity-full-width" options='{ "fill": ["#80D7D9", "#208A8D"], "radius": 32}' data='[2.2,4]'></peity-pie-chart>
+						</div>
+						<div class="info-container">
+							<p class="intro">Study Fail Rate</p>
+							<h3 class="title"><span class="figure">25%</span><span class="note">Study Fail Rate</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-sm widget-sm-d">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<peity-pie-chart class="peity-full-width" options='{ "fill": ["#80D7D9", "#208A8D"], "radius": 32}' data='[2.2,4]'></peity-pie-chart>
+						</div>
+						<div class="info-container">
+							<p class="intro">Total Patients Enrolled</p>
+							<h3 class="title"><span class="figure">[[enrolledCount]]</span><span class="note">Patients Enrolled</span></h3>
+							<h3 class="title"><span class="figure">[[enrolledStudies]]</span><span class="note">Clinical Studies</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="row">
+			<div  style="padding-left: 0px;">
+			
+		<div class="row">
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-xs widget-xs-a">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<sparkline-line-chart class="sparkline-line-mini" data='[1,4,4,7,5,9,10,5,6,8,6]' options="sparkline1options"></sparkline-line-chart>
+						</div>
+						<div class="info-container">
+							<h3 class="title"><span class="figure">$26,765</span><span class="note">Current Month Sales</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-xs widget-xs-b">
+					<div class="widget-inner">
+						<div class="chart-container">
+							<sparkline-bar-chart class="sparkline-bar-mini" data='[6,6,5,7,8,9,8,7]' options="sparkline2options"></sparkline-bar-chart>
+						</div>
+						<div class="info-container">
+							<h3 class="title"><span class="figure">160,250</span><span class="note">Site Visitors</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-xs widget-xs-c">
+					<div class="widget-inner">
+						<div class="icon-container">
+							<span class="pe-icon pe-7s-piggy icon"></span>
+						</div>
+						<div class="info-container">
+							<h3 class="title"><span class="figure">20%</span><span class="note">Overall Savings</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="widget-wrapper col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-xs widget-xs-d">
+					<div class="widget-inner">
+						<div class="icon-container">
+							<span class="pe-icon pe-7s-cloud-upload icon"></span>
+						</div>
+						<div class="info-container">
+							<h3 class="title"><span class="figure">500GB</span><span class="note">Cloud Storage</span></h3>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-event">
+					<div class="widget-inner">
+						<div class="figure-container">
+							
+							
+						</div>
+					</div>
+				</section>
+			</div>
+			
+			<div class="widget-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<section class="widget widget-profile">
+					<div class="widget-inner">
+					
+					</div>
+				</section>
+			</div>
+			
+		</div>
+	</div>
+</div>
