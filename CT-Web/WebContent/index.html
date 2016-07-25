@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html ng-app="ui.bootstrap.demo">
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+  <!--   <script src="example.js"></script>  -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  
+  
+<meta charset="ISO-8859-1">
+<title>CT-Recruiter and Workflow Management System</title>
+
+<script type="text/javascript">
+angular.module('ui.bootstrap.demo').controller('ButtonsCtrl', function ($scope) {
+	  $scope.singleModel = 1;
+
+	  $scope.radioModel = 'Middle';
+
+	  $scope.checkModel = {
+	    left: false,
+	    middle: true,
+	    right: false
+	  };
+
+	  $scope.checkResults = [];
+
+	  $scope.$watchCollection('checkModel', function () {
+	    $scope.checkResults = [];
+	    angular.forEach($scope.checkModel, function (value, key) {
+	      if (value) {
+	        $scope.checkResults.push(key);
+	      }
+	    });
+	  });
+	});
+</script>
+
+<!-- 
+<script type="text/javascript">
+function submitform()
+{
+  document.login.submit();
+}
+</script>
+-->
+
+</head>
+<body>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CT-Recruiter and Workflow Management System</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form name="login" action="dashboard.html" class="navbar-form navbar-right" method="POST">
+            <div class="form-group">
+              <input name="userId" placeholder="UserId" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <input name="password" placeholder="Password" class="form-control" type="password">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome</h1>
+        <p>CT-Recruiter and Workflow Management System is a system that provides real time updates and allows logical tracking of Clinical trial patient recruitment and trial process activity</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+   <!--    <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div>
+      </div>
+      -->
+      
+
+
+
+      
+
+      <hr>
+
+      <footer>
+        <p>© 2015 Halehan Consulting Group, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+ <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/CT-Recruiter.js"></script>
+    
+    
+  
+
+</body>
+</html>

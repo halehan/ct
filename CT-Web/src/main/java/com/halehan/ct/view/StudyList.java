@@ -1,0 +1,20 @@
+package com.halehan.ct.view;
+
+public class StudyList {
+	
+	String studyName = "";
+	String studyId = "";
+	public String getStudyName() {
+		return studyName;
+	}
+	public void setStudyName(String studyName) {
+		this.studyName = studyName;
+	}
+	public String getStudyId() {
+		return studyId;
+	}
+	public void setStudyId(String studyId) {
+		this.studyId = studyId;
+	}
+
+}

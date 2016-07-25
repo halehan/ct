@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta charset="utf-8"><meta name="author" content="">
+    
+    
+
+ <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/CT-Recruiter.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+   
+	<meta charset="ISO-8859-1">
+	<title>CT-Recruiter</title>
+	
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/knockout-3.4.0-debug.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+	
+	
+	<script>
+	
+	
+	$(document).ready(function()
+	
+	{  
+		function Model(data) {
+			var self = this;
+			self.Item = ko.observable(data);
+		}
+		function ViewModel(){
+			var self = this;
+			this.dataCollection = ko.observableArray([]);
+			
+			var mappeddata = $.map(["Steve","Bill","Buffet"], function (d) {
+				return new Model(d);
+			});
+			
+			self.dataCollection(mappeddata);
+		}
+		
+		});  
+	
+	</script>
+	
+</head>
+<body>
+
+
+    <div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+         
+          <ol class="breadcrumb">
+  			<li><a href="dashboard.html">Home</a></li>
+  			<li><a href="#">New Patient</a></li>
+		 </ol>
+		 
+ 	 <select data-bind="options:dataCollection,optionsText: 'Item'"> </select>  
+		 
+		
+		 
+		  <div class="table-responsive">
+            <table class="table table-striped table-condensed">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Birthday</th>
+                  <th>Study Eye</th>
+                  <th>Clinical Study</th>
+                  <th>Study Location</th>
+                  <th>Phone Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="success">
+                  <td>John Doe</td>
+                  <td>3/24/1952</td>
+                  <td> <i class="glyphicon glyphicon-eye-close"></i> OS</td>
+                  <td>Alcon Dry Macular</td>
+                  <td>Pensacola</td>
+                  <td>(850)823-9877</td>
+                  <td><i class="glyphicon glyphicon-pencil"></i></td>
+                </tr>
+                <tr class="success">
+                  <td>Jane Doe</td>
+                  <td>3/24/1959</td>
+                  <td><i class="glyphicon glyphicon-eye-close"></i> OS</td>
+                  <td>Merk Junky Eye</td>
+                  <td>Pensacola</td>
+                  <td>(850)823-9877</td>
+                 <td><i class="glyphicon glyphicon-pencil"></i></td>
+              
+                </tr>
+                <tr class="success">
+                  <td>Thomas Hobbes</td>
+                  <td>3/24/1952</td>
+                  <td><i class="glyphicon glyphicon-eye-open"></i> OD</td>
+                  <td>Alcon Dry Macular</td>
+                  <td>Pensacola</td>
+                  <td>(850)823-9877</td>
+                  <td><i class="glyphicon glyphicon-pencil"></i></td>
+                </tr>
+                <tr class="success">
+                  <td>John Locke</td>
+                  <td>3/24/1952</td>
+                  <td><i class="glyphicon glyphicon-eye-open"></i> OD</td>
+                  <td>Alcon Dry Macular</td>
+                  <td>Pensacola</td>
+                  <td>(850)823-9877</td>
+                  <td><i class="glyphicon glyphicon-pencil"></i></td>
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
+
+          
+
+          
+
+
+          
+        </div> <!--  keep  -->
+      </div>  <!--  Row end -->
+      
+
+      
+</div>  <!-- Container End -->
+
+</body>
+    
+    
+   
+    
+    
+
+</html>

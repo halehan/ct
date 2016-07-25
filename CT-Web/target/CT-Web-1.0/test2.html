@@ -1,0 +1,83 @@
+<html>
+<head>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/knockout-3.4.0.js"></script>
+<script src="js/knockout-mapping.js"></script>
+
+<script>
+
+$(document).ready(function() {
+    var viewModel = {};
+     
+   var baseUrl = "http://localhost:8080/CT-Web/api/patient/list";
+   var json = $.getJSON(baseUrl, function(data){
+    });
+    $("#output").text(JSON.stringify(json));
+    
+   
+    
+//  var fuck = ko.mapping.fromJS(data, viewModel);
+   var you = ko.mapping.fromJS(json, viewModel);  
+   
+    
+ console.dir(json); 
+   
+//    var data =  '{"Employees":[{"EmployeeId":1,"EmployeeName":"X","EmployeeNumber":"1","EmployeePassword":"x","EmployeeRole":"User"},{"EmployeeId":10,"EmployeeName":"S","EmployeeNumber":"21","EmployeePassword":"s","EmployeeRole":"Admin"}]}';
+        viewModel.model = ko.mapping.fromJSON(json);
+        console.dir(viewModel);    
+         $("#output").text(viewModel);
+        ko.applyBindings(viewModel);
+         $("#output").text(viewModel);
+});
+
+</script>
+
+</head>
+<body>
+<table>
+<thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Number
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Role
+        </th>
+    </tr>
+</thead>
+<tbody data-bind="foreach: model.patient">
+    <tr>
+        <td>
+            <span data-bind="text: birthdate"></span>
+        </td>
+        <td>
+            <span data-bind="text: location"></span>
+        </td>
+        <td>
+            <span data-bind="text: name"></span>
+        </td>
+        <td>
+            <span data-bind="text: phone"></span>
+        </td>
+        <td>
+            <span data-bind="text: study"></span>
+        </td>
+    </tr>
+</tbody>
+</table>
+</body>
+
+</html>
+
+
+

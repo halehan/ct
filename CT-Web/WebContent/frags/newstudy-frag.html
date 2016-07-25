@@ -1,0 +1,218 @@
+
+    <script type="text/javascript" src="../BootstrapFormHelpers-master/dist/js/bootstrap-formhelpers.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="../js/moment.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.js"></script>
+       <script type="text/javascript">
+     
+      $(function () {
+                $('#datepicker1').datepicker();
+            });
+     
+     $(function () {
+                $('#datepicker2').datepicker();
+            });
+     
+     function save() {
+     
+     $.ajax({
+            url: 'study/create',
+            type: 'POST',
+            contentType: "application/json",
+            data: ko.toJSON(viewModel),
+			success: function (data, status, jqXHR) {
+    			$("#container").html(data);
+    				$.alert('Study successfully created', {autoClose: true, closeTime: 2000, type: 'success', minTop: 10});
+  					},
+  			error: function (jqXHR, status, err) {
+    			$.alert('Error creating Study', {autoClose: true, closeTime: 2000, type: 'danger', minTop: 10});
+  					},
+  			complete: function (jqXHR, status) {
+    		//	alert("Local completion callback.");
+  					}
+  	  }); 
+     
+    };
+    
+    function TaskListViewModel() {
+    		// Data
+    		var self = this;
+    		self.viewModel = {}; 
+    			
+    		var baseUrl = "study/seed";
+    		var data = $.getJSON(baseUrl, function (data) {
+         		viewModel = ko.mapping.fromJS(data);
+         	    ko.applyBindings(viewModel);
+         	
+    		});
+    			console.log(viewModel);
+    			
+    }
+   
+		$(document).ready(function () {
+		    TaskListViewModel();
+    		
+		});
+		
+	
+     </script>
+   
+   
+   
+    <div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+         
+		<form class="form-horizontal" data-toggle="validator" role="form">
+          
+         <div class="panel panel-default">
+  			<div class="panel-body">
+           <h3 class="sub-header">New Study</h3>
+ 		<form class="form-horizontal">
+ 		
+ 		
+
+<div class="form-group">
+  <label class="col-md-1 control-label" for="textinput">Name</label>  
+  <div class="col-md-4">
+  	<input data-bind="textInput:  study.studyName" type="text" class="form-control" id="inputName" placeholder="Study Name" required>  
+  </div>
+  <label class="col-md-2 control-label" for="textinput">Short Name</label>  
+  <div class="col-md-4">
+  	<input data-bind="textInput:  study.shortName" type="text" class="form-control" id="inputName" placeholder="Short Name">  
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <label class="col-md-1 control-label" for="textinput">Study Description</label>  
+  <div class="col-md-4">
+  	<input data-bind="textInput:  study.studyName" type="text" class="form-control" id="inputName" placeholder="Study Name" required>  
+  </div>
+  <label class="col-md-2 control-label" for="textinput">Study Identifier</label>  
+  <div class="col-md-4">
+  	<input data-bind="textInput:  study.shortName" type="text" class="form-control" id="inputName" placeholder="Short Name">  
+  </div>
+ </div>
+
+ 		
+ 		
+  			<div class="form-group">
+    			<label for="inputName" class="col-sm-4 control-label">Name</label>
+    			<div class="col-sm-5">
+      				<input data-bind="textInput:  study.studyName" type="text" class="form-control" id="inputName" placeholder="Study Name" required>  
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<label for="inputName" class="col-sm-4 control-label">Short Name</label>
+    			<div class="col-sm-5">
+      				<input data-bind="textInput:  study.shortName" type="text" class="form-control" id="inputName" placeholder="Short Name">  
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<label for="inputName" class="col-sm-2 control-label">Study Description</label>
+    			<div class="col-sm-5">
+      				<input data-bind="textInput:  study.studyDescription" type="text" class="form-control" id="inputName" placeholder="Study Descrption">  
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<label for="inputName" class="col-sm-2 control-label">Study Identifier</label>
+    			<div class="col-sm-5">
+      				<input data-bind="textInput:  study.studyIdentifier" type="text" class="form-control" id="inputName" placeholder=".Gov Study Identifier">  
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<label for="inputName" class="col-sm-2 control-label">Drug Name</label>
+    			<div class="col-sm-5">
+      				<input data-bind="textInput:  study.drugName" type="text" class="form-control" id="inputName" placeholder="Drug Name">  
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<label for="inputName" class="col-sm-2 control-label">Company</label>
+    			<div class="col-sm-5">
+      				<input data-bind="textInput:  study.companyName" type="text" class="form-control" id="inputName" placeholder="Company Name" required>  
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<label for="inputDob" class="col-sm-2 control-label">POC Name</label>
+    			<div class="col-sm-5">
+      				<input data-bind="textInput:  study.pocName" type="text" class="form-control" id="inputDob" placeholder="Poc Name" required>  
+    			</div>
+  			</div> 
+  			
+  			 <div class="form-group">
+    			<label for="inputEmail" class="col-sm-2 control-label">POC Email</label>
+    			<div class="col-sm-5">
+    			<input data-bind="textInput:  study.pocEmail" type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Invalid Email Address" required>
+    			
+    			</div>
+    			<div class="help-block with-errors"></div>
+ 			 </div>
+  			
+  			<div class="form-group">
+    			<label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+    			<div class="col-sm-5">
+      				<input data-bind="textInput:  study.pocPhone" type="text" class="form-control bfh-phone" data-format="(ddd) ddd-dddd" placeholder="Phone" required>  
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<label for="inputDob" class="col-sm-2 control-label">Start Date</label>
+    			 <div class='col-sm-5 input-group date' id='datepicker1' style='padding-left: 15px;'>
+      				<input data-bind="textInput:  study.startDate" id="startdate"  type="text" class="form-control"  placeholder="Start Date" required>
+      				<span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+    			</div>
+  			</div> 
+  			
+  			<div class="form-group">
+    			<label for="inputDobz" class="col-sm-2 control-label">End Date</label>
+    			 <div class='col-sm-5 input-group date' id='datepicker2' style='padding-left: 15px;'>
+      				<input data-bind="textInput:  study.endDate" id="enddate"  type="text" class="form-control"  placeholder="End Date" required>
+      				<span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+    			</div>
+  			</div>   
+  					
+  			
+  			<div class="form-group">
+    			<label for="inputName" class="col-sm-2 control-label">Patient Enrollment Goal</label>
+    			<div class="col-sm-5">
+      				<input data-bind="textInput:  study.studyEnrollmentGoal" class="form-control" id="inputName" placeholder="Patient Enrollment Goal" required>  
+    			</div>
+  			</div>
+  			
+  			
+  			
+  			
+  		 	
+ <div class="form-group">
+    			<div class="col-sm-offset-2 col-sm-10">
+     			<!-- 	<button data-bind="click: save" type="button" class="btn btn-primary">Save</button>  -->
+     				<button data-bind="click: save" type="submit" class="btn btn-primary">Save</button>
+    			</div>
+  			</div>
+</form>
+          </div>
+          </div>
+          
+         
+
+          
+        </div>
+      </div>
+      
+
+      
+</div>
+    
+
+

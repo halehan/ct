@@ -1,0 +1,41 @@
+<html>
+<head>
+
+  <script src="../js/angular/angular.js"></script>
+  <script src="../js/angular/angular-mocks.js"></script>
+  <script src="../js/jquery-2.1.4.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/angular/angular-route.js"></script>
+  <script src="../js/angular/angular-resource.js"></script>
+  <script src="js/controllers.js"></script>
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    
+</head>
+<body ng-app="myApp.controllers">
+
+   <h3>AngularJS GitHub Issues</h3>
+<table class="table table-striped">
+  <tr>
+    <th>Number</th>
+    <th>State</th>
+    <th>Reporter</th>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+  <tr ng-repeat="issue in data.issues">
+    <td>{{issue.number}}</td>
+    <td>{{issue.state}}</td>
+    <td>{{issue.user.login}}</td>
+    <td>{{issue.title}}</td>
+    <td>{{issue.body}}</td>
+  </tr>
+</table>
+
+
+</body>
+</html>

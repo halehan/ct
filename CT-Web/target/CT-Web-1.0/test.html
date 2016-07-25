@@ -1,0 +1,71 @@
+<html>
+<head>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/knockout-3.4.0.js"></script>
+<script src="js/knockout-mapping.js"></script>
+
+<script>
+
+$(document).ready(function() {
+    var viewModel = {};
+     
+     
+  
+    
+    var datax =  '{"Employees":[{"EmployeeId":1,"EmployeeName":"X","EmployeeNumber":"1","EmployeePassword":"x","EmployeeRole":"User"},{"EmployeeId":10,"EmployeeName":"S","EmployeeNumber":"21","EmployeePassword":"s","EmployeeRole":"Admin"}]}';
+        viewModel.model = ko.mapping.fromJSON(datax);
+        console.dir(viewModel);    
+        ko.applyBindings(viewModel);
+});
+
+</script>
+
+</head>
+<body>
+<table>
+<thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Number
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Role
+        </th>
+    </tr>
+</thead>
+<tbody data-bind="foreach: model.Employees">
+    <tr>
+        <td>
+            <span data-bind="text: EmployeeId"></span>
+        </td>
+        <td>
+            <span data-bind="text: EmployeeNumber"></span>
+        </td>
+        <td>
+            <span data-bind="text: EmployeeName"></span>
+        </td>
+        <td>
+            <span data-bind="text: EmployeePassword"></span>
+        </td>
+        <td>
+            <span data-bind="text: EmployeeRole"></span>
+        </td>
+    </tr>
+</tbody>
+</table>
+</body>
+
+</html>
+
+
+

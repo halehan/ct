@@ -1,0 +1,81 @@
+<html ng-app="countryApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js JSON Fetching Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-resource.min.js"></script>
+	
+    <script>
+    var countryApp = angular.module('countryApp', []);
+    
+      
+      countryApp.controller('CountryCtrl', function ($scope, $http){
+        $http.get('countries.json').success(function(dataOne) {
+          $scope.countries = dataOne;
+        });
+      });
+      
+      countryApp.controller('PatientCtrl', function ($scope, $http){
+        $http.get('/CT-Web/api/patient').success(function(data) {
+          $scope.patients = data.patient;
+        });
+      });
+ 
+ /*		var countryApp = angular.module('countryApp', ['ngResource']);
+ 		
+		countryApp.controller('PatientCtrl', function($scope, $resource) {
+			var svc = $resource('/CT-Web/api/patient/{id}');
+  				Post.query(function(data) {
+    				$scope.patients = svc.query();
+    				$scope.msg = "Hello World";
+    });
+   
+	}  
+ 		
+ 		*/
+
+
+/*	countryApp.controller("PatientCtrl", function($scope, Post) {
+  		Post.query(function(data) {
+    	$scope.patients = data.patient;
+    });
+   
+	}  */
+   
+      
+    
+      
+      
+    </script>
+  </head>
+  <body>
+<!-- 	<h2>Angular.js JSON Fetching Example</h2>
+    <table  ng-controller="CountryCtrl">
+      <tr>
+        <th>Code</th>
+		<th>Country</th>
+        <th>Population</th>
+      </tr>
+      <tr ng-repeat="country in countries | orderBy: 'code' ">
+        <td>{{country.code}}</td>
+		<td>{{country.name}}</td>
+        <td>{{country.population}}</td>
+      </tr>
+    </table>
+    
+    <br>
+    -->
+    <table  ng-controller="PatientCtrl">
+      <tr>
+        <th>Fname</th>
+		<th>Lname</th>
+      </tr>
+      <tr ng-repeat="patient in patients | orderBy: 'fname' ">
+        <td>{{patient.fname}}</td>
+		<td>{{patient.lname}}</td>
+      </tr>
+    </table>
+    
+  </body>
+</html>

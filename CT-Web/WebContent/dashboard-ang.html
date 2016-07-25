@@ -1,0 +1,340 @@
+<!doctype html>
+<body ng-app="ctApp">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta charset="utf-8"><meta name="author" content="">
+
+    <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" rel="stylesheet">  -->
+    
+    <link href="bootstrapvalidator-0.4.5/css/bootstrapValidator.css" rel="stylesheet">
+  
+    <link href="css/CT-Recruiter.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script src="js/jquery-2.1.4.min.js"></script>
+ <!--    <script src="js/charts.js"></script>  -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="bootstrapvalidator-0.4.5/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
+    
+    <script src="js/angular-1.5.0/angular.js"></script>
+    <script src="js/angular-1.5.0/angular-resource.js"></script>
+    <script src="js/angular-1.5.0/angular-route.js"></script>
+    
+  <!--   <script type="text/javascript" src="js/CT-Recruiter.js"></script>  -->
+    
+	<script src="js/knockout-3.4.0.js"></script>
+	<script src="js/knockout-mapping.js"></script>
+	<script src="js/dashboard-ang.js"></script>
+	
+	<meta charset="ISO-8859-1">
+	<title>CT-Recruiter</title>
+	
+	<script type="text/javascript">	
+	
+
+function goStudyPatients () {
+    	var ua        = navigator.userAgent.toLowerCase(),
+        isIE      = ua.indexOf('msie') !== -1,
+        version   = parseInt(ua.substr(4, 2), 10);
+
+    // Internet Explorer 8 and lower
+    if (isIE && version < 9) {
+        var link = document.createElement('a');
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+    }
+
+    // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like IE8 & lower does)
+    else { 
+        window.location.href = "studypatients.html?id=" + this.studyId(); 
+    }
+}
+      
+});
+
+
+</script>
+	
+</head>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CT-Recruiter</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+           
+            <li><a href="index.html">Logout</a></li>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul> 
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div ng-controller="studyTrials" class="col-sm-1 col-md-2 sidebar">
+      <!--     <ul class="nav nav-sidebar"> -->
+          
+          <div class="list-group">
+  			<a class="list-group-item" href="newpatient.html"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp; New Patient Candidate</a>
+  			<a class="list-group-item" href="newstudy.html"><i class="fa fa-users" aria-hidden="true"></i>&nbsp; New Study</a>
+		 </div>
+           
+      <!--     </ul>  -->
+          
+         <hr>
+          
+         <div class="list-group">
+  			<a ng-repeat="item in holder.studyRead" class="list-group-item" ng-href={{item.studyFromMenu}}><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp; {{item.studyName}}</a>    
+		 </div>
+		 
+       
+        </div> 
+        
+        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          	<h1 class="page-header">Dashboard -  All Clinical Trials</h1>
+          	<div class="row placeholders">
+          		<div class="col-xs-6 col-sm-4 placeholder">
+            		<div id="piechart_ct" style="width: 450px; height: 200px;"></div>
+              			<h4>Patient Candidate Progress</h4>
+              			<span class="text-muted">Across all studies</span>
+            	</div>
+            	<div class="col-xs-6 col-sm-4 placeholder">
+              		<div id="piechart_ctStudyCand" style="width: 450px; height: 200px;"></div>  
+              		<h4>Study Enrollment Totals</h4>
+              		<span class="text-muted">Total Patient Enrollment Goal</span>
+            	</div>
+            	<div class="col-xs-6 col-sm-4 placeholder">
+            		<div id="piechart_ctStudyEnrolled" style="width: 450px; height: 200px;"></div>
+              			<h4>Study Sponsor Totals</h4>
+              			<span class="text-muted">Patient Totals Across All Studies</span>
+            	</div>
+            </div>
+        </div>
+         
+         <div id="mainArea">
+       
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div>
+           <div class="panel panel-default">
+  			<div class="panel-body">
+    			<h3 class="sub-header">Patient Alerts</h3>
+              <div ng-controller="getPatientListExpired" >
+            		 <table class="table table-condensed">
+              			<thead>
+                			<tr>
+                  			<th>Name</th>
+                  			<th>Task</th>
+                  			<th>Task Expiration</th>
+                  			<th>Study Eye</th>
+                  			<th>Study Name</th>
+                  		 	<th>Location</th> 
+                  			<th>Phone Number</th>
+                  			<th>Doctor</th>
+                			</tr>
+              			</thead>
+          
+              <tbody>
+              <tr ng-repeat="item in holder.patient">
+              <td> {{item.fullName}}</td>
+              <td> {{item.workflowName}}</td>
+              <td> {{item.taskExpiration}}</td>
+              <td> {{item.studyeye}}</td>
+              <td> {{item.studyName}}</td>
+              <td> {{item.location}}</td>  
+              <td> {{item.phone}}</td>
+              <td> {{item.doctor}}</td>
+              <td ng-hide="true"> {{item.patientTaskId}}  </td>
+              <td ng-hide="true"> {{item.patientId}}</td>
+              
+                   <td><button ng-click="UpdatePatient()" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit Patient Data">
+                  <span class="glyphicon glyphicon-user"></span>
+                  </button></td> 
+                  <td><button ng-click="UpdateTask()"  class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Update Task Event">
+                  <span class="glyphicon glyphicon-edit"></span>
+                  </button></td> 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  				</div>
+		  </div>
+          
+          
+          <div class="panel panel-default">
+  			<div class="panel-body">
+           <h3 class="sub-header">New Patients</h3>
+           
+           <div ng-controller="getPatientListNew" >
+            		<table class="table table-condensed">
+              			<thead>
+                			<tr>
+                  			<th>Name</th>
+                  			<th>Task</th>
+                  			<th>Task Expiration</th>
+                  			<th>Study Eye</th>
+                  			<th>Study Name</th>
+                  			<th>Location</th>
+                  			<th>Phone Number</th>
+                  			<th>Doctor</th>
+                			</tr>
+              			</thead>
+              <tbody>
+              <tr ng-repeat="item in holder.patient">
+              <td> {{item.fullName}}</td>
+              <td> {{item.workflowName}}</td>
+              <td> {{item.taskExpiration}}</td>
+              <td> {{item.studyeye}}</td>
+              <td> {{item.studyName}}</td>
+              <td> {{item.location}}</td>
+              <td> {{item.phone}}</td>
+              <td> {{item.doctor}}</td>
+              <td ng-hide="true"> {{item.patientTaskId}}  </td>
+              <td ng-hide="true"> {{item.patientId}}</td>
+              
+             
+                  <td><button ng-click="UpdatePatient()"  class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit Patient Data">
+                  <span class="glyphicon glyphicon-user"></span>
+                  </button></td> 
+                  <td><button ng-click="UpdateTask()"  class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Update Task Event">
+                  <span class="glyphicon glyphicon-edit"></span>
+                  </button></td>  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+           
+        </div>
+       </div>
+          
+          
+         <div class="panel panel-default">
+  			<div class="panel-body">
+           <h3 class="sub-header">Patients On Schedule</h3>
+           
+           
+            <div ng-controller="getPatientListPending" >
+            		<table class="table table-condensed">
+              			<thead>
+                			<tr>
+                  			<th>Name</th>
+                  			<th>Task</th>
+                  			<th>Task Expiration</th>
+                  			<th>Study Eye</th>
+                  			<th>Study Name</th>
+                  			<th>Location</th>
+                  			<th>Phone Number</th>
+                  			<th>Doctor</th>
+                			</tr>
+              			</thead>
+              <tbody>
+              <tr ng-repeat="item in holder.patient">
+              <td> {{item.fullName}}</td>
+              <td> {{item.workflowName}}</td>
+              <td> {{item.taskExpiration}}</td>
+              <td> {{item.studyeye}}</td>
+              <td> {{item.studyName}}</td>
+              <td> {{item.location}}</td>
+              <td> {{item.phone}}</td>
+              <td> {{item.doctor}}</td>
+              <td ng-hide="true"> {{item.patientTaskId}}  </td>
+              <td ng-hide="true"> {{item.patientId}}</td>
+                  <td><button ng-click="UpdatePatient()"  class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit Patient Data">
+                  <span class="glyphicon glyphicon-user"></span>
+                  </button></td> 
+                  <td><button ng-click="UpdateTask()" class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Update Task Event">
+                  <span class="glyphicon glyphicon-edit"></span>
+                  </button></td> 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+           
+        
+          </div>
+          </div>
+          
+          <div class="panel panel-default">
+  			<div class="panel-body">
+           <h3 class="sub-header">Patients Enrolled</h3>
+           
+           <div ng-controller="getPatientListEnrolled" >
+            		<table class="table table-condensed">
+              			<thead>
+                			<tr>
+                  			<th>Name</th>
+                  			<th>Task</th>
+                  			<th>Task Expiration</th>
+                  			<th>Study Eye</th>
+                  			<th>Study Name</th>
+                  			<th>Location</th>
+                  			<th>Phone Number</th>
+                  			<th>Doctor</th>
+                			</tr>
+              			</thead>
+              <tbody>
+              <tr ng-repeat="item in holder.patient">
+              <td> {{item.fullName}}</td>
+              <td> {{item.workflowName}}</td>
+              <td> {{item.taskExpiration}}</td>
+              <td> {{item.studyeye}}</td>
+              <td> {{item.studyName}}</td>
+              <td> {{item.location}}</td>
+              <td> {{item.phone}}</td>
+              <td> {{item.doctor}}</td>
+              <td ng-hide="true"> {{item.patientTaskId}}  </td>
+              <td ng-hide="true"> {{item.patientId}}</td>
+                  <td><button ng-click="UpdatePatient()"  class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit Patient Data">
+                  <span class="glyphicon glyphicon-user"></span>
+                  </button></td> 
+                  <td><button ng-click="UpdateTask()"  class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Update Task Event">
+                  <span class="glyphicon glyphicon-edit"></span>
+                  </button></td> 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+           
+           
+          
+          </div>
+          </div>
+          
+           
+          
+        </div>
+      </div>
+      </div>
+      
+
+      
+
+    
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+   
+    
+
+</html>

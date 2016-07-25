@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Google Charts Jquery</title>
+<meta content='width=device-width, initial-scale=1' name='viewport'/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+<script src="ajaxGetPost.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>
+
+function studyAll(data,ChartType)
+{
+var c=ChartType;
+var jsonData=data;
+
+google.load("visualization", "1", {packages:["corechart"], callback: drawVisualization});
+function drawVisualization() 
+{
+var dataCandidate = new google.visualization.DataTable();
+var dataEnrolled = new google.visualization.DataTable();
+
+dataCandidate.addColumn('string', 'studyName');
+dataCandidate.addColumn('number', 'count');
+
+dataEnrolled.addColumn('string', 'studyName');
+dataEnrolled.addColumn('number', 'count');
+
+$.each(jsonData.chart, function(i,jsonData)
+{
+	var candidateCount=jsonData.candidateCount;
+	var enrolledCount=jsonData.enrolledCount;
+	
+	
+	var studyName=jsonData.studyName;
+		console.log('name ' + studyName);
+		console.log('value ' + candidateCount);
+
+dataCandidate.addRows([ [studyName, candidateCount]]);
+dataEnrolled.addRows([ [studyName, enrolledCount]]);
+});
+
+var optionsCandidates = {
+title : "Patient Candidates",
+colorAxis: {colors: ['#54C492', '#cc0000']},
+datalessRegionColor: '#dedede',
+defaultColor: '#dedede'
+};
+
+var optionsEnrolled = {
+title : "Patients Enrolled",
+colorAxis: {colors: ['#54C492', '#cc0000']},
+datalessRegionColor: '#dedede',
+defaultColor: '#dedede'
+};
+
+var chart;
+var chartCandidate;
+var chartEnrolled
+
+chartCandidate = new google.visualization.PieChart(document.getElementById('piechart_ctStudyCand'));
+chartEnrolled = new google.visualization.PieChart(document.getElementById('piechart_ctStudyEnrolled'));
+
+chartCandidate.draw(dataCandidate, optionsCandidates);
+chartEnrolled.draw(dataEnrolled, optionsEnrolled);
+}
+}
+
+
+
+function chartProgress(data,ChartType)
+{
+var c=ChartType;
+var jsonData=data;
+google.load("visualization", "1", {packages:["corechart"], callback: drawVisualization});
+function drawVisualization() 
+{
+var data = new google.visualization.DataTable();
+data.addColumn('string', 'Status');
+data.addColumn('number', 'Count');
+$.each(jsonData.chart, function(i,jsonData)
+{
+var value=jsonData.count;
+var name=jsonData.status;
+console.log('value ' + value);
+console.log('name ' + name);
+data.addRows([ [name, value]]);
+});
+
+var options = {
+title : "Patient Candidate Progress",
+colorAxis: {colors: ['#54C492', '#cc0000']},
+datalessRegionColor: '#dedede',
+defaultColor: '#dedede'
+};
+
+var chart;
+chart = new google.visualization.PieChart(document.getElementById('piechart_ct'));
+
+chart.draw(data, options);
+}
+}
+
+
+
+function charts(data,ChartType)
+{
+var c=ChartType;
+var jsonData=data;
+google.load("visualization", "1", {packages:["corechart"], callback: drawVisualization});
+function drawVisualization() 
+{
+var data = new google.visualization.DataTable();
+data.addColumn('string', 'Status');
+data.addColumn('number', 'Count');
+$.each(jsonData, function(i,jsonData)
+{
+var value=jsonData.value;
+var name=jsonData.name;
+console.log('value ' + value);
+console.log('name ' + name);
+data.addRows([ [name, value]]);
+});
+
+var options = {
+title : "Word Population Density",
+colorAxis: {colors: ['#54C492', '#cc0000']},
+datalessRegionColor: '#dedede',
+defaultColor: '#dedede'
+};
+
+var chart;
+if(c=="ColumnChart")
+chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+else if(c=="PieChart")
+chart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+else if(c=="PieChartCT")
+chart = new google.visualization.PieChart(document.getElementById('piechart_ct'));
+
+
+chart.draw(data, options);
+}
+}
+
+$(document).ready(function () 
+{
+url='world-population-density.json';
+ajax_data('GET',url, function(data)
+{
+
+charts(data,"PieChart");	
+
+});
+
+ajax_data('GET','../patient/list', function(data)
+{
+
+// charts(data,"BarChart");
+
+var jsonData=data;
+//var data = new google.visualization.DataTable();
+//data.addColumn('string', 'Country');
+//data.addColumn('number', 'Population Density');
+
+$.each(jsonData.patient, function(i,value)
+{
+
+console.log(value.doctor);
+console.log(value.fname);
+
+});
+
+
+});
+
+ajax_data('GET','../patient/chartOne/list', function(data)
+{
+
+farts(data,"PieChartCT");
+
+var jsonData=data;
+
+$.each(jsonData.chartOne, function(i,value)
+{
+
+console.log('Expired Patients ' + value.expiredCount);
+console.log('On Schdule Patients ' + value.onScheduleCount);
+
+});
+});
+
+
+ajax_data('GET','../study/list/chart/all', function(data)
+{
+
+studyAll(data,"PieChartStudy");  
+
+var jsonData=data;
+
+$.each(jsonData.chart, function(i,value)
+{
+
+console.log('Study Name ' + value.studyName);
+console.log('Expired Patients ' + value.enrolledCount);
+console.log('On Schdule Patients ' + value.candidateCount);
+
+});
+});
+
+
+});
+</script>
+<style>
+body{font-family:arial}
+</style>
+</head>
+<body style="text-align:center">
+<h1>Google Charts with Jquery Ajax</h1>
+<a href="http://www.9lessons.info">www.9lessons.info</a>
+
+
+<div id="piechart_div" style="width: 900px; height: 500px;"></div>
+<div id="piechart_ct" style="width: 900px; height: 500px;"></div>
+<div id="piechart_ctStudyCand" style="width: 900px; height: 500px;"></div>
+<div id="piechart_ctStudyEnrolled" style="width: 900px; height: 500px;"></div>
+
+
+</body>
+</html>

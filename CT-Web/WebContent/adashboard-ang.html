@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app>
+<head> 
+    <script src="js/dashboard-ang.js"></script>
+    <script src="js/angular-1.5.0/angular.js"></script>
+    <script src="js/angular-1.5.0/angular-resource.js"></script>
+    <script src="js/angular-1.5.0/angular-route.js"></script>
+</head>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CT-Recruiter</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+           
+            <li><a href="index.html">Logout</a></li>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul> 
+        </div>
+      </div>
+    </nav>
+
+    <div  class="container-fluid">
+           <div class="panel panel-default">
+  			<div class="panel-body">
+    			<h3 class="sub-header">Patient Alerts</h3>
+              		<div ng-controller="Hello"  class="table-responsive">
+            				<table class="table table-hover">
+              					<thead>
+                					<tr>
+                  					<th>Name</th>
+                  					<th>Task</th>
+                  					<th>Task Expiration</th>
+                  					<th>Study Eye</th>
+                  					<th>Study Name</th>
+                  					<th>Location</th>
+                  					<th>Phone Number</th>
+                  					<th>Doctor</th>
+                					</tr>
+              					</thead>
+              							<tbody>
+              								<tr ng-repeat="item in holder.patient">
+              										<td> {{item.patientTaskId}}</td>
+              										<td> {{item.patientId}}</td>
+                							</tr>
+              							</tbody>
+            					</table>
+               		</div>
+  		    	</div>
+		  </div>
+    </div>
+          
+           
+    
+
+</html>

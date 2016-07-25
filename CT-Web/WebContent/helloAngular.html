@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="CT-Recruiter">
+<head>
+<title>AngularJS - Hello World</title>
+	
+	<link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="bootstrapvalidator-0.4.5/css/bootstrapValidator.css" rel="stylesheet">
+  
+    <link href="css/CT-Recruiter.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/angular-1.5.0/angular.min.js"></script>
+    <script type="text/javascript" src="bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="bootstrapvalidator-0.4.5/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
+	<title></title>
+</head>
+<body class="container" ng-app="HelloApp" ng-controller="HelloCtrl">
+	<h1>Hello, My name is {{name}}</h1>
+	
+	<script type="text/javascript">
+		angular.module('HelloApp', [])
+			.controller('HelloCtrl', ['$scope', function($scope){
+				$scope.name = "Calvin";
+			}])
+	</script>
+</body>
+</html>
