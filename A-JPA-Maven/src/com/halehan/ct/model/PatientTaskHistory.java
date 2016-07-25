@@ -21,7 +21,11 @@ import javax.persistence.Table;
 @Table(name = "patient_task_history")
 @NamedQuery(name = "PatientTaskHistory.findAll", query = "SELECT p FROM PatientTaskHistory p")
 public class PatientTaskHistory implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4002745533821110L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

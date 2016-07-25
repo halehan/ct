@@ -16,6 +16,11 @@ import javax.persistence.Table;
 @NamedQuery(name = "SiteCounts.findAll", query = "SELECT s FROM SiteCounts s")
 public class SiteCounts implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2252151292873106580L;
+
 	@Id
 	private int patientId;
 

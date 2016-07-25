@@ -19,7 +19,11 @@ import javax.persistence.Table;
 @Table(name = "site_study_assoc")
 @NamedQuery(name = "SiteStudyAssoc.findAll", query = "SELECT s FROM SiteStudyAssoc s")
 public class SiteStudyAssoc implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1434806105977046451L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

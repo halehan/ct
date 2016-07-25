@@ -28,7 +28,11 @@ import javax.persistence.TemporalType;
 
 })
 public class WorkflowDefinition implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -68717243284829641L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

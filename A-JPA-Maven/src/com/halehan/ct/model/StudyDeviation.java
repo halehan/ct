@@ -21,7 +21,11 @@ import javax.persistence.Table;
 @Table(name = "study_deviations")
 @NamedQuery(name = "StudyDeviation.findAll", query = "SELECT s FROM StudyDeviation s")
 public class StudyDeviation implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4657544564596903848L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

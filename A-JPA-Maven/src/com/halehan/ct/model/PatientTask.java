@@ -28,7 +28,11 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = "PatientTask.findByPatient", query = "SELECT p FROM PatientTask p where p.patient.patientId = :patientId")})
 
 public class PatientTask implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6634034371696943014L;
 
 	@Id
 	private long patientTaskId;

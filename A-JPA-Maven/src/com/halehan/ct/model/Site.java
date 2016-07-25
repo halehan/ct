@@ -21,7 +21,11 @@ import javax.persistence.OrderBy;
 @Entity
 @NamedQuery(name = "Site.findAll", query = "SELECT s FROM Site s")
 public class Site implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7246339868511587737L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

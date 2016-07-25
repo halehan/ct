@@ -40,7 +40,11 @@ import org.eclipse.persistence.annotations.Cache;
 		@NamedQuery(name = "Patient.findNew", query = "SELECT p FROM Patient p, PatientTask t WHERE p.patientTasks = t and t.taskStatus = 'new'")})
 @XmlRootElement(name = "patient")
 public class Patient implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3629247250559765392L;
 
 	@Id
 	@Column(unique = true, nullable = false)

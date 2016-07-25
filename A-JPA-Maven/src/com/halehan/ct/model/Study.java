@@ -27,7 +27,11 @@ import org.eclipse.persistence.annotations.Cache;
 @Table(name = "study", schema = "ct")
 @NamedQuery(name = "Study.findAll", query = "SELECT s FROM Study s")
 public class Study implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5358399767369076880L;
 
 	@Id
 	@Column(unique = true, nullable = false)

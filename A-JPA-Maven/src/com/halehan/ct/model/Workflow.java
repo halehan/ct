@@ -27,7 +27,11 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = "Workflow.findAll", query = "SELECT w FROM Workflow w"),
 		@NamedQuery(name = "Workflow.findByStudy", query = "SELECT w FROM Workflow w WHERE w.step = :step")})
 public class Workflow implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5071146619923313137L;
 
 	@Id
 	private long workflowId;

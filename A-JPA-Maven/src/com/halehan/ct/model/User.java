@@ -26,7 +26,11 @@ import org.eclipse.persistence.annotations.Cache;
 		@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
 		@NamedQuery(name = "User.findBySite", query = "SELECT u FROM User u where u.site.siteId = :siteid")})
 public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5903979262653864208L;
 
 	@Id
 	private int userId;

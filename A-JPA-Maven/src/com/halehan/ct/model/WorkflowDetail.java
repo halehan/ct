@@ -20,7 +20,11 @@ import javax.persistence.Table;
 @Table(name = "workflow_details", schema = "ct")
 @NamedQuery(name = "WorkflowDetail.findAll", query = "SELECT w FROM WorkflowDetail w")
 public class WorkflowDetail implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8521243023828326553L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
