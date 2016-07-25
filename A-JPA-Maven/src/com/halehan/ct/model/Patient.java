@@ -28,7 +28,7 @@ import org.eclipse.persistence.annotations.Cache;
  * 
  */
 @Entity
-@Cache(size = 12000, expiry = 5000)
+@Cache(size = 12000, expiry = 4000)
 @Table(name = "patient", schema = "ct")
 
 @NamedQueries({
