@@ -1,1 +1,0 @@
-angular.module('ctApp',['ngResource', 'ngRoute']);
