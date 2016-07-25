@@ -1,0 +1,12 @@
+com\halehan\ct\model\StudyDeviation.class
+com\halehan\ct\model\Study.class
+com\halehan\ct\model\PatientTaskHistory.class
+com\halehan\ct\model\Practice.class
+com\halehan\ct\model\WorkflowDetail.class
+com\halehan\ct\model\Patient.class
+com\halehan\ct\model\WorkflowDefinition.class
+com\halehan\ct\model\Site.class
+com\halehan\ct\model\PatientTask.class
+com\halehan\ct\model\Workflow.class
+com\halehan\ct\model\SiteStudyAssoc.class
+com\halehan\ct\model\User.class

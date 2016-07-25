@@ -1,0 +1,47 @@
+<persistence version="2.0"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                       http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	 <persistence-unit name="ct" transaction-type="JTA">
+      <!--   <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>  -->
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+         <jta-data-source>ct</jta-data-source>
+         <class>com.halehan.ct.model.CodeTables</class>
+         <class>com.halehan.ct.model.Patient</class>
+         <class>com.halehan.ct.model.PatientTask</class>
+         <class>com.halehan.ct.model.PatientTaskHistory</class>
+         <class>com.halehan.ct.model.Study</class>
+         <class>com.halehan.ct.model.Workflow</class>
+         <class>com.halehan.ct.model.WorkflowDefinition</class>
+         <class>com.halehan.ct.model.WorkflowDetail</class>
+         <class>com.halehan.ct.model.Practice</class>
+         <class>com.halehan.ct.model.Site</class>
+         <class>com.halehan.ct.model.User</class>
+         <class>com.halehan.ct.model.StudyDeviation</class>
+         <class>com.halehan.ct.model.SiteStudyAssoc</class>
+         <class>com.halehan.ct.model.SiteEquipment</class>
+         <class>com.halehan.ct.model.SiteCounts</class>
+         <class>com.halehan.ct.model.PatientStudyVisit</class>
+         <class>com.halehan.ct.model.Role</class>
+         
+		<properties>
+        	<property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.MySQLPlatform"/>
+        	<property name="eclipselink.logging.level" value="FINE" />   
+       <!--      <property name="eclipselink.cache.shared.default" value="false"/> -->
+        	<property name="eclipselink.cache.shared.Study" value="true"/> 
+        	<property name="eclipselink.cache.type.Study" value="SOFT"/> 
+        	<property name="eclipselink.cache.size.Study" value="64000"/> 
+        	<property name="eclipselink.cache.expiry.Study" value="64000"/>
+        	<property name="eclipselink.cache.shared.Patient" value="true"/> 
+        	<property name="eclipselink.cache.type.Patient" value="SOFT"/> 
+        	<property name="eclipselink.cache.size.Patient" value="64000"/> 
+        	<property name="eclipselink.cache.expiry.Patient" value="64000"/>
+        	<property name="eclipselink.cache.shared.User" value="false"/> 
+        	   
+        </properties>
+		
+	</persistence-unit>
+	
+</persistence>
