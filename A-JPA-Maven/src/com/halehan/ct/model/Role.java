@@ -17,7 +17,11 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r")
 public class Role implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4125684612764992682L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
