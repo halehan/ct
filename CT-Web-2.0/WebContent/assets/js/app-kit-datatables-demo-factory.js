@@ -1,4 +1,4 @@
-angular.module('ct').factory('patientListx', function($resource) {
+angular.module('ct').factory('patientList', function($resource) {
 	  return $resource('http://localhost:8080/CT-Web/patient/list/site/:id', { name: '@_id' }, { 
 	  });
 	})

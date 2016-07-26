@@ -10,6 +10,7 @@ public class PatientStudyTaskVo {
 	private int patientId;
 	private String studyName;
 	private String notes;
+	private String status;
 	private String workflowName;
 	private String startDt;
 	private String finishDt;
@@ -62,6 +63,12 @@ public class PatientStudyTaskVo {
 	}
 	public void setPatientTaskId(int patientTaskId) {
 		this.patientTaskId = patientTaskId;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

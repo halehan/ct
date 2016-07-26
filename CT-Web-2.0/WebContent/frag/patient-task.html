@@ -36,6 +36,13 @@
 							</a>
 					</li>
 					
+					<li  class=" ">
+							<a href="#siteStaffUpdate?siteId=[[globalSite]]&practiceId=[[practiceId]]">
+								<span aria-hidden="true" class="fa fa-stethoscope" ></span>
+								<span class="nav-label">Staff Maintenance</span>
+							</a>
+					</li>
+					
 				</ul>
 			</nav>
 		</div>	
@@ -102,6 +109,7 @@
                   					<th>Task</th>
                   					<th>Study Name</th>
                   					<th>Notes</th>
+                  					<th>Status</th>
                   					<th>Start Date</th>
                   					<th>Finish Date</th>
 								</tr>
@@ -112,6 +120,7 @@
                   					<td> [[item.workflowName]] </td>
                   					<td> [[item.studyName]] </td>
                   					<td> [[item.notes]] </td>
+                  					<td> [[item.status]] </td>
                   					<td> [[item.startDt]] </td>
                   					<td> [[item.finishDt]] </td>
                   					<td> [[item.patientTaskId]] </td>

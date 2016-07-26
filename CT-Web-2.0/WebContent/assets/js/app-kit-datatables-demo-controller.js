@@ -1,10 +1,14 @@
 angular.module('ct')
-.controller('patientTask', function($scope, $route, $rootScope, $routeParams, $log, site, patientTaskList, patientTask, patientListx) {
+.controller('patientTask', function($scope, $route, $rootScope, $routeParams, $log, site, patientTaskList, patientTask, patientList) {
 	
 	$scope.name = "patientTask";
     $scope.params = $routeParams;
     
-    patientListx.get({ id: $scope.params.siteId }, function(data) {
+    site.get({ id: $rootScope.globalSite }, function(data) {
+		$scope.site = data.site;
+	  }); 
+    
+    patientList.get({ id: $scope.params.siteId }, function(data) {
 		$scope.patientList = data.patient;
 		$log.debug($scope.patientList);
 	  });
@@ -33,15 +37,6 @@ $scope.getTasks = function(patientId) {
       		
         };
    
- /*   patientTaskList.get({ id: $scope.params.patientId }, function(data) {
-		$scope.patientTaskList = data.patientTaskList;
-		$log.debug(data);
-	  }); */
-    
-   /* patientTask.get({ id: $scope.params.patientTaskId }, function(data) {
-		$scope.patientTask = data.site;
-	  }); */
-    
 });
 
 

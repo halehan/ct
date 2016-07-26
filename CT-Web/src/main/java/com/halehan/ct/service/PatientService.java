@@ -494,6 +494,7 @@ public class PatientService {
 			patientTaskVo.setStudyName(patient.getStudy().getStudyName());
 			patientTaskVo.setNotes(task.getTaskNotes());
 			patientTaskVo.setPatientId((int) patient.getPatientId());
+			patientTaskVo.setStatus(task.getTaskStatus());
 			patientTaskVo.setPatientName(
 					patient.getFname() + " " + patient.getLname());
 			// patientTaskVo.setWorkflowName(task.getWorkflow().getName());
