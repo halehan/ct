@@ -1,10 +1,1 @@
 /META-INF/
-
-*target*
-
-*.jar
-
-*.war
-
-*.ear
-*.class
