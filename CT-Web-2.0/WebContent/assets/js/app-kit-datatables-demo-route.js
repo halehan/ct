@@ -1,5 +1,10 @@
 angular.module('ct').config(function($routeProvider) {
 
+	$routeProvider.when('/patientTask', {
+	    templateUrl : 'frag/patient-task.html',
+	    controller  : 'patientTask'
+	})
+	
 	$routeProvider.when('/sitedash', {
 	    templateUrl : 'frag/site-dashboard.html',
 	    controller  : 'siteDashboard'

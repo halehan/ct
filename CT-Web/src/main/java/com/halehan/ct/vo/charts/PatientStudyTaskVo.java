@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "patientTaskList")
 public class PatientStudyTaskVo {
 
+	private int patientTaskId;
 	private String patientName;
 	private int patientId;
 	private String studyName;
@@ -55,6 +56,12 @@ public class PatientStudyTaskVo {
 	}
 	public void setFinishDt(String finishDt) {
 		this.finishDt = finishDt;
+	}
+	public int getPatientTaskId() {
+		return patientTaskId;
+	}
+	public void setPatientTaskId(int patientTaskId) {
+		this.patientTaskId = patientTaskId;
 	}
 
 }

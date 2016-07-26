@@ -83,6 +83,14 @@ public class PatientDAO {
 
 	}
 
+	public List<Patient> findBySite(int siteId) {
+
+		return dao.find(Patient.class,
+				"SELECT p FROM Patient p WHERE p.site.siteId = :siteId",
+				"siteId", siteId);
+
+	}
+
 	public List<Patient> listAll(int first, int max) {
 
 		return dao.namedFind(Patient.class, "Patient.findAll", first, max);

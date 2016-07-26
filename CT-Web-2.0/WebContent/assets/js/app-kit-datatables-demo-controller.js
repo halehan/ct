@@ -1,4 +1,51 @@
 angular.module('ct')
+.controller('patientTask', function($scope, $route, $rootScope, $routeParams, $log, site, patientTaskList, patientTask, patientListx) {
+	
+	$scope.name = "patientTask";
+    $scope.params = $routeParams;
+    
+    patientListx.get({ id: $scope.params.siteId }, function(data) {
+		$scope.patientList = data.patient;
+		$log.debug($scope.patientList);
+	  });
+    
+$scope.getTasks = function(patientId) {
+    	
+    	$scope.formUpdate=false;
+    	$scope.disableAll = false;
+    	
+    	patientTaskList.get({ id: patientId }, function(data) {
+    		    $scope.patientTaskList = data.patientTaskList;
+    			$log.debug('getTasks' + patientId);	
+    	  }); 
+    		
+      };
+      
+      $scope.getTask = function(patientTaskId) {
+      	
+      	$scope.formUpdate=false;
+      	$scope.disableAll = false;
+      	
+      	patientTask.get({ id: patientTaskId }, function(data) {
+      		    $scope.patientTask = data.patientTask;
+      			$log.debug('getTasks' + patientTaskId);	
+      	  }); 
+      		
+        };
+   
+ /*   patientTaskList.get({ id: $scope.params.patientId }, function(data) {
+		$scope.patientTaskList = data.patientTaskList;
+		$log.debug(data);
+	  }); */
+    
+   /* patientTask.get({ id: $scope.params.patientTaskId }, function(data) {
+		$scope.patientTask = data.site;
+	  }); */
+    
+});
+
+
+angular.module('ct')
 .controller('equipment', function($scope, $route, $rootScope, $routeParams, $log, site, codeService, maintService, equipList) {
 	
 	$scope.name = "equipment";

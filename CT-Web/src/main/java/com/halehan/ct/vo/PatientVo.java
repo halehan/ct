@@ -85,12 +85,11 @@ public class PatientVo {
 		this.phone = this.padNull(patient.getPhone());
 		this.studyId = (study == null)
 				? ""
-				: String.valueOf(patient.getStudy().getStudyId());
-		this.studyName = (study == null)
-				? ""
-				: patient.getStudy().getShortName();
+				: String.valueOf(study.getStudyId());
+		this.studyName = (study == null) ? "" : study.getShortName();
 		this.studyeye = this.padNull(patient.getStudyeye());
-		// this.doctor = this.padNull(patient.getDoctor());
+		this.status = patient.getStatus();
+		this.doctor = patient.getDoctor().getLname();
 		this.initialcontactdate = toString(patient.getInitialcontactdate());
 		try {
 			this.taskExpiration = toString(

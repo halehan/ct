@@ -1,3 +1,18 @@
+angular.module('ct').factory('patientListx', function($resource) {
+	  return $resource('http://localhost:8080/CT-Web/patient/list/site/:id', { name: '@_id' }, { 
+	  });
+	})
+	
+angular.module('ct').factory('patientTask', function($resource) {
+	  return $resource('http://localhost:8080/CT-Web/patient/task/find/:id', { name: '@_id' }, { 
+	  });
+	})
+
+angular.module('ct').factory('patientTaskList', function($resource) {
+	  return $resource('http://localhost:8080/CT-Web/patient/task/find/report/:id', { name: '@_id' }, { 
+	  });
+	})
+	
 angular.module('ct').factory('equipList', function($resource) {
 	  return $resource('http://localhost:8080/CT-Web/equipment/site/:id', { name: '@_id' }, { 
 	  });

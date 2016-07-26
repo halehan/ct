@@ -251,6 +251,26 @@ public class PatientService {
 
 	}
 
+	@Path("/list/site/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<PatientVo> patientListSite(@PathParam("id") int id) {
+
+		List<Patient> patients = patientDao.findBySite(id);
+		List<PatientVo> voList = new ArrayList<PatientVo>();
+
+		for (Patient patient : patients) {
+
+			PatientVo patientVo = new PatientVo();
+			patientVo.copyPatient(patient);
+			voList.add(patientVo);
+
+		}
+
+		return voList;
+
+	}
+
 	@Path("/create")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -481,6 +501,7 @@ public class PatientService {
 					task.getWorkflowDetail().getWorkflowName());
 			patientTaskVo.setStartDt(toString(task.getTaskStartDt()));
 			patientTaskVo.setFinishDt(toString(task.getTaskCompleteDt()));
+			patientTaskVo.setPatientTaskId((int) task.getPatientTaskId());
 
 			taskList.add(patientTaskVo);
 
