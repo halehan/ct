@@ -6,12 +6,15 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.SecurityContext;
 
 import com.halehan.ct.dao.CodeTableDAO;
 import com.halehan.ct.dao.MiscDAO;
@@ -52,7 +55,18 @@ public class CodeTableService {
 	}
 
 	@GET
-	public List<CodeTablesVo> findAll() {
+	public List<CodeTablesVo> findAll(@Context SecurityContext sc,
+			@HeaderParam("auth-token") String userAgent) {
+
+		System.out.println(userAgent);
+
+		try {
+			System.out.println(sc.getAuthenticationScheme());
+			// System.out.println(sc.getUserPrincipal().getName());
+			System.out.println(sc.isSecure());
+
+		} catch (Exception e) {
+		}
 
 		List<CodeTables> codeTablesList = codeTableDAO.listAll(0, 100);
 		List<CodeTablesVo> codeTableVoList = new ArrayList<CodeTablesVo>();
