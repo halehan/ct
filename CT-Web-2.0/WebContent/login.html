@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="ct">
 	<head>
-		<title>AppKit</title>
+		<title>CTS Manager</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,24 +31,24 @@
 		<div class="row">
 			<div class="form-box col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-0 xs-offset-0">
 				<h1 class="form-box-heading logo text-center">
-						<span class="pe-icon pe-7s-box2 icon"></span><span class="highlight">App</span>Kit
+						<span class="pe-icon pe-7s-box2 icon"></span><span class="highlight">CTS</span> Manager
 					</h1>
 				
 				<div class="form-box-inner">
 					<h2 class="title text-center">Login to Your Account</h2>
 					<div class="row" >
 						<div  class="form-container col-md-5 col-sm-12 col-xs-12">
-							<form class="login-form" ng-controller="AuthCtrl">
+							<form class="login-form" ng-controller="LoginCtrl">
 								<div class="form-group email">
 									<label class="sr-only" for="login-email">Email or username</label>
 									<span class="fa fa-user icon"></span>
-									<input ng-model="userId" id="login-email" type="" class="form-control login-email" placeholder="Email or username">
+									<input ng-model="user.username" id="login-email" type="" class="form-control login-email" placeholder="Email or username">
 								</div>
 								
 								<div class="form-group password">
 									<label class="sr-only" for="login-password">Password</label>
 									<span class="fa fa-lock icon"></span>
-									<input ng-model="password" id="login-password" type="password" class="form-control login-password" placeholder="Password">
+									<input ng-model="user.password" id="login-password" type="password" class="form-control login-password" placeholder="Password">
 									<p class="forgot-password"><a href="reset-password.html">Forgot password?</a></p>
 								</div>
 								
